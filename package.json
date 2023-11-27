@@ -1,0 +1,58 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "async.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --watch .",
+
+    "test.number": "node --test --watch ./Number",
+
+    "test.number.add": "node --test --watch ./Number/add",
+    "test.number.inc": "node --test --watch ./Number/inc",
+    "test.number.double": "node --test --watch ./Number/double",
+    "test.number.min": "node --test --watch ./Number/min",
+    "test.number.max": "node --test --watch ./Number/max",
+    "test.number.mul": "node --test --watch ./Number/mul",
+    "test.number.sub": "node --test --watch ./Number/sub",
+    "test.number.pow": "node --test --watch ./Number/pow",
+    "test.number.one": "node --test --watch ./Number/one",
+    "test.number.le": "node --test --watch ./Number/le",
+    "test.number.ge": "node --test --watch ./Number/ge",
+    "test.number.between": "node --test --watch ./Number/between",
+
+    "test.number.lt": "node --test --watch ./Number/gt",
+    "test.number.lt.0": "node --test --watch ./Number/lt/0",
+
+    "test.number.gt": "node --test --watch ./Number/gt",
+    "test.number.gt.0": "node --test --watch ./Number/gt/0",
+    "test.number.gt.1": "node --test --watch ./Number/gt/1",
+
+    "test.number.internal"         : "node --test --watch ./Number/internal",
+    "test.number.internal.between" : "node --test --watch ./Number/internal/between",
+    "test.number.internal.clump"   : "node --test --watch ./Number/internal/clump",
+    "test.number.internal.pow"     : "node --test --watch ./Number/internal/pow",
+    "test.number.internal.mul"     : "node --test --watch ./Number/internal/mul",
+    "test.number.internal.min"     : "node --test --watch ./Number/internal/min",
+    "test.number.internal.max"     : "node --test --watch ./Number/internal/max",
+
+    "test.object": "node --test --watch ./Object",
+
+    "test.array": "node --test --watch ./Array",
+
+    "test.array.filter" : "node --test --watch ./Array/filter",
+    "test.array.every"  : "node --test --watch ./Array/every",
+
+    "test.compose": "node --test --watch ./Composition",
+
+    "test.compose.bank": "node --test --watch ./Composition/bank",
+
+    "test.function.lift": "node --test --watch ./Function/lift"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.5.3"
+  }
+}
