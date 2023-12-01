@@ -13,5 +13,4 @@ export type Length<Values extends readonly any[]> = number extends Values["lengt
 /**
   * @constant {(values: readonly any[]) => number}
   */
-declare var length: <Values extends readonly any[]>(values: Values) => Length<Values>;
-export default length;
+export default function length<Values extends readonly any[]>(values: Values): Length<Values>;

@@ -17,11 +17,12 @@ describe("add", () => {
     assert.strictEqual(add(1).length, 1);
   });
 
-  for (var index = 0; index < 10; index++) {
-    for (var next = 0; next < 10; next++) {
-      it("current value", () => {
+  it("current value", () => {
+    for (var index = 0; index < 10; index++) {
+      for (var next = 0; next < 10; next++) {
         assert.strictEqual(add(index)(next), index + next);
-      })
+        assert.strictEqual(add(next)(index), next + index);
+      }
     }
-  }
+  })
 });

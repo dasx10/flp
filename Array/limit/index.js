@@ -1,5 +1,3 @@
-import curry2 from "../../Function/curry2/index.js";
-import _limit from "../internal/limit/index.js";
-
-var limit = curry2(_limit);
-export default limit;
+import exec from "../../Function/curry/2/index.js";
+import call from "../internal/limit/index.js";
+export default exec(call);

@@ -1,2 +1,1 @@
-var identity = value => value;
-export default identity;
+export default (value) => value;

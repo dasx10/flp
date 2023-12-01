@@ -1,7 +1,2 @@
-declare var notEmpty: {
-  (values: readonly [any, ...any[]]): true;
-  (values: readonly []): false;
-  (values: readonly any[]): boolean;
-}
-
-export default notEmpty;
+export default function neEmpty(values: []): false;
+export default function neEmpty<Values extends readonly any[]>(values: Values): values is [Values[0], ...Values]

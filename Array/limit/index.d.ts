@@ -1,6 +1,1 @@
-declare var limit: <
-  Index   extends number,
-  _Values extends readonly any[] = readonly any [],
->(index: Index) => <Values extends _Values>(values: Values) => Values[number][];
-
-export default limit;
+export default function limit<Length extends number>(length: Length): <Values extends readonly any[]>(values: Values) => Values[number][];

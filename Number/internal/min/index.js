@@ -1,1 +1,2 @@
-export default (value, next) => next > value ? value : next;
+import gt from "../gt/index.js";
+export default (value, next) => gt(next, value) ? value : next;

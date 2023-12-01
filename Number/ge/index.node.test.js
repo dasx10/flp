@@ -17,14 +17,14 @@ describe("greater than or equal (ge)", () => {
   });
 
   test("negative numbers", () => {
-    assert.strictEqual(ge(-5)(-10), true);
+    assert.strictEqual(ge(-5)(-10), false);
     assert.strictEqual(ge(-5)(-5), true);
-    assert.strictEqual(ge(-5)(-4), false);
+    assert.strictEqual(ge(-5)(-4), true);
   });
 
   test("mixed positive and negative", () => {
     assert.strictEqual(ge(-5)(5), true);
-    assert.strictEqual(ge(5)(-5), true);
+    assert.strictEqual(ge(5)(-5), false);
     assert.strictEqual(ge(-5)(-5), true);
   });
 });

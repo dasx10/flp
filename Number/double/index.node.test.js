@@ -12,9 +12,9 @@ describe("double", () => {
     assert.strictEqual(double.length, 1);
   });
 
-  for (var index = -10; index < 10; index++) {
-    it(`current value ${index}`, () => {
+  it(`current value`, () => {
+    for (var index = -10; index < 10; index++) {
       assert.strictEqual(double(index), index * 2);
-    });
-  }
+    }
+  });
 });

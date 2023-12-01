@@ -18,11 +18,11 @@ describe("between", () => {
     assert.strictEqual(between(0)(0).length, 1);
   });
 
-  for (var index = 0; index < 10; index++) {
-    for (var next = index + 1; next < 11; next++) {
-      it(`current value ${index} and ${next}`, () => {
-        assert.strictEqual(between(index)(12)(next), true);
-      });
-    }
-  }
+  it(`current value`, () => {
+     for (var index = 0; index < 10; index++) {
+       for (var next = index + 1; next < 11; next++) {
+           assert.strictEqual(between(index)(12)(next), true);
+       }
+     }
+  });
 });

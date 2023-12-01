@@ -23,8 +23,8 @@ describe("less than (lt)", () => {
   });
 
   test("mixed positive and negative", () => {
-    assert.strictEqual(lt(-5)(5), true);
-    assert.strictEqual(lt(5)(-5), false);
+    assert.strictEqual(lt(-5)(5), false);
+    assert.strictEqual(lt(5)(-5), true);
     assert.strictEqual(lt(-5)(-2), false);
   });
 });

@@ -1,8 +1,6 @@
 import type NumberExclude from "../types/NumberExclude";
-
-import type gt0 from "./0";
-import type gt1 from "./1";
-import type lt  from "../lt";
+import type lt from "../lt";
+import type ge from "../ge";
 
 export type GT<Value extends number, Test extends number> = number extends Test
   ? boolean
@@ -22,8 +20,7 @@ export type GT<Value extends number, Test extends number> = number extends Test
   * @name gt
   * @alias greaterThan
   * @see {@link lt}
-  * @see {@link gt0}
-  * @see {@link gt1}
+  * @see {@link ge}
   * @example
   * var gt1 = gt(1);
   * gt1(1); // false

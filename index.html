@@ -6,12 +6,9 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
-    (async () => {
-      var propModule = () => import("/Object/prop/index.js");
-      var { default: prop } = await propModule();
-      console.log(prop(0)([1]));
-    })()
+  <script type="module">
+    import namespace from "./index.js";
+    window.namespace = namespace;
   </script>
 </body>
 </html>

@@ -1,4 +1,10 @@
-export default some => test => call => value => values => {
-  var next = value;
-  return (some(is => test(is) || (next = call(next)(is), false)(values)), next);
-}
+export default (some) => (test) => (call) => (value) => (values) => {
+  var create = value;
+  return (
+    some(
+      ((value, index, values) => test(value, index, values) || (create = call(create)(value, index, values), false))
+      (values)
+    ),
+    create
+  );
+};

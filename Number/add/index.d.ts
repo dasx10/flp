@@ -1,3 +1,5 @@
+import NumberExclude from "../types/NumberExclude";
+
 /**
   * `Monoid` `Math`
   * Increments a number. Add 1 to the number.
@@ -9,5 +11,5 @@
 export default function add(next: 0): <Value extends number>(value: Value) => Value;
 export default function add<Next extends number>(next: Next): {
   (value: 0): Next;
-  <Value extends number>(value: Value): Exclude<number, Exclude<Value, 0> | Exclude<Next, 0>>
+  <Value extends number>(value: Value): NumberExclude<number, NumberExclude<Value, 0> | NumberExclude<Next, 0>>
 }

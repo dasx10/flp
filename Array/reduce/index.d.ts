@@ -1,25 +1,18 @@
 import type Lambda    from "../../types/Lambda";
 import type Parameter from "../../types/Parameter";
 
-/**
-  * @template {(next: any) => <T>(value: T) => T} Call
-  * @param {Call} call
-  * @see {Array["reduce"]}
-  * @example
-  * var sum = reduce(add)(0);
-  * sum([1, 2, 3]); // 6
-  */
-declare var reduce
-   : <
-     Call   extends Lambda<any, Lambda<any, any>>,
-    _Value  extends ReturnType<Parameter<Call>> = ReturnType<Parameter<Call>>,
-   __Values extends readonly Parameter<Call>[]  = readonly Parameter<Call>[],
-   >(call: Call)
-  => <
-    Value  extends  _Value,
-   _Values extends __Values,
-  >(value: Value)
-  => <Values extends _Values>(values: Values)
-  => ReturnType<ReturnType<Call>>
+type IterateExec<Next, Value> = (value: Value, index: number, values: readonly Value[]) => Next;
+type ReduceExec<Next, Value> = Lambda<Next, IterateExec<Next, Value>>;
+type InitReduce<Next, Value> = Lambda<Next, Lambda<readonly Value[], Next>>;
 
-export default reduce;
+/**
+  * @see {@link Array.reduce}
+  */
+export default function reduce<Next, Value>(call: ReduceExec<Next, Value>):InitReduce<Next, Value>;
+
+/**
+  * @see {@link Array.reduce}
+  */
+export interface AsyncReduce extends Promise<Lambda<ReduceExec<any, any>, InitReduce<any, any>>> {
+  call: <Next, Value>(call: ReduceExec<Next, Value> | Promise<ReduceExec<Next, Value>>) => Promise<InitReduce<Next, Value>>
+}

@@ -1,2 +1,2 @@
-import fromSum from "../fromSum/index.js";
-export default fromSum(0);
+import call from "./of/index.js";
+export default call(0);
