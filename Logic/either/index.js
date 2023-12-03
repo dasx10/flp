@@ -1,2 +1,1 @@
-var either = call => next => value => call(value) || next(value);
-export default either;
+export default (next) => (call) => (value) => call(value) || next(value);

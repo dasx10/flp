@@ -1,3 +1,3 @@
-export type ZERO = 0;
-declare var zero: () => ZERO;
-export default zero;
+import type Constanta from "../../types/Constanta";
+export type ZEROCall = Constanta<0>;
+export default function zero (): 0;

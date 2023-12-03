@@ -1,2 +1,2 @@
-type Constanta<Value extends any = unknown> = (() => Value);
+type Constanta<Return extends any = unknown> = (() => Return);
 export default Constanta;

@@ -1,17 +1,100 @@
-import type { Promises } from ".."
-import {AsyncReduce} from "./reduce"
+import type { Promises }    from ".."
+import type { AsyncMap }    from "./map"
+import type { AsyncReduce } from "./reduce"
 
-interface _ArrayNamespace {
-  /**
-    * @see {@link Array.reduce}
-    */
-  reduce: AsyncReduce,
-  map: typeof import("./map").default
-  find: typeof import("./find").default
-  count: typeof import("./count").default
-  empty: typeof import("./empty").default
-  concat: typeof import("./concat").default
+export interface ArrayNamespace {
+  public readonly reduce                 : AsyncReduce,
+  public readonly map                    : AsyncMap,
+  public readonly mapRight               : AsyncMap,
+  public readonly filter                 : Promise<typeof import("./filter").default>,
+  public readonly filterRight            : Promise<typeof import("./filterRight").default>,
+  // public readonly filterIndex         : Promise<typeof import("./filterIndex").default>,
+  // public readonly filterWhere         : Promise<typeof import("./filterWhere").default>,
+  // public readonly filterWhereEq       : Promise<typeof import("./filterWhereEq").default>,
+  // public readonly filterWhereNe       : Promise<typeof import("./filterWhereNotEq").default>,
+  // public readonly filterWhereIs       : Promise<typeof import("./filterWhereIs").default>,
+  // public readonly filterIndexMax      : Promise<typeof import("./filterIndexMax").default>,
+  // public readonly filterIndexMin      : Promise<typeof import("./filterIndexMin").default>,
+  // public readonly filterIndexRight    : Promise<typeof import("./filterIndexRight").default>,
+  // public readonly filterIndexMaxRight : Promise<typeof import("./filterIndexMaxRight").default>,
+  // public readonly filterIndexMinRight : Promise<typeof import("./filterIndexMinRight").default>,
+  // public readonly filterGt            : Promise<typeof import("./filterGt").default>,
+  // public readonly filterGe            : Promise<typeof import("./filterGe").default>,
+  // public readonly filterLt            : Promise<typeof import("./filterLt").default>,
+  // public readonly filterLe            : Promise<typeof import("./filterLe").default>,
+  // public readonly filterEq            : Promise<typeof import("./filterEq").default>,
+  // public readonly filterNe            : Promise<typeof import("./filterNe").default>,
+  // public readonly filterIs            : Promise<typeof import("./filterIs").default>,
+  // public readonly filterSome          : Promise<typeof import("./filterSome").default>,
+  // public readonly filterEvery         : Promise<typeof import("./filterEvery").default>,
+  // public readonly filterNone          : Promise<typeof import("./filterNone").default>,
+  public readonly uniq                   : Promise<typeof import("./uniq").default>,
+  public readonly uniqBy                 : Promise<typeof import("./uniqBy").default>,
+  public readonly uniqByRight            : Promise<typeof import("./uniqByRight").default>,
+  public readonly drop                   : Promise<typeof import("./drop").default>,
+  public readonly at                     : Promise<typeof import("./at").default>,
+  public readonly nth                    : Promise<typeof import("./nth").default>,
+  public readonly find                   : Promise<typeof import("./find").default>,
+  public readonly findLast               : Promise<typeof import("./findLast").default>,
+  public readonly findIndex              : Promise<typeof import("./findIndex").default>,
+  public readonly findIndexMax           : Promise<typeof import("./findIndexMax").default>,
+  public readonly findIndexMin           : Promise<typeof import("./findIndexMin").default>,
+  public readonly findLastIndex          : Promise<typeof import("./findLastIndex").default>,
+  public readonly findLastIndexMax       : Promise<typeof import("./findLastIndexMax").default>,
+  public readonly findLastIndexMin       : Promise<typeof import("./findLastIndexMin").default>,
+  // public readonly findWhere           : Promise<typeof import("./findWhere").default>,
+  // public readonly findWhereEq         : Promise<typeof import("./findWhereEq").default>,
+  // public readonly findWhereIs         : Promise<typeof import("./findWhereNotEq").default>,
+  // public readonly findWhereNe         : Promise<typeof import("./findWhereNotEq").default>,
+  // public readonly findIndexWhere      : Promise<typeof import("./indexWhere").default>,
+  // public readonly findIndexWhereEq    : Promise<typeof import("./indexWhereEq").default>,
+  // public readonly findIndexWhereIs    : Promise<typeof import("./indexWhereNotEq").default>,
+  // public readonly findIndexWhereNe    : Promise<typeof import("./indexWhereNotEq").default>,
+  public readonly some                   : Promise<typeof import("./some").default>,
+  // public readonly someRight           : Promise<typeof import("./someRight").default>,
+  public readonly every                  : Promise<typeof import("./every").default>,
+  // public readonly everyRight          : Promise<typeof import("./everyRight").default>,
+  public readonly none                   : Promise<typeof import("./none").default>,
+  // public readonly noneRight           : Promise<typeof import("./noneRight").default>,
+  public readonly indexed                : Promise<typeof import("./indexed").default>,
+  //public readonly includes               : Promise<typeof import("./includes").default>,
+  //public readonly includesLast        : Promise<typeof import("./includesLast").default>,
+  //public readonly excludes            : Promise<typeof import("./excludes").default>,
+  //public readonly excludesLast        : Promise<typeof import("./excludesLast").default>,
+  public readonly indexOf                : Promise<typeof import("./indexOf").default>,
+  public readonly indexMax               : Promise<typeof import("./indexMax").default>,
+  public readonly indexMin               : Promise<typeof import("./indexMin").default>,
+  // public readonly indexesOf           : Promise<typeof import("./indexesOf").default>,
+  // public readonly indexesMax          : Promise<typeof import("./indexesMax").default>,
+  // public readonly indexesMin          : Promise<typeof import("./indexesMin").default>,
+  public readonly lastIndexOf            : Promise<typeof import("./lastIndexOf").default>,
+  public readonly lastIndexMax           : Promise<typeof import("./lastIndexMax").default>,
+  public readonly lastIndexMin           : Promise<typeof import("./lastIndexMin").default>,
+  // public readonly count                  : Promise<typeof import("./count").default>,
+  // public readonly countOf             : Promise<typeof import("./countOf").default>,
+  // public readonly countWhere          : Promise<typeof import("./countWhere").default>,
+  // public readonly countWhereEq        : Promise<typeof import("./countWhereEq").default>,
+  // public readonly countWhereIs        : Promise<typeof import("./countWhereNotEq").default>,
+  // public readonly countWhereNe        : Promise<typeof import("./countWhereNotEq").default>,
+  // public readonly countRight          : Promise<typeof import("./countRight").default>,
+
+  public readonly forEach                : Promise<typeof import("./forEach").default>,
+  // public readonly forEachRight        : Promise<typeof import("./forEachRight").default>,
+
+  public readonly concat                 : Promise<typeof import("./concat").default>,
+  // public readonly concatRight         : Promise<typeof import("./concatRight").default>,
+  public readonly append              : Promise<typeof import("./append").default>,
+  // public readonly prepend             : Promise<typeof import("./prepend").default>,
+  // public readonly insert              : Promise<typeof import("./insert").default>,
+
+  // public readonly empty                  : Promise<typeof import("./empty").default>,
+
+  // public readonly length                 : Promise<typeof import("./length").default>,
+
+  // public readonly eq                     : Promise<typeof import("./eq").default>,
+  // public readonly is                     : Promise<typeof import("./is").default>,
+  // public readonly ne                     : Promise<typeof import("./ne").default>,
 }
 
-declare const ArrayNamespace: Promises<_ArrayNamespace>;
+declare const ArrayNamespace: ArrayNamespace;
 export default ArrayNamespace;

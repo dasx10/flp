@@ -1,7 +1,6 @@
 import type Lambda from "../../types/Lambda";
 
-declare var is
-   : <Next  extends Lambda<any, any>>(next: Next)
-  => <Value extends Lambda<any, any>>(value: Value) => boolean;
-
-export default is;
+export default function is<Next extends Lambda<any, any>>(next: Next): {
+   (value: Next) : boolean
+   <Value extends Lambda<any, any>>(value: Value) : Value extends Next ? boolean : Next extends Value ? boolean : false;
+}

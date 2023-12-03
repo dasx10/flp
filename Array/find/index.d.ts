@@ -1,17 +1,13 @@
-import type Lambda    from "../../types/Lambda";
-import type Parameter from "../../types/Parameter";
+import type IterateCall from "../types/IterateCall";
 
-declare var find: {
-  <Type>(call: (value: any) => value is Type)
-    : <Values extends readonly Parameter<typeof call>[]>(values: Values)
-   => Type | void;
+export default function find<
+  Is,
+  Value,
+>(call: (value: Value, index: number, values: readonly Value[]) => value is Is): (values: readonly (Value | Is)[]) => Is | void;
 
-  <
-    Predicate extends Lambda<any, any>,
-    _Values   extends readonly Parameter<Predicate>[] = readonly Parameter<Predicate>[],
-  >(call: Predicate)
-   :<Values extends _Values>(values: Values)
-  => Values[number] | void;
-}
+export default function find<Value>(call: IterateCall<any, Value>): (values: readonly Value[]) => Value | void;
 
-export default find;
+export default function find<
+  Value,
+  Values extends readonly Value[] = readonly Value[],
+>(call: IterateCall<any, Value, Values>): (values: Values) => Value | void;

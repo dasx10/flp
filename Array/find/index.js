@@ -1,3 +1,2 @@
 import prototype from "../../Adapter/prototype/index.js";
-var find = prototype(Array.prototype.find);
-export default find;
+export default prototype(Array.prototype.find);

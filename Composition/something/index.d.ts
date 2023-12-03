@@ -1,9 +1,5 @@
 import type Lambda    from "../../types/Lambda";
 import type Parameter from "../../types/Parameter";
-
-declare var something: <
-  Values extends readonly Lambda<any, any>[],
-  _Value extends Parameter<Values[number]> = Parameter<Values[number]>
->(values: Values) => <Value extends _Value>(value: Value) => boolean;
-
-export default something;
+export default function something<Is, Value>(values: readonly ((value: Value) => value is Is)[]): (value: Value) => value is Is;
+export default function something<Value>(values: readonly Lambda<any, Value>[]): (value: Value) => boolean;
+// export default function something<Values extends readonly Lambda[]>(values: Values): (value: Parameter<Values[number]>) => boolean;

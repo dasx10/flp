@@ -1,2 +1,1 @@
-declare var empty: () => readonly [];
-export default empty;
+export default function empty(): readonly [];

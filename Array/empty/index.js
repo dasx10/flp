@@ -1,4 +1,2 @@
-import always from "../../Function/always";
-
-var empty = always([]);
-export default empty;
+import always from "../../Logic/always/index.js";
+export default always([]);

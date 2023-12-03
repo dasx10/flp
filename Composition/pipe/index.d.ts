@@ -181,3 +181,5 @@ export default function pipe
   <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>
   (values: Pipe24<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>)
   : Lambda<A, Z>;
+
+export default function pipe<Values extends readonly Lambda<any, any>>(values: Values): Lambda<Parameter<Values[0]>, ReturnType<Values[number]>>;

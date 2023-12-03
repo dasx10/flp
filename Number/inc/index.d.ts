@@ -1,11 +1,6 @@
-import type Lambda from "../../types/Lambda";
 import type NumberExclude from "../types/NumberExclude";
 
-export type Inc<Value extends number> = Value extends 0
- ? 1
- : Value extends -1
-   ? 0
-   : NumberExclude<number, Value>;
+export type Inc<Value extends number> = Value extends 0 ? 1 : Value extends -1 ? 0 : NumberExclude<number, Value>;
 
 /**
   * `Math`

@@ -1,4 +1,16 @@
 import type { Identity } from "../../Logic/identity";
+import type NumberExclude from "../types/NumberExclude";
+
+type Div<Value extends number, Next extends number> = number extends Value
+  ? number
+  : Value extends number
+    ? number
+    : Value extends 0
+      ? 0
+      : Next extends 1
+        ? Value
+        : NumberExclude<number, NumberExclude<Value, 0> | NumberExclude<Next, 0>>
+        ;
 
 /**
   * @function
@@ -24,5 +36,5 @@ export default function div(next: 1): Identity<number>;
 export default function div<Next extends number>(next: Next): {
   (value: 0): 0;
   (value: 1): Next;
-  <Value extends number>(value: Value): Exclude<number, Exclude<Value, 0> | Exclude<Next, 0>>
+  <Value extends number>(value: Value): Div<Value, Next>;
 }

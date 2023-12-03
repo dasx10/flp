@@ -1,2 +1,1 @@
-var lift = call => (call(is => (call = is)), call);
-export default lift;
+export default (call) => (call((value) => (call = value)), call);

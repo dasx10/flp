@@ -1,11 +1,14 @@
-export type Promises<Value extends Record<PropertyKey, any>> = {
-  [Key in keyof Value]: Value[Key] extends Promise<any> ? Value[Key] : Promise<Value[Key]>
+import type { AdapterNamespace } from "./Adapter";
+import type { ArrayNamespace } from "./Array";
+import type { LogicNamespace } from "./Logic";
+import type { NumberNamespace } from "./Number";
+
+export interface Namespace {
+  public readonly Adapter : AdapterNamespace,
+  public readonly Array   : ArrayNamespace,
+  public readonly Number  : NumberNamespace,
+  public readonly Logic   : LogicNamespace,
 }
 
-interface Def {
-  Number: typeof import("./Number").default,
-  Array : typeof import("./Array").default
-}
-
-declare const namespace: Def;
+declare const namespace: Namespace;
 export default namespace;

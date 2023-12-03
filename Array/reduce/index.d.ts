@@ -1,8 +1,8 @@
-import type Lambda    from "../../types/Lambda";
-import type Parameter from "../../types/Parameter";
+import type Lambda      from "../../types/Lambda";
+import type Parameter   from "../../types/Parameter";
+import type IterateCall from "../types/IterateCall";
 
-type IterateExec<Next, Value> = (value: Value, index: number, values: readonly Value[]) => Next;
-type ReduceExec<Next, Value> = Lambda<Next, IterateExec<Next, Value>>;
+type ReduceExec<Next, Value> = Lambda<Next, IterateCall<Next, Value>>;
 type InitReduce<Next, Value> = Lambda<Next, Lambda<readonly Value[], Next>>;
 
 /**

@@ -1,2 +1,1 @@
-var flip = call => value => next => call(next)(value);
-export default flip;
+export default (call) => (value) => (next) => call(next)(value);

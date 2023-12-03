@@ -1,2 +1,1 @@
-var also = call => next => value => next(value) && call(value);
-export default also;
+export default (next) => (call) => (value) => call(value) && next(value);
