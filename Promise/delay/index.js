@@ -1,1 +1,1 @@
-export default next => value => new Promise(resolve => setTimeout(resolve, next, value));
+export default (freeze) => (value) => new Promise(resolve => setTimeout(resolve, freeze, value));

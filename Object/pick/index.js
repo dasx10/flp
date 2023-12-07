@@ -1,4 +1,4 @@
-var pick = keys => value => keys
-  .reduce((entries, key) => (entries[key] = value[key], entires), Object.create(null))
-
-export default pick;
+export default (next)=>(keys)=>(
+  (keys=new Function("value"+","+"next","return"+"({"+keys.reduce((is,key)=>is+'"'+key+'"'+":"+"value"+'['+'"'+key+'"'+']'+",","")+"});")),
+  ((value) => keys(value,next))
+);
