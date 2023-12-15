@@ -1,3 +1,3 @@
-import curry from "../../Function/curry/2/index.js";
-import ne    from "../internal/ne/index.js";
-export default curry(ne);
+import exec from "../../Function/curry/2/index.js";
+import call from "../internal/ne/index.js";
+export default exec(call);

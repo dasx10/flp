@@ -1,2 +1,2 @@
-import div from "../div/index.js";
-export default div(2);
+import call from "../div/index.js";
+export default call(2);

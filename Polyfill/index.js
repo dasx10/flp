@@ -1,5 +1,8 @@
 Reflect.setPrototypeOf(Promise.prototype, Object.assign({
-  apply: function (call) {
+  then    : Promise.prototype.then,
+  catch   : Promise.prototype.catch,
+  finally : Promise.prototype.finally,
+  apply   : function (call) {
     return Promise.all([this, call]).then((values) => values[1](values[0]));
   },
   call: function (next) {

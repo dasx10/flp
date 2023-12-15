@@ -1,3 +1,3 @@
-import curry from "../../Function/curry/2";
-import eq from "../internal/eq";
-export default curry(eq);
+import exec from "../../Function/curry/2";
+import call from "../internal/eq";
+export default exec(call);

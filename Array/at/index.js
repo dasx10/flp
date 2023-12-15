@@ -1,3 +1,2 @@
-import propAp from "../../Object/propAp/index.js";
-var at = propAp("at");
-export default at;
+import prototype from "../../Adapter/prototype/index.js";
+export default prototype(Array.prototype.at);

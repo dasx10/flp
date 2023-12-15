@@ -1,5 +1,1 @@
-import oComplement from "../../Logic/oComplement/index.js";
-import some from "../some/index.js";
-
-var none = oComplement(some);
-export default none;
+export default (call) => (values) => !values.every((value, index, values) => call(value, index, values));

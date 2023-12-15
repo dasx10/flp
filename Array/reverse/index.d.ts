@@ -1,19 +1,15 @@
-export type TupleReverse<
-  Tuple     extends readonly any[],
-  Recursive extends readonly any[] = []
-> = Tuple extends readonly [infer F, ...infer L]
-  ? TupleReverse<L, [F, ...Recursive]>
-  : Recursive;
+type TupleReverseRight<Values extends readonly any[]> = Values extends readonly [...infer Next, infer Value]
+  ? [Value, ...TupleReverseRight<Next>]
+  : Values;
 
-export type ArrayReverse<Tuple extends readonly any[]> = Tuple extends readonly [infer F, ...infer L]
-  ? TupleReverse<L, [F]>
-  : Tuple;
-
+export type ArrayReverse<Values extends readonly any[]> = Values extends readonly [infer Value, ...infer Next]
+  ? [...ArrayReverse<Next>, Value]
+  : Values extends readonly [...infer Next, infer Value]
+    ? [Value, ...TupleReverseRight<Next>]
+    : Values;
 
 /**
   * @example
   * reverse([1, 2, 3]); // [3, 2, 1]
   */
-declare var reverse: <Values extends readonly any[]>(values: Values) => ArrayReverse<Values>;
-
-export default reverse;
+export default function reverse<Values extends readonly any[]>(values: Values): ArrayReverse<Values>;

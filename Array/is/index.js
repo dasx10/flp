@@ -1,3 +1,3 @@
-import exec from "../../Function/curry/2";
-import is from "../internal/is";
+import exec from "../../Function/curry/2/index.js";
+import is from "../internal/is/index.js";
 export default exec(is)

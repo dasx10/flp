@@ -1,2 +1,2 @@
-var includes = value => values => values.includes(value);
-export default includes;
+import prototype from "../../Adapter/prototype/index.js";
+export default prototype(Array.prototype.includes);

@@ -1,2 +1,4 @@
-var restore = call => test => (value, is) => test(value)(is = call(value)) ? value : is;
-export default restore;
+export default (test) => (call) => {
+  var is;
+  return (value) => test(is = call(value))(value) ? value : is;
+}

@@ -1,3 +1,1 @@
-import at from "../at/index.js";
-var last = at(-1);
-export default last;
+export default (values) => values[values.length - 1]

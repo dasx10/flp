@@ -1,2 +1,2 @@
-import mul from "../mul/index.js";
-export default mul(2);
+import call from "../mul/index.js";
+export default call(2);

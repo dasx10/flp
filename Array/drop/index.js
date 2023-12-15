@@ -1,9 +1,7 @@
-import identity from "../../Logic/identity/index.js";
-import _drop from "../internal/drop/index.js";
+import gt   from "../../Number/internal/gt/index.js";
+import drop from "../internal/drop/index.js";
 
-var drop = index => ltZero(index)
-  ? identity
-  : values => _drop(values, index)
+export default (min) => (max) => gt(min, max)
+  ? (values) => drop(values, max, min)
+  : (values) => drop(values, min, max)
 ;
-
-export default drop;

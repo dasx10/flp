@@ -41,8 +41,8 @@
     "test.object": "node --test --watch ./Object",
 
     "test.array": "node --test --watch ./Array",
-
     "test.array.filter" : "node --test --watch ./Array/filter",
+    "test.array.filterWhere" : "node --test --watch ./Array/filterWhere",
     "test.array.every"  : "node --test --watch ./Array/every",
 
     "test.compose": "node --test --watch ./Composition",

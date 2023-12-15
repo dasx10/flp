@@ -1,1 +1,1 @@
-export default next => value => values => values.slice(value, next);
+export default (next) => (value) => (values) => values.slice(value, next);

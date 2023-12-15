@@ -1,2 +1,4 @@
-var any = call => (values, is) => (values.some((value) => is = call(value)), is);
-export default any;
+export default (call) => (values) => {
+  var is;
+  return (values.some((value, index, values) => (is = call(value, index, values))), (is));
+}

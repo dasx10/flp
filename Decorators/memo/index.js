@@ -1,2 +1,2 @@
-import create from "./create/index.js";
+import create from "../memoCreate/index.js";
 export default create(Map);

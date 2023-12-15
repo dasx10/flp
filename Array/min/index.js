@@ -1,2 +1,2 @@
-import minFrom from "../minFrom/index.js";
-export default minFrom(Infinity);
+import exec from "../minOf/index.js";
+export default exec(Infinity);

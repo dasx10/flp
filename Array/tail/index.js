@@ -1,2 +1,1 @@
-var tail = values => values.slice(1);
-export default tail;
+export default (values) => (values.slice(1));

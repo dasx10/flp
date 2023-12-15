@@ -1,2 +1,4 @@
-var all = call => (values, is) => (values.every((value) => is = call(value)), is);
-export default all;
+export default (call) => (values) => {
+  var is;
+  return (values.every((value, index, values) => (is = call(value, index, values))), (is));
+};

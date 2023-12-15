@@ -1,6 +1,11 @@
-var debounce = call => (value, create) => is => (
-  clearTimeout(create),
-  create = setTimeout(call, value, is)
-);
-
-export default debounce;
+export default (freeze) => (call) => {
+  var is;
+  var resolve;
+  return (value) => resolve
+    ? (resolve = call(value))
+    : (
+       (clearTimeout(is)),
+       (is = setTimeout((value) => resolve = call(value), freeze, value)),
+       (resolve)
+    );
+};

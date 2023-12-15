@@ -1,2 +1,1 @@
-declare const min: <Values extends readonly number[]>(values: Values) => number;
-export default min;
+export default function min<Values extends readonly number[]>(values: Values): number;

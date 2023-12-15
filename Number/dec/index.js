@@ -1,2 +1,2 @@
-import sub from "../sub/index.js";
-export default sub(1);
+import call from "../sub/index.js";
+export default call(1);
