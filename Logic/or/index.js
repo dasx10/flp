@@ -1,2 +1,1 @@
-var or = next => value => value || next;
-export default or;
+export default (next) => (value) => (value || next);

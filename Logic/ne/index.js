@@ -1,2 +1,1 @@
-var ne = next => value => value !== next;
-export default ne;
+export default (next) => (value) => (value !== next);

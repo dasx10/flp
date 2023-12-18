@@ -1,2 +1,2 @@
 import ne from "../ne/index.js";
-export default ne(undefined);
+export default ne(null);

@@ -9,5 +9,10 @@ type Self<Values extends readonly any[], Call> = Values extends readonly [infer 
     : (value: Values[number]) => any
 ;
 
-declare var partial: <Values extends readonly any[]>(values: Values) => <Call extends Self<Values>>(call: Call) => ReturnType<Call>;
-export default partial;
+type PartialReturnType<Values extends readonly any[], Call extends Lambda<any, any>> = Values extends readonly [any, ...infer Next]
+  ? PartialReturnType<Next, ReturnType<Call>>
+  : Values extends readonly []
+    ? ReturnType<Call>
+    : ReturnType<Call> | Call;
+
+export default function partial<Values extends readonly any[]>(values: Values): <Call extends Self<Values>>(call: Call) => PartialReturnType<Values, Call>;

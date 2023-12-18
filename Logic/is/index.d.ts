@@ -3,4 +3,7 @@ declare var is: <Next>(next: Next) => {
   (value: unknown): value is Next
 }
 
-export default is;
+export default function is<Next>(next: Next): {
+  <Value>(value: Value): boolean
+  (value: unknown): value is Next;
+};

@@ -1,2 +1,1 @@
-import create from "./create/index.js";
-export default create();
+export default (next) => (value) => value === next;

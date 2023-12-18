@@ -1,3 +1,1 @@
-import type Lambda from "../../types/Lambda";
-declare var or: <Next, _Value = any>(next: Next) => Lambda<_Value, Next | Value>;
-export default or;
+export default function or<Next>(next: Next): <Value>(value: Value) => Next | Value;

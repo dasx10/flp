@@ -1,2 +1,1 @@
-var when = test => call => value => test(value) ? call(value) : value;
-export default when;
+export default ((test) => ((call) => ((value) => ((test(value)) ? (call(value)) : (value)))));
