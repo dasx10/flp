@@ -11,7 +11,8 @@ import filter from "flp/Array/filter";
 ## Examples
 
 ```javascript
-const numbers = [1, 2, 3, 4, 5];
-const even = filter(numbers, (n) => n % 2 === 0); // [2, 4];
+const numbers     = [1, 2, 3, 4, 5];
+const even        = (value) => value % 2 === 0;
+const filterEven  = filter(even);
+const eventValues = filterEven(numbers); // [2, 4];
 ```
-
