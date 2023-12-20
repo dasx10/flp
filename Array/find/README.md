@@ -1,6 +1,6 @@
 # FIND
 2. [Array](../README.md)
-  3. [find](.)
+    3. [find](./README.md)
 
 ## USE
 
