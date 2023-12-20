@@ -1,6 +1,6 @@
 # Filter
-- [Array](../README.md)
-  - [filter](.)
+2. [Array](../README.md)
+    3. [filter](./README.md)
 
 ## USE
 

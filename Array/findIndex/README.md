@@ -1,6 +1,6 @@
 # FIND INDEX
-- [Array](../README.md)
-  - [findIndex](.)
+2. [Array](../README.md)
+    3. [findIndex](./README.md)
 
 ## USE
 
