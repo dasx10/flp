@@ -16,9 +16,3 @@ const even      = (value) => value % 2 === 0;
 const findEven  = find(even);
 const evenValue = findEven(numbers); // 2
 ```
-
-## CONTRACT
-
-```typescript
-function find<Value>(call: (value: Value, index: number, values: Value[]) => any): (array: Value[]) => Value | undefined;
-```

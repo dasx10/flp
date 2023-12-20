@@ -17,3 +17,6 @@ const findIndexEven = find(even);
 const evenValue     = findIndexEven(numbers); // 1
 ```
 
+### SEE ALSO
+
+- [find](../find/README.md)
