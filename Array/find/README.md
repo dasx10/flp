@@ -5,7 +5,7 @@
 ## USE
 
 ```javascript
-import find from "flp/Array/filter";
+import find from "flp/Array/find/index.js";
 ```
 
 ## Examples

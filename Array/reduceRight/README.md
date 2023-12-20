@@ -1,11 +1,11 @@
-# REDUCE
+# REDUCE RIGHT
 - [Array](../README.md)
-  - [reduce](.)
+  - [reduceRight](.)
 
 ## USE
 
 ```javascript
-import reduce from "flp/Array/reduce/index.js";
+import reduceRight from "flp/Array/reduceRight/index.js";
 ```
 
 ## Examples
@@ -14,6 +14,6 @@ import reduce from "flp/Array/reduce/index.js";
 import add from "flp/Number/add/index.js";
 
 const numbers = [1, 2, 3, 4, 5];
-const sum = reduce(add)(0)(numbers); // 15
+const sum = reduceRight(add)(0)(numbers); // 15
 ```
 
