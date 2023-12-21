@@ -1,6 +1,7 @@
 # Array
 
 - [after](./after/README.md)
+- [all](./all/README.md)
 - [filter](./filter/README.md)
 - [reject](./reject/README.md)
 - [find](./find/README.md)
