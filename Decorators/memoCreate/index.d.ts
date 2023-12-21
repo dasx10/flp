@@ -1,5 +1,3 @@
-import type Lambda from "../../../types/Lambda";
-
 type CollectionLike = new () => {
   public get(key: any): any;
   public set(key: any, value: any): any;

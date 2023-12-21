@@ -1,185 +1,416 @@
+import Constanta from "../../types/Constanta";
 import type Lambda    from "../../types/Lambda";
 import type Parameter from "../../types/Parameter";
 
-type PipeList<Values extends readonly any[]> = Values extends readonly [infer First, infer Next, ...infer Rest]
-  ? [(value: First) => Next, ...PipeList<[Next, ...Rest]>]
-  : [];
+type Pipe2<Return, A, B> =
+  readonly [Lambda<A, B>, Lambda<Return, A>]
 
-type Last <Values extends readonly Lambda<any, any>[]> = Values extends readonly [...Lambda<any, any>, infer Last]
-  ? Last
-  : Values[number];
+type Pipe3<Return, A, B, C> =
+  readonly [Lambda<B, C>, ...Pipe2<Return, A, B>]
 
-type First <Values extends readonly Lambda<any, any>[]> = Values extends readonly [infer First, ...Lambda<any, any>]
-  ? First
-  : Values[0];
+type Pipe4<Return, A, B, C, D> =
+  readonly [Lambda<C, D>, ...Pipe3<Return, A, B, C>]
 
-type Pipe1<A, B, C>
-  = readonly [Lambda<A, B>, Lambda<B, C>];
-type Pipe2<A, B, C, D>
-  = readonly [Lambda<A, B>, Lambda<B, C>];
-type Pipe3<A, B, C, D, E>
-  = readonly [Lambda<A, B>, ...Pipe2<B, C, D>];
-type Pipe4<A, B, C, D, E, F>
-  = readonly [Lambda<A, B>, ...Pipe3<B, C, D, F>];
-type Pipe5<A, B, C, D, E, F, G>
-  = readonly [Lambda<A, B>, ...Pipe4<B, C, D, F, G>];
-type Pipe6<A, B, C, D, E, F, G, H>
-  = readonly [Lambda<A, B>, ...Pipe5<B, C, D, F, G, H>];
-type Pipe7<A, B, C, D, E, F, G, H, I>
-  = readonly [Lambda<A, B>, ...Pipe6<B, C, D, F, G, H, I>];
-type Pipe8<A, B, C, D, E, F, G, H, I, J>
-  = readonly [Lambda<A, B>, ...Pipe7<B, C, D, F, G, H, I, J>];
-type Pipe9<A, B, C, D, E, F, G, H, I, J, K>
-  = readonly [Lambda<A, B>, ...Pipe8<B, C, D, F, G, H, I, J, K>];
-type Pipe10<A, B, C, D, E, F, G, H, I, J, K, L>
-  = readonly [Lambda<A, B>, ...Pipe9<B, C, D, F, G, H, I, J, K, L>];
-type Pipe11<A, B, C, D, E, F, G, H, I, J, K, L, M>
-  = readonly [Lambda<A, B>, ...Pipe10<B, C, D, F, G, H, I, J, K, L, M>];
-type Pipe12<A, B, C, D, E, F, G, H, I, J, K, L, M, N>
-  = readonly [Lambda<A, B>, ...Pipe11<B, C, D, F, G, H, I, J, K, L, M, N>];
-type Pipe13<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>
-  = readonly [Lambda<A, B>, ...Pipe12<B, C, D, F, G, H, I, J, K, L, M, N, O>];
-type Pipe14<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>
-  = readonly [Lambda<A, B>, ...Pipe13<B, C, D, F, G, H, I, J, K, L, M, N, O, P>];
-type Pipe15<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>
-  = readonly [Lambda<A, B>, ...Pipe14<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q>];
-type Pipe16<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>
-  = readonly [Lambda<A, B>, ...Pipe15<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R>];
-type Pipe17<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>
-  = readonly [Lambda<A, B>, ...Pipe16<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>];
-type Pipe18<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>
-  = readonly [Lambda<A, B>, ...Pipe17<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>];
-type Pipe19<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>
-  = readonly [Lambda<A, B>, ...Pipe18<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>];
-type Pipe20<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>
-  = readonly [Lambda<A, B>, ...Pipe19<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>];
-type Pipe21<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>
-  = readonly [Lambda<A, B>, ...Pipe20<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>];
-type Pipe22<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>
-  = readonly [Lambda<A, B>, ...Pipe21<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>];
-type Pipe23<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>
-  = readonly [Lambda<A, B>, ...Pipe22<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>];
-type Pipe24<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>
-  = readonly [Lambda<A, B>, ...Pipe23<B, C, D, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>];
+type Pipe5<Return, A, B, C, D, E> =
+  readonly [Lambda<D, E>, ...Pipe4<Return, A, B, C, D>]
 
-export default function pipe
-  <A, B, C>
-  (values: Pipe1<A, B, C>)
-  : Lambda<A, C>;
+type Pipe6<Return, A, B, C, D, E, F> =
+  readonly [Lambda<E, F>, ...Pipe5<Return, A, B, C, D, E>]
 
-export default function pipe
-  <A, B, C, D>
-  (values: Pipe2<A, B, C, D>)
-  : Lambda<A, D>;
+type Pipe7<Return, A, B, C, D, E, F, G> =
+  readonly [Lambda<F, G>, ...Pipe6<Return, A, B, C, D, E, F>]
 
-export default function pipe
-  <A, B, C, D, E>
-  (values: Pipe3<A, B, C, D, E>)
-  : Lambda<A, E>;
+type Pipe8<Return, A, B, C, D, E, F, G, H> =
+  readonly [Lambda<G, H>, ...Pipe7<Return, A, B, C, D, E, F, G>]
 
-export default function pipe
-  <A, B, C, D, E, F>
-  (values: Pipe4<A, B, C, D, E, F>)
-  : Lambda<A, F>;
+type Pipe9<Return, A, B, C, D, E, F, G, H, I> =
+  readonly [Lambda<H, I>, ...Pipe8<Return, A, B, C, D, E, F, G, H>]
 
-export default function pipe
-  <A, B, C, D, E, F, G>
-  (values: Pipe5<A, B, C, D, E, F, G>)
-  : Lambda<A, G>
+type Pipe10<Return, A, B, C, D, E, F, G, H, I, J> =
+  readonly [Lambda<I, J>, ...Pipe9<Return, A, B, C, D, E, F, G, H, I>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H>
-  (values: Pipe6<A, B, C, D, E, F, G, H>)
-  : Lambda<A, H>
+type Pipe11<Return, A, B, C, D, E, F, G, H, I, J, K> =
+  readonly [Lambda<J, K>, ...Pipe10<Return, A, B, C, D, E, F, G, H, I, J>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I>
-  (values: Pipe7<A, B, C, D, E, F, G, H, I>)
-  : Lambda<A, I>
+type Pipe12<Return, A, B, C, D, E, F, G, H, I, J, K, L> =
+  readonly [Lambda<K, L>, ...Pipe11<Return, A, B, C, D, E, F, G, H, I, J, K>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J>
-  (values: Pipe8<A, B, C, D, E, F, G, H, I, J>)
-  : Lambda<A, J>
+type Pipe13<Return, A, B, C, D, E, F, G, H, I, J, K, L, M> =
+  readonly [Lambda<L, M>, ...Pipe12<Return, A, B, C, D, E, F, G, H, I, J, K, L>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K>
-  (values: Pipe9<A, B, C, D, E, F, G, H, I, J, K>)
-  : Lambda<A, K>
+type Pipe14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N> =
+  readonly [Lambda<M, N>, ...Pipe13<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L>
-  (values: Pipe10<A, B, C, D, E, F, G, H, I, J, K, L>)
-  : Lambda<A, L>
+type Pipe15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O> =
+  readonly [Lambda<N, O>, ...Pipe14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M>
-  (values: Pipe11<A, B, C, D, E, F, G, H, I, J, K, L, M>)
-  : Lambda<A, M>
+type Pipe16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P> =
+  readonly [Lambda<O, P>, ...Pipe15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N>
-  (values: Pipe12<A, B, C, D, E, F, G, H, I, J, K, L, M, N>)
-  : Lambda<A, N>
+type Pipe17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q> =
+  readonly [Lambda<P, Q>, ...Pipe16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>
-  (values: Pipe13<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>)
-  : Lambda<A, O>
+type Pipe18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R> =
+  readonly [Lambda<Q, R>, ...Pipe17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>
-  (values: Pipe14<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>)
-  : Lambda<A, P>
+type Pipe19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S> =
+  readonly [Lambda<R, S>, ...Pipe18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>
-  (values: Pipe15<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>)
-  : Lambda<A, Q>
+type Pipe20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T> =
+  readonly [Lambda<S, T>, ...Pipe19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>
-  (values: Pipe16<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>)
-  : Lambda<A, R>
+type Pipe21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U> =
+  readonly [Lambda<T, U>, ...Pipe20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>
-  (values: Pipe17<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>)
-  : Lambda<A, S>;
+type Pipe22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V> =
+  readonly [Lambda<U, V>, ...Pipe21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>
-  (values: Pipe18<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>)
-  : Lambda<A, T>;
+type Pipe23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W> =
+  readonly [Lambda<V, W>, ...Pipe22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>
-  (values: Pipe19<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>)
-  : Lambda<A, U>;
+type Pipe24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X> =
+  readonly [Lambda<W, X>, ...Pipe23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>
-  (values: Pipe20<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>)
-  : Lambda<A, V>;
+type Pipe25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y> =
+  readonly [Lambda<X, Y>, ...Pipe24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>
-  (values: Pipe21<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>)
-  : Lambda<A, W>;
+type Pipe26<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z> =
+  readonly [Lambda<Y, Z>, ...Pipe25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>]
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>
-  (values: Pipe22<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>)
-  : Lambda<A, X>;
+type Pipe_2<Return, A> =
+  readonly [Constanta<A>, Lambda<Return, A>];
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>
-  (values: Pipe23<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>)
-  : Lambda<A, Y>;
+type Pipe_3<Return, A, B> =
+  readonly [Constanta<B>, ...Pipe2<Return, A, B>];
 
-export default function pipe
-  <A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>
-  (values: Pipe24<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>)
-  : Lambda<A, Z>;
+type Pipe_4<Return, A, B, C> =
+  readonly [Constanta<C>, ...Pipe3<Return, A, B, C>];
 
-export default function pipe<Values extends readonly Lambda<any, any>>(values: Values): Lambda<Parameter<Values[0]>, ReturnType<Values[number]>>;
+type Pipe_5<Return, A, B, C, D> =
+  readonly [Constanta<D>, ...Pipe4<Return, A, B, C, D>];
+
+type Pipe_6<Return, A, B, C, D, E> =
+  readonly [Constanta<E>, ...Pipe5<Return, A, B, C, D, E>];
+
+type Pipe_7<Return, A, B, C, D, E, F> =
+  readonly [Constanta<F>, ...Pipe6<Return, A, B, C, D, E, F>];
+
+type Pipe_8<Return, A, B, C, D, E, F, G> =
+  readonly [Constanta<G>, ...Pipe7<Return, A, B, C, D, E, F, G>];
+
+type Pipe_9<Return, A, B, C, D, E, F, G, H> =
+  readonly [Constanta<H>, ...Pipe8<Return, A, B, C, D, E, F, G, H>];
+
+type Pipe_10<Return, A, B, C, D, E, F, G, H, I> =
+  readonly [Constanta<I>, ...Pipe9<Return, A, B, C, D, E, F, G, H, I>];
+
+type Pipe_11<Return, A, B, C, D, E, F, G, H, I, J> =
+  readonly [Constanta<J>, ...Pipe10<Return, A, B, C, D, E, F, G, H, I, J>];
+
+type Pipe_12<Return, A, B, C, D, E, F, G, H, I, J, K> =
+  readonly [Constanta<K>, ...Pipe11<Return, A, B, C, D, E, F, G, H, I, J, K>];
+
+type Pipe_13<Return, A, B, C, D, E, F, G, H, I, J, K, L> =
+  readonly [Constanta<L>, ...Pipe12<Return, A, B, C, D, E, F, G, H, I, J, K, L>];
+
+type Pipe_14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M> =
+  readonly [Constanta<M>, ...Pipe13<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>];
+
+type Pipe_15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N> =
+  readonly [Constanta<N>, ...Pipe14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>];
+
+type Pipe_16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O> =
+  readonly [Constanta<O>, ...Pipe15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>];
+
+type Pipe_17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P> =
+  readonly [Constanta<P>, ...Pipe16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>];
+
+type Pipe_18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q> =
+  readonly [Constanta<Q>, ...Pipe17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>];
+
+type Pipe_19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R> =
+  readonly [Constanta<R>, ...Pipe18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>];
+
+type Pipe_20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S> =
+  readonly [Constanta<S>, ...Pipe19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>];
+
+type Pipe_21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T> =
+  readonly [Constanta<T>, ...Pipe20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>];
+
+type Pipe_22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U> =
+  readonly [Constanta<U>, ...Pipe21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>];
+
+type Pipe_23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V> =
+  readonly [Constanta<V>, ...Pipe22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>];
+
+type Pipe_24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W> =
+  readonly [Constanta<W>, ...Pipe23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>];
+
+type Pipe_25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X> =
+  readonly [Constanta<X>, ...Pipe24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>];
+
+type Pipe_26<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y> =
+  readonly [Constanta<Y>, ...Pipe25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>];
+
+type Pipe_27<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z> =
+  readonly [Constanta<Z>, ...Pipe26<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>];
+
+
+
+
+export default function pipe<Return, A, B, C, D>
+  (values: Pipe_5<Return, A, B, C, D>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E>
+  (values: Pipe_6<Return, A, B, C, D, E>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F>
+  (values: Pipe_7<Return, A, B, C, D, E, F>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G>
+  (values: Pipe_8<Return, A, B, C, D, E, F, G>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H>
+  (values: Pipe_9<Return, A, B, C, D, E, F, G, H>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I>
+  (values: Pipe_10<Return, A, B, C, D, E, F, G, H, I>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J>
+  (values: Pipe_11<Return, A, B, C, D, E, F, G, H, I, J>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K>
+  (values: Pipe_12<Return, A, B, C, D, E, F, G, H, I, J, K>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L>
+  (values: Pipe_13<Return, A, B, C, D, E, F, G, H, I, J, K, L>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>
+  (values: Pipe_14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>
+  (values: Pipe_15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>
+  (values: Pipe_16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>
+  (values: Pipe_17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>
+  (values: Pipe_18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>
+  (values: Pipe_19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>
+  (values: Pipe_20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>
+  (values: Pipe_21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>
+  (values: Pipe_22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>
+  (values: Pipe_23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>
+  (values: Pipe_24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>
+  (values: Pipe_25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>
+  (values: Pipe_26<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>
+  (values: Pipe_27<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>):
+  Constanta<Return>
+;
+
+export default function pipe<Return, A>
+  (values: Pipe_2<Return, A>):
+  Constanta<Return>
+;
+export default function pipe<Return, A, B>
+  (values: Pipe2<Return, A, B>):
+  Lambda<Return, B>
+;
+
+export default function pipe<Return, A, B>
+  (values: Pipe_3<Return, A, B>):
+  Constanta<Return>
+;
+export default function pipe<Return, A, B, C>
+  (values: Pipe3<Return, A, B, C>):
+  Lambda<Return, C>
+;
+
+export default function pipe<Return, A, B, C>
+  (values: Pipe_4<Return, A, B, C>):
+  Constanta<Return>
+;
+export default function pipe<Return, A, B, C, D>
+  (values: Pipe4<Return, A, B, C, D>):
+  Lambda<Return, D>
+;
+
+export default function pipe<Return, A, B, C, D, E>
+  (values: Pipe5<Return, A, B, C, D, E>):
+  Lambda<Return, E>
+;
+
+export default function pipe<Return, A, B, C, D, E, F>
+  (values: Pipe6<Return, A, B, C, D, E, F>):
+  Lambda<Return, F>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G>
+  (values: Pipe7<Return, A, B, C, D, E, F, G>):
+  Lambda<Return, G>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H>
+  (values: Pipe8<Return, A, B, C, D, E, F, G, H>):
+  Lambda<Return, H>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I>
+  (values: Pipe9<Return, A, B, C, D, E, F, G, H, I>):
+  Lambda<Return, I>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J>
+  (values: Pipe10<Return, A, B, C, D, E, F, G, H, I, J>):
+  Lambda<Return, J>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K>
+  (values: Pipe11<Return, A, B, C, D, E, F, G, H, I, J, K>):
+  Lambda<Return, K>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L>
+  (values: Pipe12<Return, A, B, C, D, E, F, G, H, I, J, K, L>):
+  Lambda<Return, L>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>
+  (values: Pipe13<Return, A, B, C, D, E, F, G, H, I, J, K, L, M>):
+  Lambda<Return, M>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>
+  (values: Pipe14<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N>):
+  Lambda<Return, N>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>
+  (values: Pipe15<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>):
+  Lambda<Return, O>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>
+  (values: Pipe16<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>):
+  Lambda<Return, P>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>
+  (values: Pipe17<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>):
+  Lambda<Return, Q>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>
+  (values: Pipe18<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>):
+  Lambda<Return, R>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>
+  (values: Pipe19<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>):
+  Lambda<Return, S>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>
+  (values: Pipe20<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>):
+  Lambda<Return, T>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>
+  (values: Pipe21<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>):
+  Lambda<Return, U>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>
+  (values: Pipe22<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>):
+  Lambda<Return, V>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>
+  (values: Pipe23<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>):
+  Lambda<Return, W>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>
+  (values: Pipe24<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>):
+  Lambda<Return, X>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>
+  (values: Pipe25<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>):
+  Lambda<Return, Y>
+;
+
+export default function pipe<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>
+  (values: Pipe26<Return, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>):
+  Lambda<Return, Z>
+;
+
+// export default function pipe<Values extends readonly Lambda<any, any>[]>(values: Values): (value: Values extends readonly [(value: infer Value) => any, ...any[]] ? Value : unknown) => Values extends readonly [...any[], (any) => infer Return]
+//   ? Return
+//   : Values[number] | Constanta
+//   ;

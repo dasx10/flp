@@ -9,18 +9,11 @@ declare global {
     public readonly apply<Return>(call: MayPromise<Lambda<Return, T>>) : PromiseResult<Return>;
   }
 
-  interface Promise<T extends Lambda> {
-    // public readonly call: T extends (value: infer Value) => infer Return
-    //   ? <
-    //     _Return extends Return = Return,
-    //     _Value  extends Value = Value,
-    //   >(value: MayPromise<Value | _Value>) => PromiseResult<_Return>
-    //   : Promise<T>
-    //
+  interface Promise<T extends Lambda<any, any>> {
     public readonly call: T extends (value: infer Value) => infer Return
       ? <
         _Return extends MayPromise<Return> = MayPromise<Return>,
-        _Value extends MayPromise<Value> = MayPromise<Value>,
+        _Value  extends MayPromise<Value>  = MayPromise<Value>,
       >(value: _Value) => PromiseResult<_Return>
       : never;
   }
