@@ -1,6 +1,6 @@
 # REDUCE
-- [Array](../README.md)
-  - [reduce](.)
+2. [Array](../README.md)
+    3. [reduce](.)
 
 ## USE
 
@@ -13,7 +13,7 @@ import reduce from "flp/Array/reduce/index.js";
 ```javascript
 import add from "flp/Number/add/index.js";
 
-const numbers = [1, 2, 3, 4, 5];
-const sum = reduce(add)(0)(numbers); // 15
+var numbers = [1, 2, 3, 4, 5];
+var sum = reduce(add)(0)(numbers); // 15
 ```
 
