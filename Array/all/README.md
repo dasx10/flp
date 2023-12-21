@@ -21,15 +21,6 @@ allSub5([1, 2, 3, 4, 6]) // 1
 allSub5([1, 2, 3, 4]) // -1
 ```
 
-### IDENTITY EXAMPLES
-
-```javascript
-var sub5    = (value) => (value - 5);
-var allSub5 = all(sub5);
-
-allSub5([1, 2, 3, 4, 5]) === ((1 && 2 && 3 && 4 && 5) || null)
-```
-
 ### SEE ALSO
 
 - [every](../every/README.md)
