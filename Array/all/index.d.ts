@@ -1,9 +1,8 @@
 import type Lambda    from "../../types/Lambda";
 import type Parameter from "../../types/Parameter";
 
-declare var all
-   : <Call extends Lambda<any, any>>(call: Call)
-  => <Values extends readonly Parameter<Call>[]>(values: Values)
-  => ReturnType<Call>;
-
-export default all;
+export default function all <Return, Value>(call: IterateCall<Return, Value>): {
+  (values: readonly []): null;
+  (values: readonly [Value, ...Value[]]): Return;
+  (values: readonly Value[]): Return | null;
+}
