@@ -1,1 +1,1 @@
-export default (index) => (values) => values.slice(index);
+export default ((index) => ((values) => values.slice(index)));
