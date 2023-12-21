@@ -7,7 +7,7 @@ import type { LogicNamespace }      from "./Logic";
 import type { NumberNamespace }     from "./Number";
 import type { ObjectNamespace }     from "./Object";
 
-export interface Namespace {
+export interface y {
   public readonly Adapter    : AdapterNamespace,
   public readonly Array      : ArrayNamespace,
   public readonly Decorators : DecoratorsNamespace,
@@ -18,5 +18,5 @@ export interface Namespace {
   public readonly Async      : AsyncNamespace,
 }
 
-declare const namespace: Namespace;
-export default namespace;
+declare const y: y;
+export default y;
