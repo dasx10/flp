@@ -31,6 +31,6 @@ var result = filterIndexByMaxAge(persons); // [2, 4];
 
 ### SEE ALSO
 
-- [filterIndexMin](./filterIndexMin/README.md)
-- [findIndexMax](./findIndexMax/README.md)
-- [findLastIndexMax](./findLastIndexMax/README.md)
+- [filterIndexMin](../filterIndexMin/README.md)
+- [findIndexMax](../findIndexMax/README.md)
+- [findLastIndexMax](../findLastIndexMax/README.md)
