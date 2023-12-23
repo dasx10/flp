@@ -28,3 +28,9 @@ var persons = [{ age: 50 }, { age: 20 }, { age: 10 }, { age: 20 }, { age: 10 }];
 var filterIndexByMinAge = filterIndexMin(getAge);
 var result = filterIndexByMinAge(persons); // [2, 4];
 ```
+
+### SEE ALSO
+
+- [filterIndexMax](./filterIndexMax/README.md)
+- [findIndexMax](./findIndexMax/README.md)
+- [findLastIndexMax](./findLastIndexMax/README.md)
