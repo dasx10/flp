@@ -40,13 +40,15 @@
 
     "test.object": "node --test --watch ./Object",
 
-    "test.array"             : "node --test --watch ./Array",
-    "test.array.after"       : "node --test --watch ./Array/after",
-    "test.array.all"         : "node --test --watch ./Array/all",
-    "test.array.filter"      : "node --test --watch ./Array/filter",
-    "test.array.filterIndex" : "node --test --watch ./Array/filterIndex",
-    "test.array.filterWhere" : "node --test --watch ./Array/filterWhere",
-    "test.array.every"       : "node --test --watch ./Array/every",
+    "test.array"                : "node --test --watch ./Array",
+    "test.array.after"          : "node --test --watch ./Array/after",
+    "test.array.all"            : "node --test --watch ./Array/all",
+    "test.array.filter"         : "node --test --watch ./Array/filter",
+    "test.array.filterIndex"    : "node --test --watch ./Array/filterIndex",
+    "test.array.filterIndexMax" : "node --test --watch ./Array/filterIndexMax",
+    "test.array.filterIndexMin" : "node --test --watch ./Array/filterIndexMin",
+    "test.array.filterWhere"    : "node --test --watch ./Array/filterWhere",
+    "test.array.every"          : "node --test --watch ./Array/every",
 
     "test.compose": "node --test --watch ./Composition",
 

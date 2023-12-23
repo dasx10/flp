@@ -3,6 +3,8 @@
 - [after](./after/README.md)
 - [all](./all/README.md)
 - [filter](./filter/README.md)
+- [filterIndexMin](./filterIndexMin/README.md)
+- [filterIndexMax](./filterIndexMax/README.md)
 - [reject](./reject/README.md)
 - [find](./find/README.md)
 - [findIndex](./findIndex/README.md)
