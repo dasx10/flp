@@ -7,5 +7,5 @@ export default function countOf(length: 0)
 
 export default function countOf<Length extends number>(length: Length)
    : <Value>(call: IterateCall<any, Value>)
-  => <Values extends readonly Value[]>(values: Values) => number;
+  => (values: readonly Value[]) => number;
 

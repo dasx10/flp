@@ -7,4 +7,4 @@ export default function countOfRight(length: 0)
 
 export default function countOfRight<Length extends number>(length: Length)
    : <Value>(call: IterateCall<any, Value>)
-  => <Values extends readonly Value[]>(values: Values) => number;
+  => (values: readonly Value[]) => number;
