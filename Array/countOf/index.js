@@ -1,1 +1,3 @@
-export default (length) => (call) => (values) => values.reduce((length, value, index, values) => call(value, index, values) ? (length + 1) : (length), length);
+import reduceAdapterCountOf from "../reduceAdapterCountOf/index.js";
+import reduce from "../reduce/index.js";
+export default reduceAdapterCountOf(reduce);

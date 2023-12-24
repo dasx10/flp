@@ -1,1 +1,3 @@
-export default (call) => (values) => values.map(call).reduce((max, value, index, values) => value < values[max] ? max : index, -1);
+import oIndexMax from "../oIndexMax/index.js";
+import onMap from "../onMap/index.js";
+export default onMap(oIndexMax);

@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 
-import filterIndex from "./index.js";
+import filterIndexes from "./index.js";
 
 var testNumberArray = Array.from({ length: 10 }, (_, index) => index);
 var testUsersArray = ([
@@ -17,18 +17,18 @@ var gt5 = (value) => (value > 5);
 
 describe("array filter index", () => {
   it("return curry function", () => {
-    var indexesGt5 = filterIndex(gt5);
+    var indexesGt5 = filterIndexes(gt5);
     assert.strictEqual(typeof indexesGt5, "function");
     assert.strictEqual(indexesGt5.length, 1);
   });
 
   it("current index", () => {
-    var indexesGt5 = filterIndex(gt5);
+    var indexesGt5 = filterIndexes(gt5);
     assert.deepStrictEqual(indexesGt5(testNumberArray), [6, 7, 8, 9]);
 
     var isAgeGe18      = (user) => (user.age >= 18);
-    var indexesAgeGe18 = filterIndex(isAgeGe18);
-    var indexesLt18    = filterIndex((user) => (user.age < 18));
+    var indexesAgeGe18 = filterIndexes(isAgeGe18);
+    var indexesLt18    = filterIndexes((user) => (user.age < 18));
 
     assert.deepStrictEqual(indexesAgeGe18(testUsersArray), [0, 2, 3]);
     assert.deepStrictEqual(indexesLt18(testUsersArray), [1, 4, 5]);

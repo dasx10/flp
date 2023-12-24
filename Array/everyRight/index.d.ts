@@ -1,10 +1,22 @@
-import type Lambda    from "../../../types/Lambda";
+import type IterateCall from "../types/IterateCall";
 
 import type every from "..";
 
 /**
+  * @function
+  * @name everyRight
+  * @description Returns true if all elements pass the test.
+  * @param {Function} call - Function to call for each element of the array.
+  * @returns {Function} - `(Array<any>) => boolean`
+  * @example
+  * ```
+  * var is5 = (value) => value === 5;
+  * everyRight(is5)([1, 2, 3, 4, 5]); // false;
+  * everyRight(is5)([5, 5, 5, 5, 5]); // true;
+  * everyRight(is5)([]); // true;
+  * ```
   * @see {@link Array.prototype.every} native
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.every} ecma262
   * @see {@link every} similar
   */
-export default function everyRight <Value>(call: Lambda<Value>): <Values extends readonly Value[]>(Values: Values) => boolean;
+export default function everyRight <Value>(call: IterateCall<any, Value>): (values: readonly Value[]) => boolean;

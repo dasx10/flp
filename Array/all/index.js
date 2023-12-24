@@ -1,4 +1,3 @@
-export default ((call) => (values) => {
-  var is = null;
-  return (values.every((value, index, values) => (is = call(value, index, values))), (is));
-});
+import everyAdapterAll from "../everyAdapterAll/index.js";
+import every from "../every/index.js";
+export default everyAdapterAll(every);
