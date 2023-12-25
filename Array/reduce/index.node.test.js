@@ -30,4 +30,9 @@ describe("array reduce", () => {
       assert.strictEqual(sumOf(index)(testArray), depth);
     }
   });
+
+  it("acc indexes", () => {
+    const indexes = reduce((create) => (value, index) => create.concat(index))([]);
+    assert.deepEqual(indexes([1, 2, 3, 4, 5]), [0, 1, 2, 3, 4]);
+  });
 });
