@@ -13,7 +13,12 @@ import reduceRight from "flp/Array/reduceRight/index.js";
 ```javascript
 import add from "flp/Number/add/index.js";
 
-const numbers = [1, 2, 3, 4, 5];
-const sum = reduceRight(add)(0)(numbers); // 15
+var numbers = [1, 2, 3, 4, 5];
+var sum = reduceRight(add)(0)(numbers); // 15
+
+var names = ["John", "Mary", "Peter", "Alice"];
+var concat = (next) => (value) => `${value} ${next}`;
+var concatStrings = reduceRight(concat)("");
+var result = concatStrings(names); // "AlicePeterMaryJohn"
 ```
 

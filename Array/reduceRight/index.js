@@ -1,1 +1,2 @@
-export default ((reduceRight) => (call) => (create) => (values) => reduceRight.call(values, (create, value, index, values) => call(create)(value, index, values), create))(Array.prototype.reduceRight);
+import reducePrototypeAdapter from "../reducePrototypeAdapter/index.js";
+export default reducePrototypeAdapter(Array.prototype.reduceRight);

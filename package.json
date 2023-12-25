@@ -54,10 +54,13 @@
     "test.array.filterWhere"      : "node --test --watch ./Array/filterWhere",
     "test.array.every"            : "node --test --watch ./Array/every",
     "test.array.everyRight"       : "node --test --watch ./Array/everyRight",
+    "test.array.none"             : "node --test --watch ./Array/none",
+    "test.array.noneRight"        : "node --test --watch ./Array/noneRight",
     "test.array.countOf"          : "node --test --watch ./Array/countOf",
     "test.array.countOfRight"     : "node --test --watch ./Array/countOfRight",
     "test.array.count"            : "node --test --watch ./Array/count",
     "test.array.countRight"       : "node --test --watch ./Array/countRight",
+    "test.array.reduce"           : "node --test --watch ./Array/reduce",
 
 
     "test.composition": "node --test --watch ./Composition",

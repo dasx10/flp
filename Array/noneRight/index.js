@@ -1,2 +1,3 @@
-import test from "../../Number/nePos/index.js";
-export default (call) => (values) => test(values.findLastIndex(call));
+import findIndexAdapterNone from "../findIndexAdapterNone/index.js";
+import findLastIndex from "../findLastIndex/index.js";
+export default findIndexAdapterNone(findLastIndex);
