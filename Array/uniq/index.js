@@ -1,2 +1,2 @@
-var uniq = values => Array.from(new Set(values));
-export default uniq;
+import eq from "../../Object/eq/index.js";
+export default (values) => values.reduce((create, value) => create.some(eq(value)) ? create : create.concat(value), []);

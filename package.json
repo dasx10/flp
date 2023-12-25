@@ -61,6 +61,9 @@
     "test.array.count"            : "node --test --watch ./Array/count",
     "test.array.countRight"       : "node --test --watch ./Array/countRight",
     "test.array.reduce"           : "node --test --watch ./Array/reduce",
+    "test.array.uniq"             : "node --test --watch ./Array/uniq",
+    "test.array.uniqBy"           : "node --test --watch ./Array/uniqBy",
+    "test.array.uniqRight"        : "node --test --watch ./Array/uniqRight",
 
 
     "test.composition": "node --test --watch ./Composition",
