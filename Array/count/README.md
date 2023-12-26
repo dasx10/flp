@@ -27,5 +27,6 @@ count(value => value > 5)(numbers); // 0;
 
 ### SEE ALSO
 
+- [countBy](../countBy/README.md)
 - [length](../length/README.md)
 - [filter](../filter/README.md)
