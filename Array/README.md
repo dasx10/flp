@@ -8,6 +8,7 @@
 - [at](./at/README.md)
 - [concat](./concat/README.md)
 - [concatRight](./concatRight/README.md)
+- [count](./count/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [indexesMaxBy](./indexesMaxBy/README.md)
