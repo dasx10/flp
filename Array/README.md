@@ -11,6 +11,7 @@
 - [count](./count/README.md)
 - [countRight](./countRight/README.md)
 - [countBy](./countBy/README.md)
+- [countOf](./countOf/README.md)  
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [findIndexMin](./findIndexMin/README.md)
