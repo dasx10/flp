@@ -1,1 +1,1 @@
-export default (value) => (values) => ([...values, value]);
+export default ((value) => ((values) => ([...values, value])));

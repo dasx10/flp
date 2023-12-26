@@ -1,4 +1,4 @@
-import Constanta from "../../types/Constanta";
+import type Constanta from "../../types/Constanta";
 import type Lambda    from "../../types/Lambda";
 import type Parameter from "../../types/Parameter";
 

@@ -1,9 +1,17 @@
-import type Lambda    from "../../types/Lambda";
-import type Parameter from "../../types/Parameter";
+import type IterateCall from "../types/IterateCall";
 
-declare var any
-   : <Call extends Lambda<any, any>>(call: Call)
-  => <Values extends readonly Parameter<Call>[]>(values: Values)
-  => Parameters<Call>;
-
-export default any;
+/**
+  * @function
+  * @name any
+  * @param {Function} call
+  * @returns {Function}
+  * @example
+  * ```
+  * var identity = (value) => value;
+  * any(identity)([1, 2, 3, 4]); // 1;
+  * any(identity)([0, 1, 2, 3]); // 1;
+  * any(identity)([0, 0, 0]); // 0;
+  * any(identity)([]); // undefined;
+  * ```
+  */
+export default function any<Return, Value>(call: IterateCall<Return, Value>): (values: readonly Value[]) => Return;
