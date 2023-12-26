@@ -2,6 +2,12 @@
 
 - [after](./after/README.md)
 - [all](./all/README.md)
+- [allRight](./allRight/README.md)
+- [any](./any/README.md)
+- [append](./append/README.md)
+- [at](./at/README.md)
+- [concat](./concat/README.md)
+- [concatRight](./concatRight/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [indexesMaxBy](./indexesMaxBy/README.md)
