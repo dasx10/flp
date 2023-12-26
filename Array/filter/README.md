@@ -26,3 +26,22 @@ filter(gt2)([1, 2, 3, 4, 5]); // [3, 4, 5];
 filter(gt2)([]); // [];
 filter(gt2)([1, 2]); // [];
 ```
+
+### SEE ALSO
+
+- [find](../find/README.md)
+- [reject](../reject/README.md)
+- [filterRight](../filterRight/README.md)
+- [filterWhere](../filterWhere/README.md)
+- [filterWhereEq](../filterWhereEq/README.md)
+- [filterWhereIs](../filterWhereIs/README.md)
+- [filterWhereNot](../filterWhereNot/README.md)
+- [count](../count/README.md)
+- [rejectWhere](../rejectWhere/README.md)
+- [rejectWhereEq](../rejectWhereEq/README.md)
+- [rejectWhereIs](../rejectWhereIs/README.md)
+- [rejectWhereNot](../rejectWhereNot/README.md)
+- [uniq](../uniq/README.md)
+- [uniqBy](../uniqBy/README.md)
+- [individual](../individual/README.md)
+- [individualBy](../individualBy/README.md)
