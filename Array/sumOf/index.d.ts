@@ -1,1 +1,4 @@
-export default function sumOf<Value extends number>(value: Value): <Values extends readonly number[]>(values: Values) => number;
+export default function sumOf<Value extends number>(value: Value): {
+  (values: readonly []): Value;
+  (values: readonly number[]): Value | number;
+}

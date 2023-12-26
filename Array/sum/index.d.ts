@@ -1,2 +1,2 @@
-declare var sum: <Values extends readonly number[]>(values: Values) => number;
-export default sum;
+export default function sum(values: readonly []): 0;
+export default function sum(values: readonly number[]): number;

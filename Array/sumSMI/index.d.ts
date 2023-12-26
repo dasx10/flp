@@ -1,2 +1,2 @@
-declare var sumSMI: <Values extends readonly number[]>(values: Values) => number;
-export default sumSMI;
+export default function sumSMI(values: readonly []): 0;
+export default function sumSMI(values: readonly number[]): number;
