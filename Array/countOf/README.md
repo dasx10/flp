@@ -1,4 +1,4 @@
-# COUNT
+# COUNT OF
 
 2. [Array](../README.md)
     3. [countOf](./README.md)
