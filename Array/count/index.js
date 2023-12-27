@@ -1,2 +1,2 @@
-import call from "../countOf/index.js";
+import call from "../countFrom/index.js";
 export default call(0);

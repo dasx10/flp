@@ -55,8 +55,10 @@
     "test.array.count"          : "node --test --watch ./Array/count",
     "test.array.countRight"     : "node --test --watch ./Array/countRight",
     "test.array.countBy"        : "node --test --watch ./Array/countBy",
+    "test.array.countFrom"      : "node --test --watch ./Array/countFrom",
+    "test.array.countFromRight" : "node --test --watch ./Array/countFromRight",
     "test.array.countOf"        : "node --test --watch ./Array/countOf",
-    "test.array.countOfRight"   : "node --test --watch ./Array/countOfRight",
+    "test.array.countOfFrom"    : "node --test --watch ./Array/countOfFrom",
 
     "test.array.filter"         : "node --test --watch ./Array/filter",
     "test.array.filterWhere"    : "node --test --watch ./Array/filterWhere",

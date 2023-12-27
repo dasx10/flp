@@ -16,18 +16,18 @@ describe("array reduce", () => {
   });
 
   it("current value from empty", () => {
-    const sumOf = reduce(add);
+    const sumFrom = reduce(add);
     for (let index = 0; index < 65535; index++) {
-      assert.strictEqual(sumOf(index)([]), index);
+      assert.strictEqual(sumFrom(index)([]), index);
     }
   });
 
   it("current value", () => {
-    const sumOf = reduce(add);
+    const sumFrom = reduce(add);
     const depth = 20000;
     for (let index = 0; index < depth; index++) {
       const testArray = Array.from({ length: depth - index }, () => 1);
-      assert.strictEqual(sumOf(index)(testArray), depth);
+      assert.strictEqual(sumFrom(index)(testArray), depth);
     }
   });
 

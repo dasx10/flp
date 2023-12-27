@@ -1,3 +1,2 @@
-import reduceAdapterCountOf from "../reduceAdapterCountOf/index.js";
-import reduce from "../reduce/index.js";
-export default reduceAdapterCountOf(reduce);
+import countOfFrom from "../countOfFrom/index.js";
+export default countOfFrom(0);

@@ -1,13 +1,13 @@
 import { describe, it } from "node:test";
 import assert           from "node:assert";
 
-import countOfRight from "./index.js";
+import countFromRight from "./index.js";
 
 var gt0           = (value) => value > 0;
-var countRight    = countOfRight(0);
+var countRight    = countFromRight(0);
 var countRightGt0 = countRight(gt0);
 
-describe("array countOf", () => {
+describe("array countFrom", () => {
   it("curry", () => {
     assert.strictEqual(typeof countRight, "function");
     assert.strictEqual(countRight.length, 1);

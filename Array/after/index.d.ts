@@ -2,7 +2,7 @@ type ArrayAfter<Values extends readonly any[]> = Values extends readonly [...inf
   ? [First] | [...ArrayAfter<Rest>, First]
   : Values extends readonly []
     ? []
-    : Values | []
+    : [] | Values
   ;
 
 /**
@@ -23,3 +23,4 @@ type ArrayAfter<Values extends readonly any[]> = Values extends readonly [...inf
   * ```
   */
 export default function after<Index extends number>(index: Index): <Values extends readonly any[]>(values: Values) => ArrayAfter<Values, Index>;
+export default function after(index: number): <Value>(value: readonly Value[]) => Value[];

@@ -4,6 +4,7 @@ import type identity from "../../Logic/identity";
 import type skip     from "../skip";
 
 export type Always<Value> = Constanta<Value>
+
 export type AlwaysCall<Type> = {
   (): Always<void>;
   <Value extends Type>(value: Value): Always<Value>;
@@ -28,5 +29,5 @@ export type AlwaysCall<Type> = {
   * emptyObject(2) === emptyObject(3); // true
   *```
   */
-export default function always(): Always<void>;
+export default function always       ()             : Always<undefined>;
 export default function always<Value>(value: Value) : Always<Value>;

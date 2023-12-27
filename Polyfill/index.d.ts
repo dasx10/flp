@@ -1,7 +1,6 @@
 import type Constanta     from "../types/Constanta";
 import type Lambda        from "../types/Lambda";
 import type MayPromise    from "../types/MayPromise";
-import type Parameter     from "../types/Parameter";
 import type PromiseResult from "../types/PromiseResult";
 
 declare global {
@@ -10,13 +9,17 @@ declare global {
   }
 
   interface Promise<T extends Lambda<any, any>> {
-    public readonly call: T extends (value: infer Value) => infer Return
-      ? <
-        _Return extends MayPromise<Return> = MayPromise<Return>,
-        _Value  extends MayPromise<Value>  = MayPromise<Value>,
-      >(value: _Value) => PromiseResult<_Return>
-      : never;
+    public readonly call: T extends Constanta<Promise<any>>
+      ? T
+      : T extends Lambda<Promise<any>, Promise<any>>
+        ? T
+        : T extends Lambda<infer Return, infer Value>
+          ? Lambda<PromiseResult<Return>, MayPromise<Value>>
+          : T extends Constanta<infer Return>
+            ? Constanta<PromiseResult<Return>>
+            : never;
   }
+
 
 }
 

@@ -6,7 +6,7 @@ import count from "./index.js";
 var gt0      = (value) => value > 0;
 var countGt0 = count(gt0);
 
-describe("array countOf", () => {
+describe("array countFrom", () => {
   it("curry", () => {
     assert.strictEqual(typeof countGt0, "function");
     assert.strictEqual(countGt0.length, 1);

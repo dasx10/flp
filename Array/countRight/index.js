@@ -1,2 +1,2 @@
-import countOfRight from "../countOfRight/index.js";
-export default countOfRight(0);
+import countFromRight from "../countFromRight/index.js";
+export default countFromRight(0);

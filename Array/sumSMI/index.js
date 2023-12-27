@@ -1,2 +1,2 @@
-import call from "../sumOf/index.js";
+import call from "../sumFrom/index.js";
 export default call(0);
