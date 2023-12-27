@@ -30,3 +30,4 @@ count(value => value > 5)(numbers); // 0;
 - [countBy](../countBy/README.md)
 - [length](../length/README.md)
 - [filter](../filter/README.md)
+- [sum](../sum/README.md)

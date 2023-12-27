@@ -1,4 +1,4 @@
-import _is from "../../../Number/internal/is/index.js";
-var _dimension = (values, next) => _is(values.length, next.length) ? values : next;
-export default _dimension;
+import is from "../../../Number/internal/is/index.js";
+import length from "../../length/index.js";
+export default (values, next) => is(length(values), length(next)) ? values : next;;
 
