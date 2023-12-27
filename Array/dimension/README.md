@@ -19,7 +19,7 @@ import dimension from "flp/Array/dimension/index.js";
 ```javascript
 var numbers = [1, 2, 3, 4];
 dimension(numbers)(numbers); // [1, 2, 3, 4];
-dimension(numbers)(numbers.filter(x => x < 10)); // [1, 2, 3, 4];
-dimension(numbers)(numbers.filter(x => x < 10)) === numbers; // true;
-dimension(numbers)(numbers.filter(x => x < 2)); // [1];
+dimension(numbers.filter(x => x < 10))(numbers); // [1, 2, 3, 4];
+dimension(numbers.filter(x => x < 10))(numbers) === numbers; // true;
+dimension(numbers.filter(x => x < 2))(numbers); // [1];
 ```
