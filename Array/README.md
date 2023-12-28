@@ -18,6 +18,7 @@
 - [dimension](./dimension/README.md)
 - [empty](./empty/README.md)
 - [eq](./eq/README.md)
+- [eqUnSort](./eqUnSort/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [findIndexMin](./findIndexMin/README.md)
