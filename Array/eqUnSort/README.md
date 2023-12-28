@@ -34,7 +34,7 @@ eqUnSort([{a:3}, {a:2}, {a:1}])([{a:1}, {a:2}, {a:3}]); // false;
 
 ### SEE ALSO
 
-- [eq]("./../eq/README.md")
+- [eq]("../eq/README.md")
 - [eq]("../../Object/eq/README.md") [Object]("../../Object/README.md")
 - [isEmpty]("../isEmpty/README.md")
 - [isUnit]("../isUnit/README.md")
