@@ -34,7 +34,7 @@ eqUnSort([{a:3}, {a:2}, {a:1}])([{a:1}, {a:2}, {a:3}]); // false;
 
 ### SEE ALSO
 
-- [eq]("../../Object/eq/index.js") Array
-- [eq]("../../Object/eq/index.js") Object
-- [isEmpty]("../../Array/isEmpty/index.js")
-- [isUnit]("../../Array/isUnit/index.js")
+- [eq]("../../Object/eq/README.ms")
+- [eq]("../../Object/eq/README.md") [Object]("../../Object/README.md")
+- [isEmpty]("../../Array/isEmpty/README.md")
+- [isUnit]("../../Array/isUnit/README.md")
