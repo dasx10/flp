@@ -29,3 +29,9 @@ eq([{a:1}, {a:2}])([{a:1}, {a:2}]); // true;
 eq([{a:1}, {a:2}])([{a:1}, {a:3}]); // false;
 eq([{a:3}, {a:2}, {a:1}])([{a:1}, {a:2}, {a:3}]); // false;
 ```
+
+### SEE ALSO
+
+- [eq]("../../Object/eq/index.js") Object
+- [isEmpty]("../../Array/isEmpty/index.js")
+- [isUnit]("../../Array/isUnit/index.js")
