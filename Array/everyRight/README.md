@@ -1,4 +1,4 @@
-# EVERY
+# EVERY RIGHT
 
 2. [Array](../README.md)
     3. [everyRight](./README.md)
