@@ -1,5 +1,5 @@
 import type { AdapterNamespace }    from "./Adapter";
-import type { ArrayNamespace }      from "./Array";
+import type { ArrayExec, ArrayNamespace }      from "./Array";
 import type { AsyncNamespace }      from "./Async";
 import type { DecoratorsNamespace } from "./Decorators";
 import type { FunctionNamespace }   from "./Function";

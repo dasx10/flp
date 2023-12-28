@@ -16,6 +16,8 @@
 - [countOf](./countOf/README.md)
 - [countOfFrom](./countOfFrom/README.md)
 - [dimension](./dimension/README.md)
+- [empty](./empty/README.md)
+- [eq](./eq/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [findIndexMin](./findIndexMin/README.md)

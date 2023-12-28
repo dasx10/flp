@@ -1,4 +1,6 @@
-export interface ArrayNamespace {
+import NamespaceExec from "../types/NamespaceExec";
+
+interface _ArrayNamespace {
   // public readonly allRight             : Promise<typeof import("./allRight").default>,
   // public readonly anyRight             : Promise<typeof import("./anyRight").default>,
   // public readonly countRight           : Promise<typeof import("./countRight").default>,
@@ -158,7 +160,8 @@ export interface ArrayNamespace {
   public readonly uniqBy                  : Promise<typeof import("./uniqBy").default>,
   public readonly uniqByRight             : Promise<typeof import("./uniqByRight").default>,
   public readonly uniqRight               : Promise<typeof import("./uniqRight").default>,
-}
+};
 
+export type ArrayNamespace = NamespaceExec<_ArrayNamespace>;
 declare const ArrayNamespace: ArrayNamespace;
 export default ArrayNamespace;

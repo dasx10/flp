@@ -1,2 +1,2 @@
 import always from "../../Logic/always/index.js";
-export default always([]);
+export default always(Object.freeze([]));

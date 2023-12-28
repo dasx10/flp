@@ -1,2 +1,3 @@
-import dimension from "../../Array/internal/dimension/index.js";
-export default (call) => (values) => dimension(call(values), values);
+import dimension from "../../Array/dimension/index.js";
+import abuse from "../abuse/index.js";
+export default abuse(dimension);
