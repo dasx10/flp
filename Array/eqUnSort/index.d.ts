@@ -1,3 +1,5 @@
+import type eq from "../eq";
+
 /**
   * @summary Check equality arrays
   * @description Check equality two arrays, if arrays are equal return true, else return false. This function ignore order.
@@ -24,6 +26,8 @@
   * eqUnSort([{a:1}, {a:2}])([{a:1}, {a:3}]); // false;
   * eqUnSort([{a:3}, {a:2}, {a:1}])([{a:1}, {a:2}, {a:3}]); // false;
   * ```
+  *
+  * @see {@link eq}
   */
 export default function eqUnSort<Next extends readonly any[]>(next: Next): {
   <Value>(values: readonly Exclude<Value, Next[number]>): false;

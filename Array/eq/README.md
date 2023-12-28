@@ -32,6 +32,7 @@ eq([{a:3}, {a:2}, {a:1}])([{a:1}, {a:2}, {a:3}]); // false;
 
 ### SEE ALSO
 
-- [eq]("../../Object/eq/index.js") Object
+- [eqUnSort]("../../Array/eqUnSort/index.js")
+- [eq]("../../Object/eq/index.js") [Object]("../../Object/README.md")
 - [isEmpty]("../../Array/isEmpty/index.js")
 - [isUnit]("../../Array/isUnit/index.js")
