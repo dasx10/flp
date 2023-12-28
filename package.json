@@ -62,6 +62,7 @@
     "test.array.dimension"      : "node --test --watch ./Array/dimension",
     "test.array.empty"          : "node --test --watch ./Array/empty",
     "test.array.eq"             : "node --test --watch ./Array/eq",
+    "test.array.eqUnSort"       : "node --test --watch ./Array/eqUnSort",
 
     "test.array.filter"         : "node --test --watch ./Array/filter",
     "test.array.filterWhere"    : "node --test --watch ./Array/filterWhere",

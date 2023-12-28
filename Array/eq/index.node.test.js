@@ -9,6 +9,10 @@ describe("array eq", () => {
     assert.strictEqual(eq([1, 2, 3]).length, 1);
   });
 
+  it("empty", () => {
+    assert.strictEqual(eq([])([]), true);
+  });
+
   it("current value", () => {
     assert.strictEqual(eq([4, 5, 6])([1, 2, 3]), false);
     assert.strictEqual(eq([1, 2, 3])([1, 2, 3]), true);
