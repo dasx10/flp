@@ -19,6 +19,7 @@
 - [empty](./empty/README.md)
 - [eq](./eq/README.md)
 - [eqUnSort](./eqUnSort/README.md)
+- [every](./every/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [findIndexMin](./findIndexMin/README.md)
