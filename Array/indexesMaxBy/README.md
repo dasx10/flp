@@ -14,7 +14,7 @@ Returns an array of indices of the largest elements in the result
 import indexesMaxBy from "flp/Array/indexesMaxBy";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var findMaxIndexIdentity = indexesMaxBy(identity);

@@ -15,7 +15,7 @@ import every from "flp/Array/every/index.js";
 ```
 
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var is5 = (value) => (value === 5);

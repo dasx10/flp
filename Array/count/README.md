@@ -10,7 +10,7 @@
 import count from "flp/Array/count/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers = [1, 2, 3, 4];

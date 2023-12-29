@@ -8,7 +8,7 @@
 import reduceRight from "flp/Array/reduceRight/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 import add from "flp/Number/add/index.js";
@@ -22,3 +22,6 @@ var concatStrings = reduceRight(concat)("");
 var result = concatStrings(names); // "AlicePeterMaryJohn"
 ```
 
+### SEE ALSO
+
+- [reduce](../reduce/README.md)

@@ -13,7 +13,7 @@ Returns true if all elements pass the test. Iterates from right to left (last to
 import everyRight from "flp/Array/everyRight/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var is5 = (value) => (value === 5);

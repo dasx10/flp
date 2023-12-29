@@ -10,7 +10,7 @@
 import countFromRight from "flp/Array/countFromRight/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers = [1, 2, 3];

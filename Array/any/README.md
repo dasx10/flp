@@ -10,7 +10,7 @@
 import any from "flp/Array/any/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var identity = (value) => value;

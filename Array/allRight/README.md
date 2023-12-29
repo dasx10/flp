@@ -10,7 +10,7 @@
 import allRight from "flp/Array/allRight/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var sub5    = (value) => (value - 5);

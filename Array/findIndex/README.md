@@ -8,7 +8,7 @@
 import findIndex from "flp/Array/findIndex/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 const numbers       = [1, 2, 3, 4, 5];

@@ -9,7 +9,7 @@
 import indexesBy from "flp/Array/indexesBy";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 const indexesUserAgeGt18 = indexesBy(user => user.age > 18);

@@ -12,7 +12,7 @@ Filter by equality, return new filtered array.
 import filterWhereEq from "flp/Array/filterWhereEq/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 const users = [

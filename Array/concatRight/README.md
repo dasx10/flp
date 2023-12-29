@@ -10,7 +10,7 @@
 import concatRight from "flp/Array/concatRight/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 concatRight([5])(numbers); // [5, 1, 2, 3, 4];

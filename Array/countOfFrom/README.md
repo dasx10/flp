@@ -10,7 +10,7 @@
 import countOfFrom from "flp/Array/countOfFrom/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers = [1, 2, 2, 3, 3, 3];

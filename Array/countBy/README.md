@@ -10,7 +10,7 @@
 import countBy from "flp/Array/countBy/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers = [-1, 0, 1, 2];

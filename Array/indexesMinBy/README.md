@@ -14,7 +14,7 @@ Returns an array of indices of the smaller elements in the result
 import filterIndexesMin from "flp/Array/filterIndexesMin";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var findMinIndexIdentity = filterIndexesMin(identity);

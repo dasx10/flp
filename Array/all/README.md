@@ -10,7 +10,7 @@
 import all from "flp/Array/all";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var sub5    = (value) => (value - 5);

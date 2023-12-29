@@ -10,7 +10,7 @@
 import after from "flp/Array/after";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers     = [1, 2, 3, 4, 5];

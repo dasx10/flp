@@ -8,7 +8,7 @@
 import filterWhere from "flp/Array/filterWhere/index.js";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 const users = [
