@@ -1,9 +1,9 @@
 import { describe, it } from "node:test";
-import { strictEqual, deepStrictEqual } from "node:assert";
+import assert from "node:assert";
 
 import filterWhere from "./index.js";
 
-const testArray = [
+const testArray = ([
   {
     name     : "John",
     lastName : "Doe",
@@ -29,9 +29,19 @@ const testArray = [
     lastName : "Bin",
     age      : 30
   },
-]
+]);
 
 describe("array filterWhere", () => {
+  it("curry", () => {
+    const test = filterWhere({
+      age  : (age)  => age > 20,
+      name : (name) => name.length > 3
+    });
+
+    assert.strictEqual(typeof test, "function");
+    assert.strictEqual(test.length, 1);
+  })
+
   it("current value", () => {
     const test = filterWhere({
       age  : (age)  => age > 20,
@@ -40,8 +50,8 @@ describe("array filterWhere", () => {
 
     const data = test(testArray)
 
-    strictEqual(data.length, 2)
-    deepStrictEqual(data[0], { ...testArray[1] })
-    deepStrictEqual(data[1], { ...testArray[3] })
+    assert.strictEqual(data.length, 2)
+    assert.deepStrictEqual(data[0], { ...testArray[1] })
+    assert.deepStrictEqual(data[1], { ...testArray[3] })
   });
 });

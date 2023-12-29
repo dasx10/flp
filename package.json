@@ -66,9 +66,10 @@
     "test.array.every"          : "node --test --watch ./Array/every",
     "test.array.everyRight"     : "node --test --watch ./Array/everyRight",
     "test.array.fillAll"        : "node --test --watch ./Array/fillAll",
-
     "test.array.filter"         : "node --test --watch ./Array/filter",
+    "test.array.filterRight"    : "node --test --watch ./Array/filterRight",
     "test.array.filterWhere"    : "node --test --watch ./Array/filterWhere",
+    "test.array.filterWhereEq"  : "node --test --watch ./Array/filterWhereEq",
     "test.array.indexesBy"      : "node --test --watch ./Array/indexesBy",
     "test.array.indexesByRight" : "node --test --watch ./Array/indexesByRight",
     "test.array.indexesMaxBy"   : "node --test --watch ./Array/indexesMaxBy",
