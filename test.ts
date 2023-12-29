@@ -1,4 +1,4 @@
-import namespace from ".";
+import y from ".";
 import "./Polyfill";
 
-namespace.Decorators
+y.Array(["foreach"]).then(values => values)

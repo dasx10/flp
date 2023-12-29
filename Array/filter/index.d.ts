@@ -11,9 +11,9 @@ export type ArrayFilter<Values extends readonly any[]> = Values extends readonly
 ;
 
 /**
+  * @description Creates an array of values that satisfy the condition.
   * @function
   * @name filter
-  * @description Creates an array of values that satisfy the condition.
   * @param {Function} call
   * @returns {Function}
   * @example

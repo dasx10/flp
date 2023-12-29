@@ -4,6 +4,8 @@ import type Parameter from "../../types/Parameter";
 import type everyRight from "./right";
 
 /**
+  * @summary all elements pass the test
+  * @description Returns true if all elements pass the test.
   * @function
   * @name every
   * @description Returns true if all elements pass the test.

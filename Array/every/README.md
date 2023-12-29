@@ -4,11 +4,16 @@
     3. [every](./README.md)
 
 
+## DESCRIPTION
+Returns true if all elements pass the test.
+
+
 ## USE
 
 ```javascript
 import every from "flp/Array/every/index.js";
 ```
+
 
 ## Examples
 
@@ -21,6 +26,7 @@ every5([]) // true
 every5([5]) // true
 every5([5, 5, 5, 5, 5]) // true
 ```
+
 
 ### SEE ALSO
 

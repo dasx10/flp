@@ -3,6 +3,8 @@ import type IterateCall from "../types/IterateCall";
 import type every from "..";
 
 /**
+  * @summary all elements pass the test
+  * @description Returns true if all elements pass the test. Iterates from right to left (last to first).
   * @function
   * @name everyRight
   * @description Returns true if all elements pass the test.

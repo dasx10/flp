@@ -26,6 +26,8 @@ export interface LogicNamespace {
   public readonly whenDefined     : Promise<typeof import("./whenDefined").default>;
   public readonly whenNeNull      : Promise<typeof import("./whenNeNull").default>;
   public readonly whenIsUndefined : Promise<typeof import("./whenIsUndefined").default>;
+
+  public readonly onAlways        : Promise<typeof import("./onAlways").default>;
 }
 
 const LogicNamespace: LogicNamespace;

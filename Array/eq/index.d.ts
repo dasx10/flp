@@ -41,3 +41,8 @@ export default function eq<Next extends readonly any[]>(next: Next): {
   <Values extends readonly Next[number][]>(values: Values): values is Next;
   <Values extends readonly any[]>(values: Values): values is Next;
 };
+
+export default function eq(next: readonly []): {
+  (value: readonly []): true;
+  <Value extends readonly any[]>(value: Value): value is [];
+}

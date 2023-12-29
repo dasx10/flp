@@ -33,6 +33,7 @@ interface _ArrayNamespace {
   public readonly every                   : Promise<typeof import("./every").default>,
   public readonly everyAdapterAll         : Promise<typeof import("./everyAdapterAll").default>,
   public readonly everyRight              : Promise<typeof import("./everyRight").default>,
+  public readonly fillAll                 : Promise<typeof import("./fillAll").default>,
   public readonly filter                  : Promise<typeof import("./filter").default>,
   public readonly filterRight             : Promise<typeof import("./filterRight").default>,
   public readonly filterWhere             : Promise<typeof import("./filterWhere").default>,

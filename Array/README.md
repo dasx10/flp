@@ -21,6 +21,7 @@
 - [eqUnSort](./eqUnSort/README.md)
 - [every](./every/README.md)
 - [everyRight](./everyRight/README.md)
+- [fillAll](./fillAll/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
 - [findIndexMin](./findIndexMin/README.md)

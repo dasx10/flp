@@ -33,3 +33,8 @@ export default function eqUnSort<Next extends readonly any[]>(next: Next): {
   <Value>(values: readonly Exclude<Value, Next[number]>): false;
   (values: Next): boolean;
 };
+
+export default function eqUnSort(next: readonly []): {
+  (value: readonly []): true;
+  <Value extends readonly any[]>(value: Value): value is [];
+}

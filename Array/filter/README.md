@@ -1,4 +1,4 @@
-# Filter
+# FILTER
 2. [Array](../README.md)
     3. [filter](./README.md)
 
@@ -8,7 +8,7 @@
 import filter from "flp/Array/filter";
 ```
 
-## Examples
+## EXAMPLES
 
 ```javascript
 var numbers     = [1, 2, 3, 4, 5];

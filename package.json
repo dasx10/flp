@@ -63,6 +63,9 @@
     "test.array.empty"          : "node --test --watch ./Array/empty",
     "test.array.eq"             : "node --test --watch ./Array/eq",
     "test.array.eqUnSort"       : "node --test --watch ./Array/eqUnSort",
+    "test.array.every"          : "node --test --watch ./Array/every",
+    "test.array.everyRight"     : "node --test --watch ./Array/everyRight",
+    "test.array.fillAll"        : "node --test --watch ./Array/fillAll",
 
     "test.array.filter"         : "node --test --watch ./Array/filter",
     "test.array.filterWhere"    : "node --test --watch ./Array/filterWhere",
@@ -70,8 +73,6 @@
     "test.array.indexesByRight" : "node --test --watch ./Array/indexesByRight",
     "test.array.indexesMaxBy"   : "node --test --watch ./Array/indexesMaxBy",
     "test.array.indexesMinBy"   : "node --test --watch ./Array/indexesMinBy",
-    "test.array.every"          : "node --test --watch ./Array/every",
-    "test.array.everyRight"     : "node --test --watch ./Array/everyRight",
     "test.array.none"           : "node --test --watch ./Array/none",
     "test.array.noneRight"      : "node --test --watch ./Array/noneRight",
     "test.array.reduce"         : "node --test --watch ./Array/reduce",

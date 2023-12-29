@@ -3,6 +3,9 @@
 2. [Array](../README.md)
     3. [everyRight](./README.md)
 
+## DESCRIPTION
+Returns true if all elements pass the test. Iterates from right to left (last to first).
+
 
 ## USE
 
