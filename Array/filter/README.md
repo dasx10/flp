@@ -41,6 +41,7 @@ filter(gt2)([1, 2]); // [];
 - [rejectWhereEq](../rejectWhereEq/README.md)
 - [rejectWhereIs](../rejectWhereIs/README.md)
 - [rejectWhereNot](../rejectWhereNot/README.md)
+- [rejectRight](../rejectRight/README.md)
 - [uniq](../uniq/README.md)
 - [uniqBy](../uniqBy/README.md)
 - [individual](../individual/README.md)
