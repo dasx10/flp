@@ -37,10 +37,10 @@ filterWhere({
 
 ### SEE ALSO
 
-- [filter](../filterWhere/README.md)
 - [filterWhereEq](../filterWhereEq/README.md)
 - [filterWhereIs](../filterWhereIs/README.md)
 - [filterWhereNot](../filterWhereNot/README.md)
+- [filter](../filter/README.md)
 - [reject](../reject/README.md)
 - [rejectWhere](../rejectWhere/README.md)
 - [rejectWhereEq](../rejectWhereEq/README.md)

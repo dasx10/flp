@@ -64,7 +64,7 @@ filterWhereEq({
 ### SEE ALSO
 
 - [filterWhere](../filterWhere/README.md)
-- [filter](../filterWhereEq/README.md)
+- [filter](../filter/README.md)
 - [filterWhereIs](../filterWhereIs/README.md)
 - [filterWhereNot](../filterWhereNot/README.md)
 - [reject](../reject/README.md)
