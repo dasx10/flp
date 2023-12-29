@@ -24,6 +24,7 @@
 - [fillAll](./fillAll/README.md)
 - [filter](./filter/README.md)
 - [filterRight](./filterRight/README.md)
+- [filterWhere](./filterWhere/README.md)
 - [findIndexMin](./findIndexMin/README.md)
 - [findIndexMax](./findIndexMax/README.md)
 - [findIndex](./findIndex/README.md)

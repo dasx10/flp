@@ -20,18 +20,18 @@ const users = [
 ];
 
 filterWhere({
-  name: (name) => name === "a",
-  age: (age) => age > 10
+  age  : (age)  => age > 10,
+  name : (name) => name === "a",
 })(users); // [{ name: "a", age: 20 }];
 
 filterWhere({
-  age: (age) => age < 30,
-  name: (name) => name === "b" || name === "c"
+  age  : (age)  => age < 30,
+  name : (name) => name === "b" || name === "c",
 })(users); // [{ name: "b", age: 20 }];
 
 filterWhere({
-  age: (age) => age > 20,
-  name: (name) => name === "b" || name === "c"
+  age  : (age)  => age > 20,
+  name : (name) => name === "b" || name === "c",
 })(users); // [{ name: "b", age: 30 }, { name: "c", age: 30 }];
 ```
 
