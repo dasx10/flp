@@ -3,6 +3,10 @@
 2. [Array](../README.md)
     3. [any](./README.md)
 
+## DESCRIPTION
+
+Return first executor falsy result
+
 
 ## USE
 

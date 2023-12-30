@@ -1,4 +1,5 @@
 import type IterateCall from "../types/IterateCall";
+import type Lambda from "../../types/Lambda";
 
 import type every from "..";
 
@@ -22,3 +23,4 @@ import type every from "..";
   * @see {@link every} similar
   */
 export default function everyRight <Value>(call: IterateCall<any, Value>): (values: readonly Value[]) => boolean;
+export default function everyRight <Value>(call: Lambda<any, Value>): (values: readonly Value[]) => boolean;

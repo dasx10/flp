@@ -1,6 +1,7 @@
 import type IterateCall from "../types/IterateCall";
 
 /**
+  * @description Return first executor falsy result
   * @function
   * @name any
   * @param {Function} call

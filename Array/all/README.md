@@ -3,6 +3,10 @@
 2. [Array](../README.md)
     3. [all](./README.md)
 
+## DESCRIPTION
+
+Check if all values are true and return first result executor is executor result is falsy or return last executor result.
+
 
 ## USE
 

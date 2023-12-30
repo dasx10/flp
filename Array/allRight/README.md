@@ -1,7 +1,11 @@
-# ALL
+# ALL RIGHT
 
 2. [Array](../README.md)
     3. [allRight](./README.md)
+
+## DESCRIPTION
+
+Check if all values are true and return first result executor is executor result is falsy or return last executor result. Iterate from right to left (last to first).
 
 
 ## USE

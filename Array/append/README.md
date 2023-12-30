@@ -4,6 +4,10 @@
     3. [append](./README.md)
 
 
+## DESCRIPTION
+
+Create new array and append value.
+
 ## USE
 
 ```javascript

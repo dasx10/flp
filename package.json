@@ -43,6 +43,11 @@
 
     "test.object": "node --test --watch ./Object",
 
+    "test.object.whereEq" : "node --test --watch ./Object/whereEq",
+    "test.object.map"     : "node --test --watch ./Object/map",
+    "test.object.mapEq"   : "node --test --watch ./Object/mapEq",
+    "test.object.onMapEq" : "node --test --watch ./Object/onMapEq",
+
     "test.array"                : "node --test --watch ./Array",
     "test.array.after"          : "node --test --watch ./Array/after",
     "test.array.all"            : "node --test --watch ./Array/all",

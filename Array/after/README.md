@@ -3,6 +3,10 @@
 2. [Array](../README.md)
     3. [after](./README.md)
 
+## DESCRIPTION
+
+Create new array after index.
+
 
 ## USE 
 

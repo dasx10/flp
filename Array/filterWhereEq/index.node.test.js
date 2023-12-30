@@ -3,33 +3,7 @@ import assert           from "node:assert";
 
 import filterWhereEq from "./index.js";
 
-const testArray = ([
-  {
-    name     : "John",
-    lastName : "Doe",
-    age      : 20
-  },
-  {
-    name     : "Arnold",
-    lastName : "Schwarzenegger",
-    age      : 50,
-  },
-  {
-    name     : "Peter",
-    lastName : "Parker",
-    age      : 20,
-  },
-  {
-    name     : "Tony",
-    lastName : "Stark",
-    age      : 40
-  },
-  {
-    name     : "mr.",
-    lastName : "Bin",
-    age      : 30
-  },
-]);
+import users from "../__test__/users.json" assert { type: "json" };
 
 describe("array filterWhereEq", () => {
   it("curry", () => {
@@ -39,9 +13,26 @@ describe("array filterWhereEq", () => {
 
   it("current value", () => {
     const filterWhereAge20 = filterWhereEq({ age: 20 });
-    const data = filterWhereAge20(testArray);
-    assert.strictEqual(data.length, 2);
-    assert.deepStrictEqual(data[0], testArray[0]);
-    assert.deepStrictEqual(data[1], testArray[2]);
+    const result = filterWhereAge20(users);
+    const mustBe = users.filter((user) => user.age === 20);
+    assert.deepStrictEqual(result, mustBe);
   });
+
+  it("current value array", () => {
+    const filterWhereWeapon = filterWhereEq({ tags: ["weapon"] });
+    const result = filterWhereWeapon(users);
+    const mustBe = users.filter((user) => user.tags.length === 1 && user.tags[0] === ("weapon"));
+    assert.deepStrictEqual(result, mustBe);
+
+    const filterWhereWeaponSuper = filterWhereEq({ tags: ["weapon", "super"] });
+    const result2 = filterWhereWeaponSuper(users);
+    const mustBe2 = users.filter((user) => user.tags.length === 2 && user.tags[0] === ("weapon") && user.tags[1] === ("super"));
+    assert.deepStrictEqual(result2, mustBe2);
+
+    const filterWhereSuperWeapon = filterWhereEq({ tags: ["super", "weapon"] });
+    const result3 = filterWhereSuperWeapon(users);
+    const mustBe3 = users.filter((user) => user.tags.length === 2 && user.tags[0] === ("super") && user.tags[1] === ("weapon"));
+    assert.deepStrictEqual(result3, mustBe3);
+  });
+
 });

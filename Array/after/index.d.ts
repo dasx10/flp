@@ -6,9 +6,10 @@ type ArrayAfter<Values extends readonly any[]> = Values extends readonly [...inf
   ;
 
 /**
+  * @summary new array after index
+  * @description Create new array after index.
   * @function
   * @name after
-  * @description Creates an array of values that satisfy the condition.
   * @param {number} index
   * @returns {Function}
   * @example
