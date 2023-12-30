@@ -35,4 +35,27 @@ describe("array filterWhereEq", () => {
     assert.deepStrictEqual(result3, mustBe3);
   });
 
+  it("current value object", () => {
+    const filterSpec100 = filterWhereEq({ special: {
+      "health"       : 100,
+      "strength"     : 100,
+      "speed"        : 100,
+      "intelligence" : 100,
+      "luck"         : 100,
+      "charisma"     : 100,
+      "mana"         : 0
+    }});
+
+    const result = filterSpec100(users);
+    const mustBe = users.filter((user) => (user.special.health === 100
+      && user.special.strength     === 100
+      && user.special.speed        === 100
+      && user.special.intelligence === 100
+      && user.special.luck         === 100
+      && user.special.charisma     === 100
+      && user.special.mana         === 0
+    ));
+
+    assert.deepStrictEqual(result, mustBe);
+  });
 });
