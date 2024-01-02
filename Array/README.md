@@ -16,6 +16,8 @@
 - [countOf](./countOf/README.md)
 - [countOfFrom](./countOfFrom/README.md)
 - [countWhere](./countWhere/README.md)
+- [countWhereEq](./countWhereEq/README.md)
+- [countWhereIs](./countWhereIs/README.md)
 - [dimension](./dimension/README.md)
 - [empty](./empty/README.md)
 - [eq](./eq/README.md)
