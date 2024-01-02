@@ -1,6 +1,7 @@
 import type IterateCall from "../types/IterateCall";
 
 /**
+  * @description Returns enumerated elements by key.
   * @function
   * @name countBy
   * @example

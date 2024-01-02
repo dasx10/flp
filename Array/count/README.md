@@ -3,6 +3,10 @@
 2. [Array](../README.md)
     3. [count](./README.md)
 
+## DESCRIPTION
+
+Counts the number of values that satisfy the condition.
+
 
 ## USE
 

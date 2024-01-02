@@ -60,6 +60,8 @@
     "test.array.count"          : "node --test --watch ./Array/count",
     "test.array.countRight"     : "node --test --watch ./Array/countRight",
     "test.array.countBy"        : "node --test --watch ./Array/countBy",
+    "test.array.countWhere"     : "node --test --watch ./Array/countWhere",
+    "test.array.countWhereEq"   : "node --test --watch ./Array/countWhereEq",
     "test.array.countFrom"      : "node --test --watch ./Array/countFrom",
     "test.array.countFromRight" : "node --test --watch ./Array/countFromRight",
     "test.array.countOf"        : "node --test --watch ./Array/countOf",

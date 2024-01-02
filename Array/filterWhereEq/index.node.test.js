@@ -47,13 +47,14 @@ describe("array filterWhereEq", () => {
     }});
 
     const result = filterSpec100(users);
-    const mustBe = users.filter((user) => (user.special.health === 100
-      && user.special.strength     === 100
-      && user.special.speed        === 100
-      && user.special.intelligence === 100
-      && user.special.luck         === 100
-      && user.special.charisma     === 100
-      && user.special.mana         === 0
+    const mustBe = users.filter((user) => (
+      user.special.health       === 100 &&
+      user.special.strength     === 100 &&
+      user.special.speed        === 100 &&
+      user.special.intelligence === 100 &&
+      user.special.luck         === 100 &&
+      user.special.charisma     === 100 &&
+      user.special.mana         === 0
     ));
 
     assert.deepStrictEqual(result, mustBe);
