@@ -1,3 +1,4 @@
+import type Lambda from "../../types/Lambda";
 import type memo from "../index";
 
 /**
@@ -6,4 +7,4 @@ import type memo from "../index";
   * @see {@link memo}
   * @see {@link WeakMap}
   */
-export default function memoizeWeak<Call extends Function>(call: Call): Call;
+export default function memoizeWeak<Call extends Lambda>(call: Call): Call;

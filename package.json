@@ -47,6 +47,7 @@
     "test.object.map"     : "node --test --watch ./Object/map",
     "test.object.mapEq"   : "node --test --watch ./Object/mapEq",
     "test.object.onMapEq" : "node --test --watch ./Object/onMapEq",
+    "test.object.propMemo": "node --test --watch ./Object/propMemo",
 
     "test.array"                 : "node --test --watch ./Array",
     "test.array.after"           : "node --test --watch ./Array/after",
@@ -74,6 +75,7 @@
     "test.array.everyRight"      : "node --test --watch ./Array/everyRight",
     "test.array.fillAll"         : "node --test --watch ./Array/fillAll",
     "test.array.filter"          : "node --test --watch ./Array/filter",
+    "test.array.filterMemo"      : "node --test --watch ./Array/filterMemo",
     "test.array.filterRight"     : "node --test --watch ./Array/filterRight",
     "test.array.filterWhere"     : "node --test --watch ./Array/filterWhere",
     "test.array.filterWhereEq"   : "node --test --watch ./Array/filterWhereEq",
@@ -101,7 +103,13 @@
 
     "test.decorators": "node --test --watch ./Decorators",
 
-    "test.decorators.trap": "node --test --watch ./Decorators/trap"
+    "test.decorators.trap": "node --test --watch ./Decorators/trap",
+
+
+    "test.logic": "node --test --watch ./Logic",
+
+    "test.logic.oIs": "node --test --watch ./Logic/oIs",
+    "test.logic.onIs": "node --test --watch ./Logic/onIs"
   },
   "author": "",
   "license": "ISC",
