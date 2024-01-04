@@ -3,6 +3,6 @@ export default (call) => {
   var is = null;
   return (value) => (
     (values.get(value)) ||
-    (values.set(value, is = (call(value)).finally(() => values.delete(value))), is)
+    (values.set(value, is = Promise.resolve(call(value)).finally(() => values.delete(value))), is)
   );
 };
