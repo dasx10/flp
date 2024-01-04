@@ -6,4 +6,4 @@ import type memo from "../index";
   * @see {@link memo}
   * @see {@link WeakMap}
   */
-export default function memoWeak<Call extends Function>(call: Call): Call;
+export default function memoizeWeak<Call extends Function>(call: Call): Call;

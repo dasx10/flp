@@ -1,3 +1,3 @@
 import dimension from "../../Array/dimension/index.js";
-import abuse from "../abuse/index.js";
-export default abuse(dimension);
+import simple from "../simple/index.js";
+export default simple(dimension);

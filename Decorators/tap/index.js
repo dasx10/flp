@@ -1,1 +1,1 @@
-export default (call) => (value) => (call(value), value);
+export default ((call) => ((value) => ((call(value)), (value))));

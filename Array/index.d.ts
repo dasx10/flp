@@ -40,6 +40,8 @@ interface _ArrayNamespace {
   public readonly filterWhereEq           : Promise<typeof import("./filterWhereEq").default>,
   public readonly filterWhereIs           : Promise<typeof import("./filterWhereIs").default>,
   public readonly filterWhereNot          : Promise<typeof import("./filterWhereNot").default>,
+  public readonly filterByPropIs          : Promise<typeof import("./filterByPropIs").default>,
+  public readonly filterByPropIsMemo      : Promise<typeof import("./filterByPropIsMemo").default>,
   public readonly find                    : Promise<typeof import("./find").default>,
   public readonly findIndex               : Promise<typeof import("./findIndex").default>,
   public readonly findIndexAdapterEvery   : Promise<typeof import("./findIndexAdapterEvery").default>,

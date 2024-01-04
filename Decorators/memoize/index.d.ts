@@ -14,4 +14,4 @@ import type memoCreate from "./create";
   * @see {@link Map}
   * @see {@link indexed}
   */
-export default function memo<Call extends Lambda<any, any>>(call: Call): Call;
+export default function memoize<Call extends Lambda<any, any>>(call: Call): Call;
