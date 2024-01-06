@@ -1,1 +1,1 @@
-export default call => (value, next) => call(next)(value);
+export default ((call) => ((value, next) => (call(next)(value))));

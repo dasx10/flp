@@ -1,3 +1,3 @@
 import dec from "../../../Number/dec/index.js";
-var _loop = (call, value, length) => length ? _loop(call, call(value), dec(length)) : value;
-export default _loop;
+import isPos from "../../../Number/isPos/index.js";
+export default (call, value, length) => isPos(length) ? _loop(call, call(value), dec(length)) : value;

@@ -1,2 +1,2 @@
-import test from "../gt/index.js";
-export default test(0);
+import gt from "../gt/index.js";
+export default gt(0);
