@@ -25,4 +25,4 @@ each(console.log)({ a: 1, b: 2, c: 3 }) // { a: 1, b: 2, c: 3 }
 
 ### SEE ALSO
 
-- [Array](../../Array/README.md).[forEach](../../Array/forEach/README.md)
+- [Array](../../Array/README.md) / [forEach](../../Array/forEach/README.md)
