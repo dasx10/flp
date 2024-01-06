@@ -1,3 +1,3 @@
 import memoizeWeak from "../../Decorators/memoizeWeak/index.js";
-import filterDimension from "../filterDimension/index.js";
-export default memoizeWeak((call) => memoizeWeak(filterDimension(call)));
+import onFilterDimension from "../onFilterDimension/index.js";
+export default memoizeWeak(onFilterDimension(memoizeWeak));

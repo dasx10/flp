@@ -19,4 +19,4 @@
   * indexedArray(7) // { id: 7 } - return into cache
   * indexedArray(8) // undefined
   */
-export default function indexed<Key extends PropertyKey>(key: Key): <Values extends readonly Record<Key, any>[]>(values: Values) => Values[number][Key] | undefined;
+export default function indexed<Key extends PropertyKey>(key: Key): <Value extends Record<Key, any>>(values: readonly Value[]) => <Property extends Value[Key]>(value: Property) => Value | undefined;

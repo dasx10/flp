@@ -1,5 +1,16 @@
+import type Lambda from "../../types/Lambda";
 import type IterateCall from "../types/IterateCall";
 
-export default function onMap<Return, Values extends readonly any[]>(call: (values: Values) => Return)
-   : <Value>(call: IterateCall<Values[number], Value>)
-  => (values: readonly Value[]) => Return[];
+import type { ArrayFillAll } from "../fillAll";
+
+const onMap = next => call => next(map(call))
+
+export default function onMap<
+  Return,
+  Values extends readonly any[],
+  Value,
+>(call: (next: (values: readonly Value[]) => Values) => (values: Values) => Return)
+  : (iterateCall: IterateCall<Values[number], Value>)
+  => (values: readonly Value[])
+  => Return
+;

@@ -93,12 +93,17 @@
     "test.array.uniq"            : "node --test --watch ./Array/uniq",
     "test.array.uniqBy"          : "node --test --watch ./Array/uniqBy",
     "test.array.uniqRight"       : "node --test --watch ./Array/uniqRight",
+    "test.array.map"             : "node --test --watch ./Array/map",
+    "test.array.mapMemo"         : "node --test --watch ./Array/mapMemo",
+    "test.array.findByPropIsMemo": "node --test --watch ./Array/findByPropIsMemo",
+    "test.array.groupMap"        : "node --test --watch ./Array/groupMap",
 
     "test.composition": "node --test --watch ./Composition",
 
     "test.composition.bank": "node --test --watch ./Composition/bank",
 
     "test.function.lift": "node --test --watch ./Function/lift",
+    "test.function.re": "node --test --watch ./Function/re",
 
 
     "test.decorators": "node --test --watch ./Decorators",
