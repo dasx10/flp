@@ -43,7 +43,9 @@
 
     "test.object": "node --test --watch ./Object",
 
-    "test.object.whereEq" : "node --test --watch ./Object/whereEq",
+    "test.object.where"   : "node --test --watch ./Object/where",
+    "fp.test.object.whereEq" : "node --test --watch ./fp/Object/whereEq",
+    "test.object.whereIs" : "node --test --watch ./Object/whereIs",
     "test.object.map"     : "node --test --watch ./Object/map",
     "test.object.mapEq"   : "node --test --watch ./Object/mapEq",
     "test.object.onMapEq" : "node --test --watch ./Object/onMapEq",
