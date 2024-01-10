@@ -1,2 +1,2 @@
-import lt from "../lt/index.js";
-export default ((value, next) => (lt(value, next) ? value : next));
+import gt from "../gt/index.js";
+export default ((value, next) => (gt(value, next) ? value : next));

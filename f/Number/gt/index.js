@@ -1,3 +1,3 @@
-import exec from "../../Function/curry/2/index.js";
-import call from "../internal/gt/index.js";
-export default exec(call);
+import gt from "../../../p/Number/gt/index.js";
+import curry from "../../Function/curry/2/index.js";
+export default curry(gt);

@@ -1,2 +1,2 @@
-import test from "../isOne/index.js";
-export default value => test(value & 1);
+import isOne from "../isOne/index.js";
+export default ((value) => isOne(value & 1));

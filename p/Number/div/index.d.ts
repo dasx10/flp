@@ -1,20 +1,23 @@
 /**
-  * division
-  * `z = (x / y)`
-  */
-export type Div<Value extends number, Next extends number> = number;
-
-/**
-  * `Monoid` `Math`
-  * division
-  * `z = (x / y)`
+  * @summary division
+  * @function `(x, y) => (x / y)`
+  * @name div
+  * @description division two numbers
   * @param {number} value number
   * @param {number} next number
   * @returns {number} number
   * @example
-  * _div(1, 2); // 0.5
-  * _div(2, 1); // 2
-  * _div(1, 1); // 1
-  * _div(2, 2); // 1
+  * ```
+  * div(1, 2); // 0.5
+  * div(2, 1); // 2
+  * div(1, 1); // 1
+  * div(2, 2); // 1
+  * div(0, 0); // Infinity
+  * div(1, 0); // Infinity
+  * div(0, 1); // 0
+  * div(1, -1) // -1
+  * ```
   **/
-export default function _div<Value extends number, Next extends number>(value: Value, next: Next): number;
+export default function div(value: 0, next: number): 0;
+export default function div<Value extends number>(value: Value, next: 1): Value;
+export default function div(value: number, next: number): number;

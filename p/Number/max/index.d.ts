@@ -15,4 +15,4 @@ type Max <Value extends number, Next extends number> = Value | Next;
   * _max(0, 2); // 2
   * _max(2, 0); // 2
   */
-export default function _max <Value extends number, Next extends number>(value: Value, next: Next): Max<Value, Next>;
+export default function max<Value extends number, Next extends number>(value: Value, next: Next): Max<Value, Next>;

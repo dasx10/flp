@@ -1,2 +1,2 @@
-import always from "../../Function/always/index.js";
+import always from "../../Logic/always/index.js";
 export default always(NaN);

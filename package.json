@@ -7,16 +7,25 @@
   "scripts": {
     "test": "node --test --watch .",
 
+    "test.number": "node --test --watch ./f/Number",
 
-    "test.number": "node --test --watch ./Number",
+    "test.p.number"                : "node --test --watch ./p/Number",
+
+    "test.p.number.add"     : "node --test --watch ./p/Number/add",
+    "test.p.number.min"     : "node --test --watch ./p/Number/min",
+    "test.p.number.max"     : "node --test --watch ./p/Number/max",
+    "test.p.number.between" : "node --test --watch ./p/Number/between",
+    "test.p.number.clump"   : "node --test --watch ./p/Number/clump",
+    "test.p.number.div"     : "node --test --watch ./p/Number/div",
+    "test.p.number.pow"     : "node --test --watch ./p/Number/pow",
+    "test.p.number.mul"     : "node --test --watch ./p/Number/mul",
+
 
     "test.number.internal"         : "node --test --watch ./Number/internal",
     "test.number.internal.between" : "node --test --watch ./Number/internal/between",
     "test.number.internal.clump"   : "node --test --watch ./Number/internal/clump",
     "test.number.internal.pow"     : "node --test --watch ./Number/internal/pow",
     "test.number.internal.mul"     : "node --test --watch ./Number/internal/mul",
-    "test.number.internal.min"     : "node --test --watch ./Number/internal/min",
-    "test.number.internal.max"     : "node --test --watch ./Number/internal/max",
 
     "test.number.add"      : "node --test --watch ./Number/add",
     "test.number.inc"      : "node --test --watch ./Number/inc",
@@ -50,6 +59,8 @@
     "test.object.mapEq"   : "node --test --watch ./Object/mapEq",
     "test.object.onMapEq" : "node --test --watch ./Object/onMapEq",
     "test.object.propMemo": "node --test --watch ./Object/propMemo",
+
+    "test.p.array.filterRight"   : "node --test --watch ./p/Array/filterRight",
 
     "test.array"                 : "node --test --watch ./Array",
     "test.array.after"           : "node --test --watch ./Array/after",

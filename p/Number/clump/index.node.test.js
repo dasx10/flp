@@ -1,9 +1,12 @@
 import { it, describe } from "node:test";
 import assert from "node:assert";
+import __functionLength3 from "../../../__test__/__functionLength3.js";
 
 import clump from "./index.js";
 
 describe("clump function", () => {
+  __functionLength3(clump);
+
   it("should return value :", () => {
     for (let minimum = 0; minimum < 10; minimum++) {
       for (let maximum = minimum + 1; maximum < 11; maximum++) {

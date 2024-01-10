@@ -1,3 +1,7 @@
-import call from "../internal/clump/index.js";
-import test from "../internal/lt/index.js";
-export default (min) => (max) => (test(max, min) ? (value) => call(value, max, min) : (value) => call(value, min, max));
+import clump from "../../../p/Number/clump/index.js";
+import lt from "../../../p/Number/lt/index.js";
+
+export default ((min) => ((max) => ((lt(max, min))
+  ? ((value) => clump(value, max, min))
+  : ((value) => clump(value, min, max))
+)));

@@ -1,14 +1,7 @@
 import type IterateCall from "../types/IterateCall";
-import type filterRight from "../filterRight";
+import type ArrayFilter from "../../../types/Array/Filter";
 
-export type ArrayFilter<Values extends readonly any[]> = Values extends readonly [infer First, ...infer Rest]
-  ? [] | [First] | [First, ...ArrayFilter<Rest>] | ArrayFilter<Rest>
-  : Values extends readonly [...infer Rest, infer Last]
-    ? [] | [Last] | [...ArrayFilter<Rest>, Last] | ArrayFilter<Rest>
-    : Values extends readonly []
-      ? []
-      : Values | []
-;
+import type filterRight from "../filterRight";
 
 /**
   * @description Creates an array of values that satisfy the condition.

@@ -1,2 +1,2 @@
-import call from "../add/index.js";
-export default call(1);
+import add from "../add/index.js";
+export default add(1);

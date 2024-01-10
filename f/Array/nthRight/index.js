@@ -1,2 +1,3 @@
-import add from "../../Number/internal/add";
-export default (index) => (values) => (values[add((values.length), (~index))]);
+import nthRight from "../../../p/Array/nthRight/index.js";
+import curry from "../../Function/curry/2/index.js";
+export default curry(nthRight);

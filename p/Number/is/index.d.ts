@@ -1,8 +1,18 @@
-export type IS <Value extends number, Next extends number> = Value extends Next
+export type IS <
+  Value extends number,
+  Next  extends number,
+> = number extends Value
   ? boolean
-  : Next extends Value
+  : number extends Next
     ? boolean
-    : false;
+    : Value extends Next
+      ? Next extends Value
+        ? true
+        : boolean
+      : Next extends Value
+        ? boolean
+        : false
+;
 
 /**
   * `Logic`
@@ -16,6 +26,6 @@ export type IS <Value extends number, Next extends number> = Value extends Next
   * _is(1, 1); // true
   * _is(2, 2); // true
   */
-export default function _is<Value extends number, Next extends number>(value: Value, next: Next): value is Next;
-export default function _is<Value extends number, Next extends number>(value: Value, next: Next): next is Next;
-export default function _is<Value extends number, Next extends number>(value: Value, next: Next): IS<Value, Next>;
+export default function is<Value extends number, Next extends number>(value: Value, next: Next): value is Next;
+export default function is<Value extends number, Next extends number>(value: Value, next: Next): next is Next;
+export default function is<Value extends number, Next extends number>(value: Value, next: Next): IS<Value, Next>;

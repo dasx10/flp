@@ -26,4 +26,4 @@ export type GE<
   * _ge(2, 2); // true
   * _ge(0, 2); // false
   */
-export default function _ge<Value extends number, Next extends number>(value: Value, next: Next): GE<Value, Next>;
+export default function ge<Value extends number, Next extends number>(value: Value, next: Next): GE<Value, Next>;

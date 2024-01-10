@@ -16,7 +16,7 @@ type LE<Value extends number, Next extends number> = Value extends Next
     * _le(1, 1); // true
     * _le(2, 2); // true
     */
-export default function _le <
+export default function le <
   Value extends number,
   Next  extends number,
 >(value: Value, next: Next): LE<Value, Next>;

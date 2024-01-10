@@ -1,9 +1,12 @@
 import { it, describe } from "node:test";
 import assert from "node:assert";
+import __functionLength2 from "../../../__test__/__functionLength2.js";
 
 import min from "./index.js";
 
 describe("min", () => {
+  __functionLength2(min);
+
   it("return value", () => {
     for (var index = 0; index < 10; index++) {
       assert.strictEqual(min(NaN, index), index);

@@ -8,6 +8,14 @@ type ArrayIndex_ <Values extends readonly any[]> = Values extends readonly [...i
   : 0
 ;
 
+/**
+  * @description get the index of the array
+  * @example
+  * ```
+  * ArrayIndex<[1, 2, 3]> // 0 | 1 | 2
+  * ArrayIndex<number[]> // number
+  * ```
+  */
 type ArrayIndex<Values extends readonly any[]> = number extends Values["length"]
   ? number
   : Values extends readonly [any, ...infer Tail]

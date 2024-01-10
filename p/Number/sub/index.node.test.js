@@ -1,16 +1,11 @@
 import { it, describe } from "node:test";
 import assert from "node:assert";
+import __functionLength2 from "../../../__test__/__functionLength2.js";
 
 import sub from "./index.js";
 
-describe("subtract (_sub)", () => {
-  it("function", () => {
-    assert.strictEqual(typeof sub, "function");
-  });
-
-  it("current length", () => {
-    assert.strictEqual(sub.length, 2);
-  });
+describe("subtract (sub)", () => {
+  __functionLength2(sub);
 
   it(`current value`, () => {
     for (var index = -10; index < 10; index++) {

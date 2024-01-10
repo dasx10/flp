@@ -2,15 +2,10 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 
 import add from "./index.js";
+import __functionLength2 from "../../../__test__/__functionLength2.js";
 
 describe("add", () => {
-  it("function", () => {
-    assert.strictEqual(typeof add, "function");
-  });
-
-  it("current length", () => {
-    assert.strictEqual(add.length, 2);
-  });
+  __functionLength2(add);
 
   it("current value", () => {
     for (var index = 0; index < 10; index++) {
