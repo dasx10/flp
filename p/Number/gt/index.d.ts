@@ -2,8 +2,11 @@
 export type GT<Value extends number, Next extends number> = boolean;
 
 /**
-  * `Logic`
-  * greater than
+  * @summary greater than
+  * @description greater than two numbers
+  * @function `(x, y) => x > y`
+  * @name gt
+  * @alias greaterThan
   * @param {number} value number
   * @param {number} next number
   * @returns {boolean} boolean

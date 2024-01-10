@@ -2,5 +2,5 @@
 
 ## Documentation
 
-- [Function programming](./Function/README.md)
-- [Procedure programming](./Procedure/README.md)
+- [Function programming](./f/README.md)
+- [Procedure programming](./p/README.md)

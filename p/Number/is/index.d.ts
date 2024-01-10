@@ -15,16 +15,20 @@ export type IS <
 ;
 
 /**
-  * `Logic`
-  * is
+  * @summary is equal
+  * @function
+  * @name is
+  * @deprecated left is right
   * @param {number} value number
   * @param {number} next number
   * @returns {boolean} boolean
   * @example
-  * _is(1, 2); // false
-  * _is(2, 1); // false
-  * _is(1, 1); // true
-  * _is(2, 2); // true
+  * ```
+  * is(1, 2); // false
+  * is(2, 1); // false
+  * is(1, 1); // true
+  * is(2, 2); // true
+  * ```
   */
 export default function is<Value extends number, Next extends number>(value: Value, next: Next): value is Next;
 export default function is<Value extends number, Next extends number>(value: Value, next: Next): next is Next;

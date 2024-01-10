@@ -15,14 +15,18 @@ export type EQ<
         : false;
 
 /**
-  * `Logic`
-  * equal
+  * @summary is equal
+  * @function
+  * @name eq
+  * @description is equal tow numbers
   * @param {number} value number
   * @param {number} next number
   * @returns {boolean} boolean
   * @example
-  * _eq(1, 2); // false
-  * _eq(2, 1); // false
-  * _eq(1, 1); // true
+  * ```
+  * eq(1, 2); // false
+  * eq(2, 1); // false
+  * eq(1, 1); // true
+  * ```
   */
-export default function _eq<Value extends number, Next extends number>(value: Value, next: Next): EQ<Value, Next>;
+export default function eq<Value extends number, Next extends number>(value: Value, next: Next): EQ<Value, Next>;

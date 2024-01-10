@@ -14,16 +14,20 @@ export type GE<
       ;
 
 /**
-  * `Logic`
-  * greater than or equal
+  * @summary greater than or equal
+  * @function
+  * @name ge
+  * @description greater than or equal two numbers
   * @param {number} value number
   * @param {number} next number
   * @returns {boolean} boolean
   * @example
-  * _ge(1, 2); // false
-  * _ge(2, 1); // true
-  * _ge(1, 1); // true
-  * _ge(2, 2); // true
-  * _ge(0, 2); // false
+  * ```
+  * ge(1, 2); // false
+  * ge(2, 1); // true
+  * ge(1, 1); // true
+  * ge(2, 2); // true
+  * ge(0, 2); // false
+  * ```
   */
 export default function ge<Value extends number, Next extends number>(value: Value, next: Next): GE<Value, Next>;

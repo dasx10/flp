@@ -5,3 +5,15 @@
 - [between](./between/README.md)
 - [clump](./clump/README.md)
 - [div](./div/README.md)
+- [eq](./eq/README.md)
+- [ge](./ge/README.md)
+- [gt](./gt/README.md)
+- [is](./is/README.md)
+- le
+- lt
+- max
+- min
+- mul
+- ne
+- pow
+- sub
