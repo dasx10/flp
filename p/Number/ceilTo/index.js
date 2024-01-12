@@ -1,2 +1,2 @@
-import roundTo from "../roundTo/index.js";
+import roundTo from "../../../_/roundTo/index.js";
 export default roundTo(Math.ceil);
