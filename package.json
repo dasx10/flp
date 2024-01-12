@@ -19,6 +19,7 @@
     "test.p.number.div"     : "node --test --watch ./p/Number/div",
     "test.p.number.pow"     : "node --test --watch ./p/Number/pow",
     "test.p.number.mul"     : "node --test --watch ./p/Number/mul",
+    "test.p.number.roundTo" : "node --test --watch ./p/Number/roundTo",
 
 
     "test.number.internal"         : "node --test --watch ./Number/internal",

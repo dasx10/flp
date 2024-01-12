@@ -17,3 +17,6 @@
 - [ne](./ne/README.md)
 - [pow](./pow/README.md)
 - [sub](./sub/README.md)
+- [ceilTo](./ceilTo/README.md)
+- [floorTo](./floorTo/README.md)
+- [roundTo](./roundTo/README.md)
