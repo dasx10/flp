@@ -1,8 +1,6 @@
-var debounce = next => {
+export default (next) => {
   var key, is = false;
-  return call => is
+  return (call) => is
     ? (clearTimeout(key), key = setTimeout((call) => (call(), is = false), next, call))
     : (call(), is = true, key);
-}
-
-export default debounce;
+};

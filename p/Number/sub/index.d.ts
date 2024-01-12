@@ -21,4 +21,8 @@
   * sub(-5, 5); // -10
   * ```
   */
+export default function sub(value: 1, next: 1): 0;
+export default function sub(value: 0, next: -1): 1;
+export default function sub(value: 0, next: 1): -1;
+export default function sub<Value extends number>(value: number, next: 0): Value;
 export default function sub(value: number, next: number): number;
