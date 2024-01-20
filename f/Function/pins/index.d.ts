@@ -15,4 +15,4 @@ type PartialReturnType<Values extends readonly any[], Call extends Lambda<any, a
     ? ReturnType<Call>
     : ReturnType<Call> | Call;
 
-export default function partial<Values extends readonly any[]>(values: Values): <Call extends Self<Values>>(call: Call) => PartialReturnType<Values, Call>;
+export default function pins<Values extends readonly any[]>(values: Values): <Call extends Self<Values>>(call: Call) => PartialReturnType<Values, Call>;

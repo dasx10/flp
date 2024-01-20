@@ -1,4 +1,3 @@
-import map  from "../../Array/map/index.js";
-import path from "../path/index.js";
-var paths = map(path);
-export default paths;
+import bank from "../../Composition/bank/index.js";
+import dir from "../dir/index.js";
+export default (keys) => bank(keys.map(dir))

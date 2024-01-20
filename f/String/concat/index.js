@@ -1,2 +1,2 @@
-var concat = next => value => value.concat(next);
-export default concat;
+import prototype from "../../Adapter/prototype/index.js";
+export default prototype(String.prototype.concat);

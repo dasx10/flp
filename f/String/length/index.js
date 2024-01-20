@@ -1,2 +1,2 @@
-var length = value => value ? String(value).length : 0;
-export default length;
+import prop from "../../Object/prop/index.js";
+export default prop("length");

@@ -1,2 +1,1 @@
-var curry4 = call => next => on => bind => value => call(value, bind, on, next);
-export default curry4;
+export default (call) => (o) => (z) => (y) => (x) => call(x, y, z, o);

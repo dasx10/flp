@@ -1,3 +1,1 @@
-import prop from "../prop/index.js";
-import map  from "../../Array/map/index.js";
-export default map(prop);
+export default (keys) => (value) => keys.map((key) => value[key])

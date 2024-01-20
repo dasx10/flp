@@ -20,4 +20,4 @@ type StringifyType<T extends primitiveValue> = T extends never ? never
 ;
 
 export default function type<Value extends primitiveValue>(value: Value): StringifyType<Value>;
-export default function type(value): Types;
+export default function type(value: any): Types;

@@ -1,1 +1,1 @@
-export default call => next => bind => value => call(value, bind, next);
+export default (call) => (z) => (y) => (x) => call(x, y, z);

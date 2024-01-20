@@ -1,3 +1,2 @@
-import reduce from "../reduce/index.js";
-import add from "../../Number/add/index.js";
-export default reduce(add);
+import add from "../../../p/Number/add/index.js";
+export default ((value) => ((values) => (values.reduce(add, value))));

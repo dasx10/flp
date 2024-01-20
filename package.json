@@ -23,6 +23,14 @@
     "test.p.number.floorTo" : "node --test --watch ./p/Number/floorTo",
     "test.p.number.ceilTo"  : "node --test --watch ./p/Number/ceilTo",
 
+    "test.p.composition.pipe" : "node --test --watch ./p/Composition/pipe",
+    "test.p.composition.pipeAsync" : "node --test --watch ./p/Composition/pipeAsync",
+    "test.p.composition.compose" : "node --test --watch ./p/Composition/compose",
+    "test.p.composition.composeAsync" : "node --test --watch ./p/Composition/composeAsync",
+
+    "test.p.function"       : "node --test --watch ./p/Function",
+
+    "test.p.function.arity" : "node --test --watch ./h/Function/arity",
 
     "test.number.internal"         : "node --test --watch ./Number/internal",
     "test.number.internal.between" : "node --test --watch ./Number/internal/between",
@@ -130,7 +138,15 @@
     "test.logic": "node --test --watch ./Logic",
 
     "test.logic.oIs": "node --test --watch ./Logic/oIs",
-    "test.logic.onIs": "node --test --watch ./Logic/onIs"
+    "test.logic.onIs": "node --test --watch ./Logic/onIs",
+
+    "test.h.function.partialLimit": "node --test --watch ./h/Function/partialLimit",
+
+    "test.h.number.add": "node --test --watch ./h/Number/add",
+    "test.h.number.sub": "node --test --watch ./h/Number/sub",
+
+    "test.h.array": "node --test --watch ./h/Array",
+    "test.h.array.map": "node --test --watch ./h/Array/map"
   },
   "author": "",
   "license": "ISC",
