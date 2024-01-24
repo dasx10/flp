@@ -3,7 +3,7 @@ import assert from "node:assert";
 
 import zero from "./index.js";
 
-describe("one", () => {
+describe("zero", () => {
   it ("current length", () => {
     assert.strictEqual(zero.length, 0);
   });

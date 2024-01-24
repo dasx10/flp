@@ -1,2 +1,2 @@
-import create from "../../Logic/createIs/index.js";
+import create from "../../../_/is/index.js";
 export default create();

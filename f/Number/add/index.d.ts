@@ -1,5 +1,4 @@
-import type AddExec from "./Exec";
-
+import type Id from "../../../types/Id";
 /**
   * @summary `z = x + y`
   * @description Increments a number. Add 1 to the number.
@@ -12,5 +11,6 @@ import type AddExec from "./Exec";
   * inc(2); // 3
   * inc(3); // 4
   */
-// export default function add(next: 0): <Value extends number>(value: Value) => Value;
-export default function add<Next extends number>(next: Next): AddExec<Next>;
+
+export default function add(next: 0): <Value extends number>(value: Value) => Value;
+export default function add<Next extends number>(next: Next): Id<number>

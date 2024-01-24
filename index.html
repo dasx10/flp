@@ -7,8 +7,13 @@
 </head>
 <body>
   <script type="module">
-    import namespace from "./index.js";
-    window.namespace = namespace;
+    import partial from "../Decorators/partial/index.js";
+    import partialP from "../Decorators/partial/p.js";
+
+    window._ = {
+      partial,
+      partialP,
+    }
   </script>
 </body>
 </html>

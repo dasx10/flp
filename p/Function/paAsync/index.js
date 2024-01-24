@@ -1,1 +1,3 @@
-export default (value, call) => Promise.all([value, call]).then(({ 0: value, 1: call }) => call(value));
+import asyncPair from "../../../_/asyncPair/index.js";
+import pa from "../pa/index.js";
+export default asyncPair(pa);

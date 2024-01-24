@@ -1,1 +1,4 @@
-export default (value, call, next) => Promise.all([value, call, next]).then(({ 0: value, 1: call, 2: next }) => call(value) && next(value));
+export default (value, call, next) => Promise.all([value, call]).then(({ 0: value, 1: call }) => {
+  var is = call(value);
+  return is ? Promise.resolve(next(value)) : is;
+});

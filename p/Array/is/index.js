@@ -1,2 +1,1 @@
-import create from "../../Logic/createIs/index.js";
-export default create();
+export default (value, test) => value === test;

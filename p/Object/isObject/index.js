@@ -1,2 +1,2 @@
-import isType from "../../../fp/Spec/isType/index.js";
+import isType from "../../../f/Spec/isType/index.js";
 export default isType("object");

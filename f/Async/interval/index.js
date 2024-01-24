@@ -1,2 +1,1 @@
-var interval = next => call => setInterval(call, next);
-export default interval;
+export default (freeze) => (next) => (call) => setInterval(call, next, freeze);

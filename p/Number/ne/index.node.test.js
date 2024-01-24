@@ -1,10 +1,10 @@
-import { it, describe } from "node:test";
+import { describe } from "node:test";
 import assert from "node:assert";
 import __functionLength2 from "../../../__test__/__functionLength2.js";
 
 import ne from "./index.js";
 
-describe("less than or equal (_ne)", () => {
+describe("ne (number not equal) procedure style", () => {
   __functionLength2(ne);
 
   it("test by integer ", () => {
