@@ -6,8 +6,16 @@
   <title>Document</title>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>Doc</li>
+    </ul>
+  </nav>
   <script type="module">
     import "./test.js";
+    import async from "./index.js";
+    window.async = async;
   </script>
 </body>
 </html>

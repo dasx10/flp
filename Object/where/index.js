@@ -1,3 +1,3 @@
-import where from "../../../p/Object/where/index.js";
+import where from "./main.js";
 import curry from "../../Function/curry2/index.js";
 export default curry(where);

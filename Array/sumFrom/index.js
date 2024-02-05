@@ -1,2 +1,2 @@
-import add from "../../../p/Number/add/index.js";
+import add from "../../Number/add/main.js";
 export default ((value) => ((values) => (values.reduce(add, value))));

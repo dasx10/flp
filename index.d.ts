@@ -27,12 +27,15 @@ type AwaitCall<Call extends Lambda> = (value: AsyncParameter<AsyncCall>) => Prom
 export declare function async<Value>(value: Promise<Value> | Value)       : MayPromise<Value>;
 export declare function async<Call extends Lambda>(call: AsyncCall<Call>) : MayPromise<Call>;
 
-type Namespace = "Number" | "String" | "Array" | "Function" | "Composition";
+type Namespace = "Number" | "String" | "Array" | "Object" | "Function" | "Composition";
 type Module    = `${Namespace}/${string}`;
 
-declare const y: {
-  (name : Module): MayPromise<Lambda<any, any>>;
-  async : MayPromise<Lambda<any, any>>;
+export function lazy(name : Module) : MayPromise<Lambda<any, any>>;
+export function load(name : Module) : MayPromise<Lambda<any, any>>;
+
+declare const y: MayPromise<Lambda<any, any>> & {
+  load: typeof load;
+  lazy: typeof lazy;
 }
 
 export default y;

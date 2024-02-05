@@ -1,5 +1,5 @@
-import between from "../../../p/Number/between/index.js";
-import lt from "../../../p/Number/lt/index.js";
+import between from "../between/main.js";
+import lt from "../lt/main.js";
 
 export default ((min) => (max) => (lt(min, max)
   ? (value) => between(value, min, max)

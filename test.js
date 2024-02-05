@@ -1,99 +1,36 @@
-import y, { async } from './index.js';
+import async, { lazy, load, wget } from './index.js';
 
-var log    = async((value) => ((console.log(value)), value))
-
-
-var pipe   = y("Composition/pipeAsync");
-var inc    = y("Number/inc");
-var reduce = y("Array/reduce");
-var add    = y("Number/add");
-var sub    = y("Number/sub");
-var map    = y("Array/map");
+var log    = async((value) => ((console.log(value)), value));
 
 
-var sumOf     = reduce(add);
-var sum       = sumOf(0);
-var sumRes    = sum(Array.from({ length: 65534 }, (_, index) => add(index)(index)));
-var addSumRes = add(sumRes);
-var nextRes   = inc(addSumRes(10));
+var pipeAsync = lazy("Composition/pipeAsync");
+var pipe       = lazy("Composition/pipe");
+var inc        = lazy("Number/inc");
+var reduce     = lazy("Array/reduce");
+var add        = load("Number/add");
+var sub        = lazy("Number/sub");
+var map        = lazy("Array/map");
+var find       = lazy("Array/find");
+var gt         = lazy("Number/gt");
+var eq         = lazy("Number/eq");
+var where      = lazy("Object/where");
+var prop       = lazy("Object/prop");
+var dir        = lazy("Object/dir");
+var props      = lazy("Object/props");
+var sum        = lazy("Array/sum");
+var where      = lazy("Object/where");
+var tap        = lazy("Decorators/tap");
 
-var incs = (map)(inc);
+var _prop = async(key => value => value[key]);
 
-log(incs([1, 2, 3]))
+// log(prop("a")({ a: 2 }))
 
-log(nextRes);
+var userPost = pipe([
+  (id) => wget("https://jsonplaceholder.typicode.com/posts" + "/" + id),
+  JSON.parse,
+  prop("userId"),
+  (id) => wget("https://jsonplaceholder.typicode.com/users" + "/" + id),
+  JSON.parse,
+  log,
+])(1)
 
-
-var sub2 = sub(2);
-
-var test = pipe([
-  sub2,
-  inc,
-]);
-
-var result = test(10);
-async(console.log)(result);
-
-// log(test(Promise.resolve(11)));
-
-// log(sub2(10))
-// log(sumRes(sub2));
-
-
-
-// log(map === y("Array/map"));
-
-// var strings = map(String);
-// log(strings([1, 2, 3, 4]))
-// log(sum);
-
-
-// const log = sync((value) => (console.log(value), value));
-
-// // var add__ = (y) => (x) => x + y;
-
-// const inc    = y(("Number/inc"));
-// log(inc(inc(sync(2))))
-
-// // const add    = y("Number/add");
-// // const pipe   = load("Composition/pipe");
-
-// const pipe = sync(_pipe);
-// // const add  = sync(_add);
-
-
-// // log(add(sync(3))(sync(3)))
-
-// var add1  = add(sync(1));
-// var add2  = add(sync(2));
-// var three = sync(3);
-
-// log(inc(add2(add1(three))));
-
-// const add3 = _pipe([
-  //   inc,
-  //   inc,
-  //   inc,
-  // ]);
-
-
-// log(inc(add1(three)));
-
-// const getElementById = async((id) => (html) => html.match(new RegExp(`<(\\w+ )+id=.${id}[^>]+`))[0]);
-
-// const page = (y.get("http://127.0.0.1:3000"));
-
-// const str = async(String);
-// log(getElementById("root")(page));
-
-
-// log(add3(three));
-
-// var add3 = pipe(y.list(
-  // add(y.sync(1)),
-  // add(y.sync(2)),
-  // add(y.sync(2)),
-  // ));
-
-
-// log(add3(y.sync(3)));
