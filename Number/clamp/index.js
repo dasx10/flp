@@ -1,5 +1,5 @@
-import clump from "../../../p/Number/clump/index.js";
-import lt from "../../../p/Number/lt/index.js";
+import clump from "../clump$$$/index.js";
+import lt from "../lt$$/index.js";
 
 export default ((min) => ((max) => ((lt(max, min))
   ? ((value) => clump(value, max, min))

@@ -4,14 +4,13 @@ import prop from "./Object/prop/index.js";
 
 
 var isFunction = (value) => typeof value === "function";
+var _all       = (values) => Promise.all(values.map(async));
+var all        = memoizeWeak(_all);
 
 var exec = (call, value) => isFunction(call)
-  ? Array.isArray(value) ? _all(value).then(call) : call(value)
+  ? Array.isArray(value) ? all(value).then(call) : call(value)
   : value(call)
 ;
-
-var _all = (values) => Promise.all(values.map(async));
-var all = memoizeWeak(_all);
 
 var list = memoizeWeak((values) => Object.setPrototypeOf((call) => async(all(values).then(call)), {
   then              : (resolve, reject) => list(all(values).then(resolve, reject)),

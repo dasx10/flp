@@ -1,4 +1,4 @@
-import eq from "../../Object/internal/eq/index.js";
+import eq from "../../Object/eq/main.js";
 
 export default (call) => (values) => values
   .map(call)

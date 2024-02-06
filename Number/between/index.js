@@ -1,4 +1,4 @@
-import between from "../between/main.js";
+import between from "../between$$$/index.js";
 import lt from "../lt/main.js";
 
 export default ((min) => (max) => (lt(min, max)
