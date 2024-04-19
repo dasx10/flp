@@ -1,1 +1,0 @@
-export default (call) => (values) => Object.fromEntries(values.reduce((create, value, index, values) => (index = call(value, index, values), create.set(index, (create.get(index) | 0) + 1)), (new Map)));

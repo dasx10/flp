@@ -1,156 +1,16 @@
 {
-  "name": "yscan",
+  "name": "snip",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "test.js",
   "scripts": {
-    "test": "node --test --watch .",
-
-    "test.number": "node --test --watch ./f/Number",
-
-    "test.p.number"                : "node --test --watch ./p/Number",
-
-    "test.p.number.add"     : "node --test --watch ./p/Number/add",
-    "test.p.number.min"     : "node --test --watch ./p/Number/min",
-    "test.p.number.max"     : "node --test --watch ./p/Number/max",
-    "test.p.number.between" : "node --test --watch ./p/Number/between",
-    "test.p.number.clump"   : "node --test --watch ./p/Number/clump",
-    "test.p.number.div"     : "node --test --watch ./p/Number/div",
-    "test.p.number.pow"     : "node --test --watch ./p/Number/pow",
-    "test.p.number.mul"     : "node --test --watch ./p/Number/mul",
-    "test.p.number.roundTo" : "node --test --watch ./p/Number/roundTo",
-    "test.p.number.floorTo" : "node --test --watch ./p/Number/floorTo",
-    "test.p.number.ceilTo"  : "node --test --watch ./p/Number/ceilTo",
-
-    "test.p.composition.pipe" : "node --test --watch ./p/Composition/pipe",
-    "test.p.composition.pipeAsync" : "node --test --watch ./p/Composition/pipeAsync",
-    "test.p.composition.compose" : "node --test --watch ./p/Composition/compose",
-    "test.p.composition.composeAsync" : "node --test --watch ./p/Composition/composeAsync",
-
-    "test.p.function"       : "node --test --watch ./p/Function",
-
-    "test.p.function.arity" : "node --test --watch ./p/Function/arity",
-    "test.p.function.partialLimit": "node --test --watch ./p/Function/partialLimit",
-
-    "test.f.number"        : "node --test --watch ./f/Number",
-
-    "test.f.number.mul"      : "node --test --watch ./f/Number/mul/",
-
-    "test.number.add"      : "node --test --watch ./Number/add",
-    "test.number.inc"      : "node --test --watch ./Number/inc",
-    "test.number.sub"      : "node --test --watch ./Number/sub",
-    "test.number.dec"      : "node --test --watch ./Number/inc",
-    "test.number.double"   : "node --test --watch ./Number/double",
-    "test.number.pow"      : "node --test --watch ./Number/pow",
-    "test.number.div"      : "node --test --watch ./Number/div",
-    "test.number.min"      : "node --test --watch ./Number/min",
-    "test.number.positive" : "node --test --watch ./Number/positive",
-    "test.number.max"      : "node --test --watch ./Number/max",
-    "test.number.one"      : "node --test --watch ./Number/one",
-    "test.number.le"       : "node --test --watch ./Number/le",
-    "test.number.ge"       : "node --test --watch ./Number/ge",
-    "test.number.between"  : "node --test --watch ./Number/between",
-    "test.number.is"       : "node --test --watch ./Number/is",
-    "test.number.isPos"    : "node --test --watch ./Number/isPos",
-    "test.number.ne"       : "node --test --watch ./Number/ne",
-    "test.number.not"      : "node --test --watch ./Number/not",
-    "test.number.lt"       : "node --test --watch ./Number/lt",
-    "test.number.gt"       : "node --test --watch ./Number/gt",
-
-
-    "test.object": "node --test --watch ./Object",
-
-    "test.object.where"   : "node --test --watch ./Object/where",
-    "fp.test.object.whereEq" : "node --test --watch ./fp/Object/whereEq",
-    "test.object.whereIs" : "node --test --watch ./Object/whereIs",
-    "test.object.map"     : "node --test --watch ./Object/map",
-    "test.object.mapEq"   : "node --test --watch ./Object/mapEq",
-    "test.object.onMapEq" : "node --test --watch ./Object/onMapEq",
-    "test.object.propMemo": "node --test --watch ./Object/propMemo",
-
-    "test.p.array.filterRight"   : "node --test --watch ./p/Array/filterRight",
-
-    "test.array"                 : "node --test --watch ./Array",
-    "test.array.after"           : "node --test --watch ./Array/after",
-    "test.array.all"             : "node --test --watch ./Array/all",
-    "test.array.allRight"        : "node --test --watch ./Array/allRight",
-    "test.array.any"             : "node --test --watch ./Array/any",
-    "test.array.append"          : "node --test --watch ./Array/append",
-    "test.array.at"              : "node --test --watch ./Array/at",
-    "test.array.concat"          : "node --test --watch ./Array/concat",
-    "test.array.concatRight"     : "node --test --watch ./Array/concatRight",
-    "test.array.count"           : "node --test --watch ./Array/count",
-    "test.array.countRight"      : "node --test --watch ./Array/countRight",
-    "test.array.countBy"         : "node --test --watch ./Array/countBy",
-    "test.array.countWhere"      : "node --test --watch ./Array/countWhere",
-    "test.array.countWhereEq"    : "node --test --watch ./Array/countWhereEq",
-    "test.array.countFrom"       : "node --test --watch ./Array/countFrom",
-    "test.array.countFromRight"  : "node --test --watch ./Array/countFromRight",
-    "test.array.countOf"         : "node --test --watch ./Array/countOf",
-    "test.array.countOfFrom"     : "node --test --watch ./Array/countOfFrom",
-    "test.array.dimension"       : "node --test --watch ./Array/dimension",
-    "test.array.empty"           : "node --test --watch ./Array/empty",
-    "test.array.eq"              : "node --test --watch ./Array/eq",
-    "test.array.eqUnSort"        : "node --test --watch ./Array/eqUnSort",
-    "test.array.every"           : "node --test --watch ./Array/every",
-    "test.array.everyRight"      : "node --test --watch ./Array/everyRight",
-    "test.array.fillAll"         : "node --test --watch ./Array/fillAll",
-    "test.array.filter"          : "node --test --watch ./Array/filter",
-    "test.array.filterMemo"      : "node --test --watch ./Array/filterMemo",
-    "test.array.filterRight"     : "node --test --watch ./Array/filterRight",
-    "test.array.filterWhere"     : "node --test --watch ./Array/filterWhere",
-    "test.array.filterWhereEq"   : "node --test --watch ./Array/filterWhereEq",
-    "test.array.filterDimension" : "node --test --watch ./Array/filterDimension",
-    "test.array.filterByPropIsMemo": "node --test --watch ./Array/filterByPropIsMemo",
-    "test.array.indexesBy"       : "node --test --watch ./Array/indexesBy",
-    "test.array.indexesByRight"  : "node --test --watch ./Array/indexesByRight",
-    "test.array.indexesMaxBy"    : "node --test --watch ./Array/indexesMaxBy",
-    "test.array.indexesMinBy"    : "node --test --watch ./Array/indexesMinBy",
-    "test.array.none"            : "node --test --watch ./Array/none",
-    "test.array.noneRight"       : "node --test --watch ./Array/noneRight",
-    "test.array.reduce"          : "node --test --watch ./Array/reduce",
-    "test.array.individual"      : "node --test --watch ./Array/individual",
-    "test.array.individualBy"    : "node --test --watch ./Array/individualBy",
-    "test.array.uniq"            : "node --test --watch ./Array/uniq",
-    "test.array.uniqBy"          : "node --test --watch ./Array/uniqBy",
-    "test.array.uniqRight"       : "node --test --watch ./Array/uniqRight",
-    "test.array.map"             : "node --test --watch ./Array/map",
-    "test.array.mapMemo"         : "node --test --watch ./Array/mapMemo",
-    "test.array.findByPropIsMemo": "node --test --watch ./Array/findByPropIsMemo",
-    "test.array.groupMap"        : "node --test --watch ./Array/groupMap",
-
-    "test.composition": "node --test --watch ./Composition",
-
-    "test.composition.bank": "node --test --watch ./Composition/bank",
-
-    "test.function.lift": "node --test --watch ./Function/lift",
-    "test.function.re": "node --test --watch ./Function/re",
-
-
-    "test.decorators": "node --test --watch ./Decorators",
-
-    "test.decorators.trap": "node --test --watch ./Decorators/trap",
-
-
-    "test.logic": "node --test --watch ./Logic",
-
-    "test.logic.oIs": "node --test --watch ./Logic/oIs",
-    "test.logic.onIs": "node --test --watch ./Logic/onIs",
-
-
-    "test.h.number.add": "node --test --watch ./h/Number/add",
-    "test.h.number.sub": "node --test --watch ./h/Number/sub",
-    "test.h.number.mul": "node --test --watch ./h/Number/mul",
-    "test.h.number.div": "node --test --watch ./h/Number/div",
-
-    "test.h.array": "node --test --watch ./h/Array",
-    "test.h.array.map": "node --test --watch ./h/Array/map",
-    "test.h.array.reduce": "node --test --watch ./h/Array/reduce"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.5.3"
+  "description": "",
+  "dependencies": {
+    "@babel/plugin-transform-block-scoping": "^7.24.4"
   }
 }
