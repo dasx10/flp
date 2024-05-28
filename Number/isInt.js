@@ -1,1 +1,1 @@
-var o=Math.floor;export default(x)=>o(x)==x;
+var o=Math.ceil;export default(x)=>x==o(x);

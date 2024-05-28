@@ -1,1 +1,1 @@
-export default(y)=>(x)=>x.catch(y);
+var id=(x)=>x;export default(y)=>(x)=>x.then(id,y);
