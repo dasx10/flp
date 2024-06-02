@@ -1,1 +1,2 @@
-export default (value) => Promise.all(Object.values(value)).then((values) => Object.fromEntries(Object.keys(value).map((key, index) => [key, values[index]])));
+import all from"./all.js";
+export default(x)=>all(Object.values(x))((o)=>Object.fromEntries(Object.keys(x).map((y,i)=>[y,o[i]])));
