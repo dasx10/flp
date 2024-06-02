@@ -5,9 +5,8 @@ export var nothing = Object.setPrototypeOf(n, {
   toString            : ()=>'',
   [Symbol.toPrimitive]: (x)=>x==='number'?NaN:"",
 });
-var memo=(y)=>{var o=new WeakMap();return(x)=>(x&&x===Object(x))&&(o.get(x)||(o.set(x,y(x)).get(y)))||y(x);};
-var o=new WeakSet(),create=(x)=>(o.add(x.then=x),x),is=(x)=>x&&x===Object(x)&&o.has(x);
-var maybe=memo((x)=>x==null?nothing:is(x)?x:
+var w=new WeakSet(),create=(x)=>(w.add(x.then=x),x),is=(x)=>x&&x===Object(x)&&w.has(x);
+var maybe=((x)=>x==null?nothing:is(x)?x:
 create((resolve, reject)=>resolve==null
   ?nothing
   :(maybe(x.then
