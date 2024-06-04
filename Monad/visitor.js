@@ -1,18 +1,15 @@
 import { left, right } from "./either.js";
-import viewer from "./viewer.js";
+import promise from "./promise.js";
 
 var then = (then) => (then.then = then);
-
-var visitor = (call) => {
-  var values = [];
-  var freeze = 0;
-  return then((resolve, reject) => {
-    (freeze || (call(
-      (resolved) => (values.forEach((call) => call(right(resolved))), values.length = 0, freeze = 0),
-      (rejected) => (values.forEach((call) => call(left(rejected))), values.length = 0, freeze = 0)
-    ), freeze = 1));
-    return viewer((fulfilled, rejected) => values.push((value) => value((value) => fulfilled(resolve(value)), (error) => rejected(reject(error)))));
-  });
+var visitor=(exec) => {
+  var o=1;
+  var i=promise(exec);
+  i(()=>(o=0),()=>(o=0));
+  return then((resolve, reject)=>(
+    (o||(o=1,exec((x)=>(i=right(x),o=0),(e)=>(i=left(e),o=0)))),
+    i(resolve, reject))
+  );
 };
 
 export default visitor;
