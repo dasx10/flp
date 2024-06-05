@@ -1,7 +1,21 @@
-import { Nothing } from "./nothing";
-import { Right } from "./right";
+import type { Right } from "./right";
 
-type Maybe<Value> = Value extends null | undefined | void
+type nil = null | undefined | void;
+
+export type Nothing = {
+  (value    ?: any)           : Nothing;
+  length     : 0;
+  then(call? : any, next: any): Nothing;
+  toString   : ()=>"";
+  valueOf    : ()=>void;
+  toJSON     : ()=>null,
+}
+
+export declare const nothing: Nothing;
+type JustConstructor = <Value>(value: Exclude<Value, nil | Nothing | PromiseLike<nil>>) => Maybe<Value>;
+export declare const just: JustConstructor;
+
+type Maybe<Value> = Value extends nil | Nothing
   ? Nothing
   : Value extends Right<infer Next>
     ? Maybe<Next>
@@ -10,7 +24,18 @@ type Maybe<Value> = Value extends null | undefined | void
       : Just<Value>
 ;
 
-type Just<Value> = <Return>(call: (value: Value) => Return) => Maybe<Return>;
+export type Just<Value> = {
+  <Return>(call?: (value: Value) => Return): Maybe<Return>;
+  then   : Just<Value>;
+  length : 1;
+  name   : '';
+};
 
-export default function maybe(value: null | undefined | void | PromiseLike<null | void | undefined>): Nothing;
-export default function maybe<Value>(value: Value): Maybe<Value>;
+declare const maybe: {
+  (value: nil | PromiseLike<nil> | Nothing): Nothing;
+  <Value>(value: Value): Maybe<Value>;
+  just    : JustConstructor;
+  nothing : Nothing;
+};
+
+export default maybe;

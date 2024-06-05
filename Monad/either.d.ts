@@ -1,3 +1,5 @@
+import type PromiseValue from "../Types/PromiseValue";
+import type { Just, Nothing } from "./maybe";
 import type { Right, ToRight } from "./right";
 
 type ToLeft<Value> = Value extends Right<infer Next>
@@ -23,8 +25,13 @@ export type Either<Reolved = unknown, Rejected = unknown> = Left<Reolved> | Righ
 type LeftConstructor = <Value>(value: Value) => ToLeft<Value>;
 
 declare const either: {
-  <Return, Value>(call: (value: Value) => Left<Return>)  : (functor: Left<Value>) => Left<Return>;
-  <Return, Value>(call: (value: Value) => Return)        : (functor: Left<Value>) => Right<Return>;
+  <Return, Value>(call: (value: Value) => Return) : {
+    (functor: Left<Value>): ToRight<Return>;
+    (functor: Nothing): ToRight<Return>;
+    <X extends Right<any> | Just<any>>(functor: X): X;
+    (functor: { then: (call?: any, next?: (value: Value) => any) => ToRight<Return>})
+    <X extends PromiseLike<any>>(functor: X): Either<PromiseValue<Return> | PromiseValue<X>, unknown>;
+  }
   right : RightConstructor;
   left  : LeftConstructor;
 }
