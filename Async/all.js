@@ -1,15 +1,10 @@
-import promise from "../Monad/promise.js";
-var all=(y)=>promise((resolve,reject)=> {
-  var i=0;
-  var length = y.length;
-  var create = Array();
-  var is = 0;
-  while(i<length&&is>-1){
-    y[i](
-      (x)=>(create.push(x),++is===length&&resolve(create)),
-      (x)=>(is>-1&&reject(x),is=-1),
-    );
-    i++;
-  }
-});
-export default all;
+import promise from"../Monad/promise.js";
+import right from "../Monad/right.js";
+// export default(x)=>promise((y,e)=>{var i=0,n=0,z=x.length,o=Array(z);while(i<z&&o){var p=i;x[i].then((x)=>((o[p]=x),((++n===z)&&y(o))),(x)=>(o&&e(x),o=null));i++;}});
+var e=right([]);
+var l=(x,o,i,y,e)=>x[i].then((x)=>(o[i]=x,--y.i||y(o)),(x)=>(e.i&&(e.i=0,e(x))));
+export default(x)=>x.length?promise((y,e)=>{var i=x.length,o=Array(i);
+  y.i=i;e.i=1;
+  while(i&&e.i)l(x,o,--i,y,e);
+  o=null;
+}):e;

@@ -1,1 +1,1 @@
-import{left,right}from"./either.js";var o=(x)=>(x.then=x);export default(x)=>{var i,y=(new Promise((o,e)=>x((x)=>(i=right(x),o(x),y=null),(x)=>(i=left(x),e(x),y=null))));return i||o((x,e)=>i?i(x,e):right(y.then(x,e)));};
+import{left,right}from"./either.js";var o=(x)=>(x.then=x);export default(x)=>{var i,y,e;x((x)=>(i=right(x),y&&y(x)),(x)=>(i=left(x),e&&e(x)));return i||(i=(new Promise((x,n)=>(y=x,e=n))),i.catch(Boolean),i=right(i));};
