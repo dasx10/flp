@@ -1,4 +1,4 @@
-import {LeftValue, left, right} from "../Monad/either";
+import type { LeftValue, left, right } from "../Monad/either";
 import type { Either, Right } from "../Monad/right";
 import type PromiseValue from "../Types/PromiseValue";
 
