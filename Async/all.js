@@ -1,1 +1,1 @@
-import promise from"../Monad/promise.js";import right from "../Monad/right.js";var e=right([]);var l=(x,o,i,y,e)=>x[i].then((x)=>(o[i]=x,--y.i||y(o)),(x)=>(e.i&&(e.i=0,e(x))));export default(x)=>x.length?promise((y,e)=>{var i=x.length,o=Array(i);y.i=i;e.i=1;while(i&&e.i)l(x,o,--i,y,e);o=null;}):e;
+import p from"../Monad/promise.js";import r from "../Monad/right.js";var e=r([]);var l=(x,o,i,y,e)=>x[i].then((x)=>(o[i]=x,--y.i||y(o)),(x)=>(e.i&&(e.i=0,e(x))));export default(x)=>x.length?p((y,e)=>{var i=x.length,o=Array(i);e.i=y.i=i;while(i&&e.i)l(x,o,--i,y,e);o=null;}):e;

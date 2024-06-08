@@ -1,1 +1,1 @@
-import o from"../.Internal/.union.js";export default(x)=>(y)=>(z)=>y.reduce(o(x),z);
+export default(y)=>(x)=>x.reduce((o,i)=>y(o)(i));

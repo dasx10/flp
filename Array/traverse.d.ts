@@ -1,3 +1,1 @@
-import type Conveyer from "../../Types/Conveyer";
-
-export default function traverse<Return, Property, Next>(call: Conveyer<Return | Property, Property, Next>): <Values extends readonly Next[]>(values: Values) => <Value extends Return | Property>(value: Value) => Return;
+export default function traverse<Return, Value>(call: (x:Value) => (y: Return) => Return): (values: readonly[Value, ...Value[]]) => Return;

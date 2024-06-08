@@ -1,1 +1,1 @@
-export default(x)=>x.reduce((o,y)=>o+y);
+export default(x)=>x.reduce((o,y)=>o+y,0);
