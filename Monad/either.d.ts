@@ -14,20 +14,28 @@ type ToLeft<Value> = Value extends Right<infer Next>
 type Resolve<Value> = Value extends Either<any, any> ? Value : ToRight<Value>;
 
 export type Left <Value> = {
-  (_?: any) : Left<Value>;
-  <Next>(_ : any, call: (value: Value) => Next): Resolve<Next>;
+  (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
+  <Reject>(onresolve : (() => any) | null | undefined, call: (value: Value) => Reject): Resolve<Reject>;
   constructor : Left<Value>;
   length      : 2;
   name        : '';
-  then        : ((x?: (...x: readonly never[]) => any) => never) | Left<Value>;
-}
-
-export type Either<Resolved = unknown, Rejected = unknown> = (Right<Resolved> | Left<Rejected>) & {
-  then : {
-    <Resolve extends (value: Resolved) => any>(resolve: Resolve): Right<ReturnType<Resolve>>;
-    <ResolvedValue, RejectedValue>(resolve: (value: Resolved) => ResolvedValue, next?: (value: Rejected) => RejectedValue): Right<Resolved>;
-  } & Right<RightValue<Resolved>>;
+  then        : {
+    (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
+    <Reject>(onresolve: (() => any) | null | undefined, onreject: (value: Value) => Reject): Resolve<LeftValue<Value>>
+  }
 };
+
+export type Either<Resolved = unknown, Rejected = unknown> = {
+  <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
+  <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
+  length: 1 | 2;
+  name: '';
+  constructor: Either<Resolved, Rejected> | Right<Resolved> | Left<Rejected>;
+  then: {
+    <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
+    <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
+  } | Either<Resolved, Rejected>;
+} & (Right<Resolved> | Left<Rejected>);
 
 export type LeftValue<Value> = Value extends Left<infer Next>
   ? LeftValue<Next>
