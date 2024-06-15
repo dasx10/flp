@@ -14,8 +14,8 @@ type ToLeft<Value> = Value extends Right<infer Next>
 type Resolve<Value> = Value extends Either<any, any> ? Value : ToRight<Value>;
 
 export type Left <Value> = {
-  (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
-  <Reject>(onresolve : (() => any) | null | undefined, call: (value: Value) => Reject): Resolve<Reject>;
+  <Resolver>(onresolve?: Resolver | any): Left<LeftValue<Value>>
+  <Resolver, Reject>(onresolve: Resolver | any, call?: (value: Value) => Reject): Resolve<Reject>;
   constructor : Left<Value>;
   length      : 2;
   name        : '';
@@ -27,15 +27,14 @@ export type Left <Value> = {
 };
 
 export type Either<Resolved = unknown, Rejected = unknown> = {
-  <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
   <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
+  <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
   length: 1 | 2;
   name: '';
   constructor: Either<Resolved, Rejected> & (Right<Resolved> | Left<Rejected>);
   then: {
     <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
     <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
-    (): Either<Resolved, Rejected>;
   } | Either<Resolved, Rejected>;
 } & (Right<Resolved> | Left<Rejected>);
 
