@@ -20,8 +20,9 @@ export type Left <Value> = {
   length      : 2;
   name        : '';
   then        : {
-    (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
     <Reject>(onresolve: (() => any) | null | undefined, onreject: (value: Value) => Reject): Resolve<LeftValue<Value>>
+    (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
+    (): Left<LeftValue<Value>>
   }
 };
 
@@ -30,10 +31,11 @@ export type Either<Resolved = unknown, Rejected = unknown> = {
   <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
   length: 1 | 2;
   name: '';
-  constructor: Either<Resolved, Rejected> | Right<Resolved> | Left<Rejected>;
+  constructor: Either<Resolved, Rejected> & (Right<Resolved> | Left<Rejected>);
   then: {
     <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
     <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
+    (): Either<Resolved, Rejected>;
   } | Either<Resolved, Rejected>;
 } & (Right<Resolved> | Left<Rejected>);
 
