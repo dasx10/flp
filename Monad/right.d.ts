@@ -9,12 +9,18 @@ export type ToRight<Value> = Value extends Either<any, any>
 ;
 
 export type Right<Value> = {
-  <Next>(call : (value: RightValue<Value>, next?: any) => Next, _?: any): ToRight<Next>;
+  <Next>(call : (value: RightValue<Value>) => Next, _?:any): ToRight<Next>;
   constructor : Right<RightValue<Value>>;
   length      : 1;
   name        : '';
-  then        : Right<RightValue<Value>>;
+  // then        : Right<RightValue<Value>>;
+  then : {
+    <Resolve extends (value: Value) => any>(resolve: Resolve): Right<ReturnType<Resolve>>;
+    <Resolved>(resolve: (value: Value) => Resolved, next?: any): Right<Resolved>;
+  } & Right<RightValue<Value>>;
 };
+
+var a: PromiseLike<any>
 
 export type RightConstructor = <Value>(value: Value) => ToRight<Value>;
 

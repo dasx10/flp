@@ -11,16 +11,23 @@ type ToLeft<Value> = Value extends Right<infer Next>
       : Left<Value>
 ;
 
+type Resolve<Value> = Value extends Either<any, any> ? Value : ToRight<Value>;
+
 export type Left <Value> = {
-  (_?: any)   : Left<Value>;
-  <Next>(_ : any, call: (value: Value) => Next): Next extends Either<any, any> ? Next : ToRight<Next>;
+  (_?: any) : Left<Value>;
+  <Next>(_ : any, call: (value: Value) => Next): Resolve<Next>;
   constructor : Left<Value>;
   length      : 2;
   name        : '';
-  then        : Left<Value>;
+  then        : ((x?: (...x: readonly never[]) => any) => never) | Left<Value>;
 }
 
-export type Either<Reolved = unknown, Rejected = unknown> = Right<Reolved> | Left<Rejected>;
+export type Either<Resolved = unknown, Rejected = unknown> = (Right<Resolved> | Left<Rejected>) & {
+  then : {
+    <Resolve extends (value: Resolved) => any>(resolve: Resolve): Right<ReturnType<Resolve>>;
+    <ResolvedValue, RejectedValue>(resolve: (value: Resolved) => ResolvedValue, next?: (value: Rejected) => RejectedValue): Right<Resolved>;
+  } & Right<RightValue<Resolved>>;
+};
 
 export type LeftValue<Value> = Value extends Left<infer Next>
   ? LeftValue<Next>

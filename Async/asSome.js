@@ -1,0 +1,1 @@
+import f from"../Monad/future.js";export default(x)=>f((y,e)=>{var i=0,n=0,o=x.length;while(i<o)(x[i].then((x)=>(((++n===o)||x)&&(o=0,y(Boolean(x)))),(value)=>(o&&e(value),n=o=0)),i++);o&&n===o&&y(false);});

@@ -1,14 +1,12 @@
-import all from "./Async/all.js";
+import asSome from "./Async/asSome.js";
+import promise from "./Monad/promise.js";
 import right from "./Monad/right.js";
-all([
-  right(1),
-  right(2),
-  right(3),
-  right(4),
-  right(5),
-  right(6),
-  right(7),
-  right(8),
-  right(9),
-  right(10),
-])(console.log)
+
+var delay = (ms) => (x) => promise((resolve) => setTimeout(resolve, ms, x));
+
+var now = Date.now();
+
+var a = asSome([
+  right(0),
+]);
+a((x) => console.log(Date.now() - now, x), console.error)
