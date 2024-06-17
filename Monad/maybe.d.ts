@@ -1,14 +1,15 @@
 import type { Right } from "./right";
 
 type nil = null | undefined | void;
+type none = nil | PromiseLike<nil> | Nothing;
 
 export type Nothing = {
-  (value    ?: any)           : Nothing;
+  (...values?: any) : Nothing;
   length     : 0;
-  then(call? : () => any, next: (x: void) => any): Nothing;
-  toString   : ()=>"";
-  valueOf    : ()=>void;
-  toJSON     : ()=>null,
+  then(call? : ((x?: nil) => any) | (() => any), next?: (x?: nil) => any): Nothing;
+  toString   : () => "";
+  valueOf    : () => void;
+  toJSON     : () => null,
 }
 
 export declare const nothing: Nothing;
@@ -25,6 +26,7 @@ type Maybe<Value> = Value extends nil | Nothing
 ;
 
 export type Just<Value> = {
+  <Return>(call?: (value: Value) => Exclude<Return, none>): Just<Return>;
   <Return>(call?: (value: Value) => Return): Maybe<Return>;
   then   : Just<Value>;
   length : 1;
@@ -32,7 +34,8 @@ export type Just<Value> = {
 };
 
 declare const maybe: {
-  (value: nil | PromiseLike<nil> | Nothing): Nothing;
+  (value: none): Nothing;
+  <Value>(value: Exclude<Value, none>): Just<Value>;
   <Value>(value: Value): Maybe<Value>;
   just    : JustConstructor;
   nothing : Nothing;
