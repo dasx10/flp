@@ -5,7 +5,7 @@ type nil = null | undefined | void;
 export type Nothing = {
   (value    ?: any)           : Nothing;
   length     : 0;
-  then(call? : any, next: any): Nothing;
+  then(call? : () => any, next: (x: void) => any): Nothing;
   toString   : ()=>"";
   valueOf    : ()=>void;
   toJSON     : ()=>null,
