@@ -1,20 +1,14 @@
 import add from "./Math/add.js";
 import maybe, {nothing} from "./Monad/maybe.js";
 import _ from "./index.js";
+import collector from "./Async/collector.js";
+import all from "./Async/all.js";
 
-var log = x => (console.log(x), x);
-var _log = _(log);
-var one = _(1);
+// nothing.then(x => console.log(x))
 
-var _pipe = _.lazy("Compose/pipe");
-
-var c = _pipe(_([
-  (x => x + 1),
-  (x => x + 1),
-]))(_(2))
-
-_log(c);
-_log(maybe(1))
-
-// nothing.then(x => console.log(x));
-
+const log = (x) => (console.dir(x), x);
+const _log = _(log);
+(async () => {
+  const a = await collector([nothing, maybe(2)]);
+  console.dir({ a }, { depth: 10 })
+})()
