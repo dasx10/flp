@@ -8,10 +8,10 @@ var one = _(1);
 
 var _pipe = _.lazy("Compose/pipe");
 
-var c = _pipe(([
+var c = _pipe(_([
   (x => x + 1),
   (x => x + 1),
-]))((2))
+]))(_(2))
 
 _log(c);
 _log(maybe(1))
