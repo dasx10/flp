@@ -6,7 +6,14 @@ var log = x => (console.log(x), x);
 var _log = _(log);
 var one = _(1);
 
-_log(one);
+var _pipe = _.lazy("Compose/pipe");
+
+var c = _pipe(([
+  (x => x + 1),
+  (x => x + 1),
+]))((2))
+
+_log(c);
 _log(maybe(1))
 
 // nothing.then(x => console.log(x));
