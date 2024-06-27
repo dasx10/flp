@@ -1,0 +1,1 @@
+import p from"../Monad/promise.js";export default(y)=>(x)=>p((o,e)=>{var k,n=0,i=0;for(k in y){(y[k])(x[k])((x)=>n||(x?(--i===0&&(o(true),n=1)):(o(false), n = 1)),(x)=>(n=1,e(x)));if(n)return;i++;}i===0&&o(true);});
