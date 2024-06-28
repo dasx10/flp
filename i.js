@@ -6,50 +6,24 @@ import anyTrust from "./Async/anyTrust.js";
 import collector from "./Async/collector.js";
 import all from "./Async/all.js";
 import promise from "./Monad/promise.js";
-
-// nothing.then(x => console.log(x))
+import whereNot from "./Record/whereNot.js";
+import whereOrAsync from "./Async/whereOrAsync.js"
 
 const log = (x) => (console.dir(x), x);
 const _log = _(log);
-// const _pipe = _.lazy("Compose/pipe");
 
-// const _add = _.lazy("Math/add");
+var lt=(y)=>(x)=>x<y;
+var gt=(y)=>(x)=>x>y;
 
-const _gt = _.lazy("Logic/gt");
-const _gt3 = _gt(_(3));
-
-const test = whereAsync(({
-  x : _gt3,
-  y : _(Promise.reject("error")),
-  z : _gt3,
-  o : _gt3,
-}));
-
-// const _4 = _(4);
-
-var delay = ms => x => promise(res => setTimeout(() => res(x), ms, x));
-var delay1s = delay(1000);
-var _gt2 = _(x => x < 2);
-
-var s4 = delay1s(4);
-
-test({
-  x: 5,
-  y: 5,
-  z: delay1s(8),
-  o: 30,
-})(console.log, console.error);
-
-
-
-// (async () => {
-
-  //   const a = await Promise.any([
-    //     // Promise.resolve(4),
-    //     nothing,
-    //     maybe(2),
-    //     _(3),
-    //   ]);
-
-  //   console.dir({ a }, { depth: 10 })
-  // })()
+_log(
+  whereOrAsync({
+    x: _(lt(10)),
+    y: _(lt(10)),
+    z: _(Promise.reject(3)),
+  })
+  ({
+    x: _(1),
+    y: _(22),
+    z: 0,
+  })
+)
