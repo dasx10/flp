@@ -1,1 +1,1 @@
-var i=(x)=>{var o=(y,e)=>i(y&&y.constructor===Function?x.then(y,e):x.then((x)=>x(y),e));return o},o=(x)=>(x.then=x),right=(x)=>(x&&x.then)?(x.then===x)?x:i(x):o((y)=>right(y&&y.constructor===Function?y(x):x(y)));export default right;
+var o=(x)=>(x.then=x),i=(x)=>o((y,e)=>i(y&&y.constructor===Function?x.then(y,e):x.then((x)=>x(y),e))),right=(x)=>(x&&x.then)?(x.then===x)?x:i(x):o((y)=>right(y&&y.constructor===Function?y(x):x(y)));export default right;
