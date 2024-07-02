@@ -8,6 +8,7 @@ import all from "./Async/all.js";
 import promise from "./Monad/promise.js";
 import whereNot from "./Record/whereNot.js";
 import whereOrAsync from "./Async/whereOrAsync.js"
+import trap from "./Decorator/trap.js";
 
 const log = (x) => (console.dir(x), x);
 const _log = _(log);
@@ -15,15 +16,12 @@ const _log = _(log);
 var lt=(y)=>(x)=>x<y;
 var gt=(y)=>(x)=>x>y;
 
-_log(
-  whereOrAsync({
-    x: _(lt(10)),
-    y: _(lt(10)),
-    z: _(Promise.reject(3)),
-  })
-  ({
-    x: _(1),
-    y: _(22),
-    z: 0,
-  })
-)
+var delay = (ms) => (x) => promise((resolve) => setTimeout(resolve, ms, x));
+var inc = delay(1000)(x => x + 1)
+
+var trapDelay = ms => trap(delay(ms));
+var d10 = trapDelay(10);
+var a = d10(12);
+
+trap(x => x + 10)(10)(console.log)
+a.then(console.log)

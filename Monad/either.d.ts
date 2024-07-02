@@ -1,6 +1,7 @@
 import type PromiseValue from "../Types/PromiseValue";
 import type { Just, Nothing } from "./maybe";
 import type { Right, RightConstructor, ToRight } from "./right";
+export type { Right } from "./right";
 
 type ToLeft<Value> = Value extends Right<infer Next>
   ? ToLeft<Next>
@@ -36,6 +37,13 @@ export type Either<Resolved = unknown, Rejected = unknown> = {
     <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
   } | Either<Resolved, Rejected>;
 } & (Right<Resolved> | Left<Rejected>);
+
+export type LeftInfer<Value> = Value extends Either<any, infer Left>
+  ? LeftValue<Left>
+  : Value extends Right<any>
+    ? never
+    : unknown
+;
 
 export type LeftValue<Value> = Value extends Left<infer Next>
   ? LeftValue<Next>
