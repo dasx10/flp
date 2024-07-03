@@ -14,6 +14,7 @@ const log = (x) => (console.dir(x), x);
 const _log = _(log);
 
 const _add = _.lazy("Math/add");
+const _pipe = _.lazy("Compose/pipe");
 const one = _(1);
 
 /**
@@ -22,4 +23,9 @@ const one = _(1);
 const inc = x => x + 1
 const _inc = _add(one);
 
-_inc(_(1))(log)
+_log(
+  _pipe([
+    _inc,
+    _inc,
+  ])(one)
+);
