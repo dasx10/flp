@@ -1,1 +1,1 @@
-export default(x)=>new Function("x","return"+"["+x.reduce((y,z)=>y+"x"+"["+'"'+z+'"'+"]"+",","")+"]");
+export default(y)=>(x)=>y.reduce((o,k)=>((k in x)&&(o.push(x[k])),o),[])

@@ -8,20 +8,18 @@ import all from "./Async/all.js";
 import promise from "./Monad/promise.js";
 import whereNot from "./Record/whereNot.js";
 import whereOrAsync from "./Async/whereOrAsync.js"
-import trap from "./Decorator/trap.js";
+import trap from "./Async/trap.js";
 
 const log = (x) => (console.dir(x), x);
 const _log = _(log);
 
-var lt=(y)=>(x)=>x<y;
-var gt=(y)=>(x)=>x>y;
+const _add = _.lazy("Math/add");
+const one = _(1);
 
-var delay = (ms) => (x) => promise((resolve) => setTimeout(resolve, ms, x));
-var inc = delay(1000)(x => x + 1)
+/**
+  * @param {number} x
+  */
+const inc = x => x + 1
+const _inc = _add(one);
 
-var trapDelay = ms => trap(delay(ms));
-var d10 = trapDelay(10);
-var a = d10(12);
-
-trap(x => x + 10)(10)(console.log)
-a.then(console.log)
+_inc(_(1))(log)
