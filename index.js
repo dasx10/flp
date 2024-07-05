@@ -9,7 +9,7 @@ const lazy = (key) => values.get(key) || values.set(key, future((resolve) => imp
 var _ = new Proxy(right, {
   get(target, key) {
     switch (key) {
-      case "load": return load;
+      case "import": return load;
       case "lazy": return lazy;
       default: return target[key];
     }
