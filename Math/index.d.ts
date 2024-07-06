@@ -15,6 +15,8 @@ interface Math {
 
   inc     : typeof import("./inc").default,
   dec     : typeof import("./dec").default,
+  half    : typeof import("./half").default,
+  double  : typeof import("./double").default,
 
   inv     : typeof import("./inv").default,
   neg     : typeof import("./neg").default,

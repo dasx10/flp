@@ -10,27 +10,22 @@ export type ToRight<Value> = Value extends Either<any, any>
 
 
 export type _Right<Value> = {
-  <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: any): ToRight<Resolve>;
-  (): ToRight<RightValue<Value>>
+  <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: any): ToRight<Resolve>
+  <Resolve>(onresolve: Right<(value: RightValue<Value>) => Resolve>, onreject?: any): ToRight<Resolve>
+  (): _Right<Value>;
   constructor : Right<RightValue<Value>>;
   length      : 1;
   name        : '';
   then : {
     <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: () => any): ToRight<Resolve>;
-  } & Right<RightValue<Value>>;
+  }
 };
 
 export type Right<Value> = Value extends (value: infer Parameter) => infer Result
   ? {
-    (onresolve: Parameter | Right<Parameter>, onreject?: any): ToRight<Result>
-    (): ToRight<RightValue<Value>>
-    constructor : Right<RightValue<Value>>;
-    length      : 1;
-    name        : '';
-    then : {
-      <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: () => any): ToRight<Resolve>;
-    } & Right<RightValue<Value>>;
-  }
+    <Return extends Result, Value extends Parameter>(onresolve: Value | Right<Value>, onreject?: any): ToRight<Return>;
+    (onresolve: Parameter | Right<Parameter>, onreject?: any): ToRight<Result>;
+  } & _Right<Value>
   : _Right<Value>
 ;
 

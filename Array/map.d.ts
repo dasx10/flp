@@ -1,3 +1,6 @@
 import type ArrayFillAll from "../Types/ArrayFillAll";
-import type Lambda from "../Types/Lambda";
-export default function map<Return, Value>(call: Lambda<Return, Value>): <Values extends readonly Value[]>(values: Values) => ArrayFillAll<Values, Return>;
+export default function map<Return, Value>(call: (value: Value) => Return): {
+  <Values extends readonly Value[]>(values: Values): ArrayFillAll<Values, Return>;
+  (values: readonly []): readonly [];
+  (values: readonly Value[]): readonly Return[];
+}

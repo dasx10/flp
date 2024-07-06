@@ -5,7 +5,7 @@ import type Math from "./Math"
 interface Namespaces {
   Math    : import("./Math").default;
   Compose : import("./Compose").default;
-  // Array   : import("./Array").default;
+  Array   : import("./Array").default;
   // Async   : import("./Async").default;
   // Record  : import("./Record").default;
 }
@@ -19,7 +19,7 @@ type Path<
 
 type Load = <
   Namespace extends keyof Namespaces,
-  Module,
+  Module    extends string
 >(path: Path<Namespace> & `${Namespace}/${Module}`) => Right<Namespaces[Namespace][Module]>;
 
 declare const _: {

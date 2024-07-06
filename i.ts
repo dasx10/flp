@@ -1,13 +1,25 @@
-import _ from "./index";
+import _ from "./index.js";
 
-const _add = _.import("Math/add");
+import inc from "./Math/inc.js";
+import map from "./Array/map.js";
+import {Right} from "./Monad/either.js";
 
-const log  = <X>(x: X): X => (console.log(x), x);
-const _log = _(log);
+
 const one = _(1);
-const two = _(2);
 
-const _inc = _add(one);
+const log  = (x) => (console.log(x), x);
+const _log = _(log);
 
+const _map = _.import("Array/map");
 
-const b = _log(_inc(one));
+const arr = [1, 2];
+
+const incs = _map(_.import("Math/inc"));
+
+const a =  incs<number[], number[]>(arr)
+;
+
+a(x => x)
+
+const b = map(inc)([1, 2])
+
