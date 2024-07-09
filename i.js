@@ -1,7 +1,6 @@
 import _ from "./index.js";
 
-import inc from "./Math/inc.js";
-import map from "./Array/map.js";
+// import inc from "./Math/inc.js";
 
 
 const one = _(1);
@@ -9,18 +8,20 @@ const one = _(1);
 const log  = (x) => (console.log(x), x);
 const _log = _(log);
 
-const _map = _.import("Array/map");
+// const _map = _.import("Array/map");
+import map from "./Async/map.js";
+var _map = _(map);
 
-const arr = [1, 2];
+const arr = [11, 2];
 
-const a =   _map(
-    _.import("Math/add")(1)
-  )(
-    arr
-  )
-;
+var _inc   = _.import("Math/inc");
+var _prop  = _.import("Record/prop");
+var _userAge = _prop(_("age"));
+var _userAges  = _map(_userAge);
 
-a(x => x)
+var users = [{ name: "John", age: 22 }, {name: "Kate", age: 21 }];
+var _users = _(users);
 
-const b = map(inc)([1, 2])
+_log(_userAges(_users));
+
 
