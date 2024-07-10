@@ -1,4 +1,4 @@
-interface Math {
+interface MathNamespace {
   add     : typeof import("./add").default,
   sub     : typeof import("./sub").default,
   sub_    : typeof import("./sub_").default,
@@ -23,6 +23,6 @@ interface Math {
   dec     : typeof import("./dec").default,
   inc     : typeof import("./inc").default,
   avg     : typeof import("./avg").default,
-}
+};
 
-export default Math;
+export default MathNamespace;

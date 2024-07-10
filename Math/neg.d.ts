@@ -16,4 +16,4 @@
   * ```
   */
 export default function neg<X extends number>(x: X): number;
-export default function neg<Y extends number, X extends number>(x: Exclude<X, Y>): Exclude<Y, X>;
+export default function neg(x: number): number;

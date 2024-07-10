@@ -15,4 +15,12 @@ import type Lambda   from "../Types/Lambda";
   * add(0)(-0) // 0
   * ```
   */
-export default function add(y: number): (x: number) => number
+export default function add<Y extends number>(y: Y): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};
+
+export default function add(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

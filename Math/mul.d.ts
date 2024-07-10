@@ -11,10 +11,12 @@
   * mul(1)(1) // 1
   * ```
   */
-export default function mul(y: 0): (x: number) => 0;
-export default function mul(y: 1): <X extends number>(x: number) => X;
 export default function mul<Y extends number>(y: Y): {
-  (x: 0): 0;
-  (x: 1): Y;
-  (x: number): number;
-}
+  <X extends number>(x: X): number;
+  (x: number): number
+};
+
+export default function mul(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

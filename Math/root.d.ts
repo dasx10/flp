@@ -1,4 +1,3 @@
-import type Lambda from "../Types/Lambda";
 /**
   * Get the nth root of a number
   * @function
@@ -12,4 +11,12 @@ import type Lambda from "../Types/Lambda";
   * root(3)(27) // 3
   * root(3)(-27) // -3
   */
-export default function root <Y extends number>(y: Y): Lambda<number, number>;
+export default function root <Y extends number>(y: Y): {
+  <X extends number>(x: X): number;
+  (x: number): number;
+};
+
+export default function root(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number;
+};

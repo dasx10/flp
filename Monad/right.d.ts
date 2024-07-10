@@ -9,7 +9,7 @@ export type ToRight<Value> = Value extends Either<any, any>
 ;
 
 
-export type _Right<Value> = {
+type _Right<Value> = {
   <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: any): ToRight<Resolve>
   <Resolve>(onresolve: Right<(value: RightValue<Value>) => Resolve>, onreject?: any): ToRight<Resolve>
   (): _Right<Value>;
@@ -21,12 +21,17 @@ export type _Right<Value> = {
   }
 };
 
-export type Right<Value> = Value extends (value: infer Parameter) => infer Result
-  ? {
+type _RightExec<Parameter, Result> = {
     <Return extends Result, Value extends Parameter>(onresolve: Value | Right<Value>, onreject?: any): ToRight<Return>;
     (onresolve: Parameter | Right<Parameter>, onreject?: any): ToRight<Result>;
-  } & _Right<Value>
-  : _Right<Value>
+}
+;
+
+export type Right<Value> = Value extends _Right<any>
+  ? Value
+  : Value extends (value: infer Parameter) => infer Result
+    ? _RightExec<Parameter, Result> & _Right<Value>
+    : _Right<Value>
 ;
 
 export type RightConstructor = <Value>(value: Value) => ToRight<Value>;

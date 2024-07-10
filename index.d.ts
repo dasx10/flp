@@ -6,6 +6,7 @@ interface Namespaces {
   Math    : import("./Math").default;
   Compose : import("./Compose").default;
   Array   : import("./Array").default;
+  String  : import("./String").default;
   // Async   : import("./Async").default;
   // Record  : import("./Record").default;
 }

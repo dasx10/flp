@@ -1,1 +1,1 @@
-export default(i)=>(x)=>x.length>i?x[i]:undefined;
+export default(i)=>(x)=>x.length>i?x[i]:void 0;

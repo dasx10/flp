@@ -13,4 +13,12 @@
   * avg(1)(1) // 1
   * ```
   */
-export default function avg(y: number): (x: number) => number;
+export default function avg<Y extends number>(y: Y): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};
+
+export default function avg(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

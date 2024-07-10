@@ -10,4 +10,12 @@
   * min(1)(1) // 1
   * ```
   */
-export default function min<Y extends number>(y: Y): <X extends number>(x: X) => X | Y;
+export default function min<Y extends number>(y: Y): {
+  <X extends number>(x: X): X | Y;
+  (x: number): number
+};
+
+export default function min(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

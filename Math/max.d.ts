@@ -10,4 +10,12 @@
   * max(1)(1) // 1
   * ```
   */
-export default function max<Y extends number>(y: Y): <X extends number>(x: X) => X | Y;
+export default function max<Y extends number>(y: Y): {
+  <X extends number>(x: X): X | Y;
+  (x: number): number
+};
+
+export default function max(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

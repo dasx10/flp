@@ -35,7 +35,7 @@ export type Either<Resolved = unknown, Rejected = unknown> = {
   then: {
     <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
     <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
-  } | Either<Resolved, Rejected>;
+  } | Either<Resolved, Rejected>
 } & (Right<Resolved> | Left<Rejected>);
 
 export type LeftInfer<Value> = Value extends Either<any, infer Left>

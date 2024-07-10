@@ -1,4 +1,4 @@
-import type Lambda from "../Types/Lambda";
+import type Lambda   from "../Types/Lambda";
 import type Identity from "../Types/Identity";
 /**
   * Subtract two numbers
@@ -14,5 +14,12 @@ import type Identity from "../Types/Identity";
   * sub(0)(-0) // 0
   * ```
   */
-export default function sub(y: 0): Identity<number>;
-export default function sub<Y extends number>(y: Y): Lambda<number, number>;
+export default function sub<Y extends number>(y: Y): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};
+
+export default function sub(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

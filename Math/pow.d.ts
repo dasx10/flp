@@ -1,5 +1,3 @@
-import type Lambda from "../Types/Lambda";
-
 /**
   * Get the nth power of a number
   * @param {number} y
@@ -12,4 +10,12 @@ import type Lambda from "../Types/Lambda";
   * pow(2)(3) // 9
   * ```
   */
-export default function pow<Y extends number>(y: Y): Lambda<number, number>
+export default function pow<Y extends number>(y: Y): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};
+
+export default function pow(y: number): {
+  <X extends number>(x: X): number;
+  (x: number): number
+};

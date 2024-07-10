@@ -1,27 +1,18 @@
 import _ from "./index.js";
 
-// import inc from "./Math/inc.js";
-
-
-const one = _(1);
-
-const log  = (x) => (console.log(x), x);
+const log = (x) => (console.log(x), x);
 const _log = _(log);
 
-// const _map = _.import("Array/map");
-import map from "./Async/map.js";
-var _map = _(map);
+const _ifElse = _.lazy("Logic/ifElse");
+const _gt     = _.lazy("Logic/gt");
+const _dec    = _.lazy("Math/dec");
+const _inc    = _.lazy("Math/inc");
 
-const arr = [11, 2];
+const _gt0       = _gt(0);
+const _ifElseGt0 = _ifElse(_gt0);
 
-var _inc   = _.import("Math/inc");
-var _prop  = _.import("Record/prop");
-var _userAge = _prop(_("age"));
-var _userAges  = _map(_userAge);
 
-var users = [{ name: "John", age: 22 }, {name: "Kate", age: 21 }];
-var _users = _(users);
+const _balance = _ifElseGt0(_dec)(_inc);
 
-_log(_userAges(_users));
-
+_log(_balance(10))
 
