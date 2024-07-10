@@ -10,7 +10,7 @@ const one = _(1);
 const log  = (x) => (console.log(x), x);
 const _log = _(log);
 
-const _map = _.import("Array/map");
+const _map = _.import("Record/where");
 
 const arr = [1, 2];
 

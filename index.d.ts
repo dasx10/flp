@@ -1,15 +1,16 @@
 import type { Right, ToRight } from "./Monad/right"
 
-import type Math from "./Math"
+import type MathNamespace from "./Math"
 
 interface Namespaces {
   Math    : import("./Math").default;
   Compose : import("./Compose").default;
   Array   : import("./Array").default;
   String  : import("./String").default;
-  // Async   : import("./Async").default;
-  // Record  : import("./Record").default;
-}
+  Date    : import("./Date").default;
+  Async   : import("./Async").default;
+  Record  : import("./Record").default;
+};
 
 type Path<
   Namespace extends keyof Namespaces,
