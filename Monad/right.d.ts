@@ -1,37 +1,45 @@
-import PromiseValue from "../Types/PromiseValue";
-import { Either, Left } from "./either";
+import type PromiseValue from "../Types/PromiseValue";
+import type { Either, Left } from "./either";
 
 export type ToRight<Value> = Value extends Either<any, any>
   ? Value
-  : Value extends PromiseLike<infer Next>
-    ? Either<Next, unknown>
-    : Right<Value>
+  : Value extends Left<any>
+    ? Value
+    : Value extends Right<any>
+      ? Value
+      : Value extends PromiseLike<infer Next>
+        ? Either<Next, unknown>
+        : Right<Value>
 ;
 
-
 type _Right<Value> = {
-  <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: any): ToRight<Resolve>
-  <Resolve>(onresolve: Right<(value: RightValue<Value>) => Resolve>, onreject?: any): ToRight<Resolve>
+  <Resolve>(onresolve: _RightExec<Value, Resolve>,               onreject?: any) : Right<Resolve>;
+  <Resolve>(onresolve: (value: Right<Value> | Value) => Resolve, onreject?: any) : Right<Resolve>;
+  <Resolve>(onresolve: (value: PromiseLike<Value>)   => Resolve, onreject?: any) : Either<Resolve, unknown>;
+
   (): _Right<Value>;
-  constructor : Right<RightValue<Value>>;
+
+  constructor : _Right<Value>;
   length      : 1;
   name        : '';
-  then : {
-    <Resolve>(onresolve: (value: RightValue<Value>) => Resolve, onreject?: () => any): ToRight<Resolve>;
-  }
+  then        : <Resolve>(onresolve: (value: Value) => Resolve, onreject?: () => any) => Right<Resolve>;
 };
 
-type _RightExec<Parameter, Result> = {
-    <Return extends Result, Value extends Parameter>(onresolve: Value | Right<Value>, onreject?: any): ToRight<Return>;
-    (onresolve: Parameter | Right<Parameter>, onreject?: any): ToRight<Result>;
+export type _RightExec<Parameter, Result> = {
+  <Return extends Result, Value extends Parameter>(onresolve: Value | Right<Value>, onreject?: any): Right<Return>;
+  <Return extends Result, Value extends Parameter>(onresolve: PromiseLike<Value>, onreject?: any): Either<Return, unknown>;
+  (onresolve: Parameter | Right<Parameter>, onreject?: any): Right<Result>;
+  (onresolve: PromiseLike<Parameter>, onreject?: any): Either<Result, unknown>;
 }
 ;
 
 export type Right<Value> = Value extends _Right<any>
   ? Value
-  : Value extends (value: infer Parameter) => infer Result
-    ? _RightExec<Parameter, Result> & _Right<Value>
-    : _Right<Value>
+  : Value extends PromiseLike<infer Next>
+    ? Either<Next, unknown>
+    : Value extends (value: infer Parameter) => infer Result
+      ? _RightExec<Parameter, Result> & _Right<Value>
+      : _Right<Value>
 ;
 
 export type RightConstructor = <Value>(value: Value) => ToRight<Value>;

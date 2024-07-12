@@ -1,15 +1,16 @@
-import type { Right, ToRight } from "./Monad/right"
+import type { _RightExec, Right, ToRight } from "./Monad/right"
 
 import type MathNamespace from "./Math"
 
 interface Namespaces {
-  Math    : import("./Math").default;
-  Compose : import("./Compose").default;
-  Array   : import("./Array").default;
-  String  : import("./String").default;
-  Date    : import("./Date").default;
-  Async   : import("./Async").default;
-  Record  : import("./Record").default;
+  Math     : import("./Math").default;
+  Compose  : import("./Compose").default;
+  Array    : import("./Array").default;
+  String   : import("./String").default;
+  Date     : import("./Date").default;
+  Async    : import("./Async").default;
+  Record   : import("./Record").default;
+  Iterable : import("./Iterable").default;
 };
 
 type Path<

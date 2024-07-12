@@ -26,16 +26,16 @@ export type Left <Value> = {
   }
 };
 
-export type Either<Resolved = unknown, Rejected = unknown> = {
-  <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
+export type Either<
+  Resolved = unknown,
+  Rejected = unknown,
+> = {
+  <Resolve>(onresolve: (value: Resolved | Right<Resolved> | PromiseLike<Resolved>) => Resolve): Either<Resolve, Rejected>;
   <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
-  length: 1 | 2;
-  name: '';
-  constructor: Either<Resolved, Rejected> & (Right<Resolved> | Left<Rejected>);
-  then: {
-    <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
-    <Resolve>(onresolve: (value: Resolved) => Resolve): Either<Resolve, Rejected>;
-  } | Either<Resolved, Rejected>
+  length      : 1 | 2;
+  name        : '';
+  constructor : Either<Resolved, Rejected> & (Right<Resolved> | Left<Rejected>);
+  then        : <Resolve, Reject = any>(onresolve: (value: Resolved) => Resolve, onreject?: (value: Rejected) => Reject): Either<Resolve, Reject>;
 } & (Right<Resolved> | Left<Rejected>);
 
 export type LeftInfer<Value> = Value extends Either<any, infer Left>
