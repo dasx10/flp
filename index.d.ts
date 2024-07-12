@@ -1,6 +1,7 @@
 import type { _RightExec, Right, ToRight } from "./Monad/right"
 
 import type MathNamespace from "./Math"
+import type { Either, Left } from "./Monad/either";
 
 interface Namespaces {
   Math     : import("./Math").default;
@@ -24,7 +25,7 @@ type Load = <
   Namespace extends keyof Namespaces,
   Module    extends string
 >(path: Path<Namespace> & `${Namespace}/${Module}`) => Module extends keyof Namespaces[Namespace]
-  ? Right<Namespaces[Namespace][Module]>
+  ? Either<Namespaces[Namespace][Module], Error>
   : Left<Error>
 ;
 

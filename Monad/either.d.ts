@@ -15,8 +15,8 @@ type ToLeft<Value> = Value extends Right<infer Next>
 type Resolve<Value> = Value extends Either<any, any> ? Value : ToRight<Value>;
 
 export type Left <Value> = {
-  <Resolver>(onresolve?: Resolver): Left<LeftValue<Value>>
-  <Resolver, Reject>(onresolve: Resolver, onreject?: (value: Value) => Reject): Resolve<Reject>;
+  (onresolve?: (value: any) => any): Left<LeftValue<Value>>
+  <Reject>(onresolve: (value: any) => any, onreject?: (value: Value) => Reject): Right<Reject>;
   constructor : Left<Value>;
   length      : 2;
   name        : '';
