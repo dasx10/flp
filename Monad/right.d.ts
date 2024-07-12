@@ -26,14 +26,16 @@ type _Right<Value> = {
 };
 
 export type _RightExec<Parameter, Result> = {
-  <Return extends Result, Value extends Parameter>(onresolve: Value | Right<Value>, onreject?: any): Right<Return>;
-  <Return extends Result, Value extends Parameter>(onresolve: PromiseLike<Value>, onreject?: any): Either<Return, unknown>;
-  (onresolve: Parameter | Right<Parameter>, onreject?: any): Right<Result>;
-  (onresolve: PromiseLike<Parameter>, onreject?: any): Either<Result, unknown>;
+  (onresolve: _RightExec<Parameter, Result>, onreject?: any): Right<Result>;
+  (onresolve: Parameter | Right<Parameter>,  onreject?: any): Right<Result>;
+  (onresolve: PromiseLike<Parameter>,        onreject?: any): Either<Result, unknown>;
+  <Return extends Result, Value extends Parameter = Parameter>(onresolve: _RightExec<Return, Value>, onreject?: any): Right<Return>;
+  <Return extends Result, Value extends Parameter = Parameter>(onresolve: Value | Right<Value>,      onreject?: any): Right<Return>;
+  <Return extends Result, Value extends Parameter = Parameter>(onresolve: PromiseLike<Value>,        onreject?: any): Either<Return, unknown>;
 }
 ;
 
-export type Right<Value> = Value extends _Right<any>
+export type Right<Value> = Value extends _Right<any> | (_RightExec<any, any> & _Right<any>)
   ? Value
   : Value extends PromiseLike<infer Next>
     ? Either<Next, unknown>
