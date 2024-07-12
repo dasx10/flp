@@ -23,7 +23,10 @@ type Path<
 type Load = <
   Namespace extends keyof Namespaces,
   Module    extends string
->(path: Path<Namespace> & `${Namespace}/${Module}`) => Right<Namespaces[Namespace][Module]>;
+>(path: Path<Namespace> & `${Namespace}/${Module}`) => Module extends keyof Namespaces[Namespace]
+  ? Right<Namespaces[Namespace][Module]>
+  : Left<Error>
+;
 
 declare const _: {
   <Value>(value : Value): Right<Value>;
