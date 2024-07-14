@@ -18,5 +18,5 @@
   * isNumber(new Date()); // false
   * ```
   */
-export default function isNumber(x: number): true;
-export default function isNumber<X>(x: X): x is X & number;
+export default function isNum(x: number): true;
+export default function isNum<X>(x: X): x is X & number;

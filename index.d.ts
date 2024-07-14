@@ -4,14 +4,15 @@ import type MathNamespace from "./Math"
 import type { Either, Left } from "./Monad/either";
 
 interface Namespaces {
-  Math     : import("./Math").default;
-  Compose  : import("./Compose").default;
-  Array    : import("./Array").default;
-  String   : import("./String").default;
-  Date     : import("./Date").default;
-  Async    : import("./Async").default;
-  Record   : import("./Record").default;
-  Iterable : import("./Iterable").default;
+  readonly Math      : import("./Math").default;
+  readonly Compose   : import("./Compose").default;
+  readonly Array     : import("./Array").default;
+  readonly String    : import("./String").default;
+  readonly Date      : import("./Date").default;
+  readonly Async     : import("./Async").default;
+  readonly Record    : import("./Record").default;
+  readonly Iterable  : import("./Iterable").default;
+  readonly Generator : import("./Generator").default;
 };
 
 type Path<
@@ -29,10 +30,11 @@ type Load = <
   : Left<Error>
 ;
 
-declare const _: {
-  <Value>(value : Value): Right<Value>;
-  lazy          : Load;
-  import        : Load;
-}
+interface _ {
+  readonly <Value>(value : Value): Right<Value>;
+  readonly lazy          : Load;
+  readonly import        : Load;
+};
 
+declare const _: _;
 export default _;

@@ -6,7 +6,7 @@ import inc from "./Math/inc";
 
 const incs = map(inc);
 
-const _map = _.import("Array/map");
+const _map = _.import("Array/at");
 const _inc = _.import("Math/inc");
 
 const _incs = _map(_inc);
