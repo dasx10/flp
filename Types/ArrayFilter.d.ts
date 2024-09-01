@@ -1,5 +1,5 @@
 import type ArrayMaybePrepend from "./ArrayMaybePrepend";
-import type TupleFilter from "./TupleFilter";
+import type TupleFilter       from "./TupleFilter";
 
 type ArrayFilter<Values extends readonly any[], Is> = Values extends readonly[infer First, ...infer Tail]
   ? First extends Is

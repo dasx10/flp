@@ -12,7 +12,7 @@ export type ToRight<Value> = Value extends Either<any, any>
         : Right<Value>
 ;
 
-type _Right<Value> = {
+export type _Right<Value> = {
   <Resolve>(onresolve: _RightExec<Value, Resolve>,               onreject?: any) : Right<Resolve>;
   <Resolve>(onresolve: (value: Right<Value> | Value) => Resolve, onreject?: any) : Right<Resolve>;
   <Resolve>(onresolve: (value: PromiseLike<Value>)   => Resolve, onreject?: any) : Either<Resolve, unknown>;

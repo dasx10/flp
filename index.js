@@ -1,18 +1,12 @@
+import right from"./Monad/right.js";
 import future from "./Monad/future.js";
-import right from "./Monad/right.js";
 
-var values = new Map();
-
-const load = (key) => values.get(key) || values.set(key, right(import("./" + key + ".js").then(m => m.default))).get(key)
-const lazy = (key) => values.get(key) || values.set(key, future((resolve) => import("./" + key + ".js").then(m => resolve(m.default)))).get(key)
+var modules = new Map();
 
 var _ = new Proxy(right, {
-  get(target, key) {
-    switch (key) {
-      case "import": return load;
-      case "lazy": return lazy;
-      default: return target[key];
-    }
+  get(_, key) {
+    return modules.get(key) || modules.set(key, future((resolve, reject) => import(`./${key}.js`).then(resolve, reject))).get(key);
   }
 });
+
 export default _;

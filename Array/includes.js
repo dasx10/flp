@@ -1,1 +1,1 @@
-export default(y)=>(x)=>x.includes(y);
+export default(i)=>(y)=>(x)=>x.includes(y,i);

@@ -1,1 +1,1 @@
-export default(y)=>(x)=>x.map(y);
+export default(y)=>(x)=>Array.from(x,y);

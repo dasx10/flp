@@ -1,0 +1,1 @@
+import r from"../../Monad/right.js";import p from"../../Monad/promise.js";export default(c)=>(x)=>p((y,e)=>{var l=x.length,o=new Array(l),n=0,i=0;while(i<l)(r(x[i])((x)=>(((o[i]=c(x)),++n===l)&&y(o)),e),i++);});

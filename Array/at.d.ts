@@ -1,4 +1,14 @@
-import ArgumentUInt from "../Types/ArgumentUInt";
+import type ArgumentInt from "../Types/ArgumentInt";
+import type ArgumentUInt from "../Types/ArgumentUInt";
+
+import type { Reverse } from "./reverse";
+
+type At<Index extends number, Values extends readonly any[]> = number extends Index
+  ? undefined | Values[Index]
+  : `${Index}` extends `-${infer Inverse}`
+    ? [never, ...Reverse<Values>][Inverse]
+    : Values[Index]
+;
 
 /**
   * @description Get the value at the specified index
@@ -20,5 +30,5 @@ import ArgumentUInt from "../Types/ArgumentUInt";
   * @see {@link Array.prototype.at}
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.at}
   */
-export default function at<Index extends number>(index: ArgumentUInt<Index>): <Values extends readonly any[]>(values: Values) => ArrayNth<Values, Index>;
-export default function at<Index extends number>(index: Index): <Values extends readonly any[]>(values: Values) => Values[Index] | undefined;
+export default function at<Index extends number>(index: ArgumentInt<Index>): <Values extends readonly any[]>(values: Values) => At<Index, Values>;
+declare export var then: (resolve: (value: typeof at) => any) => any;

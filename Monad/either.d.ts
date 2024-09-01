@@ -1,6 +1,6 @@
 import type PromiseValue from "../Types/PromiseValue";
 import type { Just, Nothing } from "./maybe";
-import type { Right, RightConstructor, ToRight } from "./right";
+import type { _Right, Right, RightConstructor, RightValue, ToRight } from "./right";
 export type { Right } from "./right";
 
 type ToLeft<Value> = Value extends Right<infer Next>
@@ -29,20 +29,24 @@ export type Left <Value> = {
 export type Either<
   Resolved = unknown,
   Rejected = unknown,
-> = {
-  <Resolve>(onresolve: (value: Resolved | Right<Resolved> | PromiseLike<Resolved>) => Resolve): Either<Resolve, Rejected>;
-  <Resolve, Reject>(onresolve: (value: Resolved) => Resolve, onreject: (value: Rejected) => Reject): Either<Resolve, Reject>;
-  length      : 1 | 2;
-  name        : '';
-  constructor : Either<Resolved, Rejected> & (Right<Resolved> | Left<Rejected>);
-  then        : <Resolve, Reject = any>(onresolve: (value: Resolved) => Resolve, onreject?: (value: Rejected) => Reject) => Either<Resolve, Reject>;
-} & (Right<Resolved> | Left<Rejected>);
+> = Left<Rejected> | Right<Resolved>;
 
-export type LeftInfer<Value> = Value extends Either<any, infer Left>
-  ? LeftValue<Left>
-  : Value extends Right<any>
-    ? never
-    : unknown
+type RollRight<Value> = Value extends _Right<infer Next>
+  ? Next
+  : Value extends _Either<infer Next, any>
+    ? Next
+    : Value extends PromiseLike<infer Next>
+      ? Next
+      : Value
+;
+
+type RollLeft<Value> = Value extends Left<infer Next>
+  ? Next
+  : Value extends _Either<any, infer Next>
+    ? Next
+    : Value extends PromiseLike<any>
+      ? unknown
+      : Value
 ;
 
 export type LeftValue<Value> = Value extends Left<infer Next>
