@@ -1,6 +1,6 @@
 /**
   * @function
-  * @param {*} value
+  * @param {*} x
   * @return {function}
   * @example
   * ```javascript
@@ -10,4 +10,6 @@
   * append(4)(new Set([1, 2, 3])) // Iterable<1 | 2 | 3 | 4>
   * ```
   */
-export default function append<Value>(value: Value): <Next>(values: Iterable<Next>) => Generator<Value | Next, void, undefined>;
+export default function append<Y>(y: Y): <X>(x: Iterable<X>) => ({
+  [Symbol.iterator](): Generator<Y | X, void, void>
+});

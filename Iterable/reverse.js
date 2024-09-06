@@ -1,1 +1,1 @@
-export default function*reverse(x){var i=x[Symbol.iterator](),y=i.next();if(y.done)return;yield*reverse(i);yield y.value;}
+export default function*reverse(x){yield*Array.from(x).reverse()};export var then=(resolve)=>resolve(reverse);

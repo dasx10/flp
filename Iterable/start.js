@@ -1,2 +1,1 @@
-export default(y)=>function*(x){var i=x[Symbol.iterator](),o=i.next();while(!o.done&&y(o.value))o=i.next();i.next();yield*i}
-
+export default(y)=>function*(x){var i=x[Symbol.iterator](),o=i.next();while(!(y(o.value)||o.done))o=i.next();if(!o.done)yield o.value;yield*i}

@@ -1,3 +1,5 @@
+export type And<X, Y> = X extends false ? false : X extends 0 ? 0 : X extends "" ? "" : X extends null ? null : X extends undefined ? undefined : Y;
+
 /**
   * @function
   * @name and
@@ -17,5 +19,5 @@
   * and({})(0) // 0
   * ```
   */
-export default function and<Y>(y:Y): <X>(x:X) => X | Y;
+export default function and<Y>(y:Y): <X>(x:X) => And<X, Y>;
 export var then: (resolve: (module: typeof and) => any) => any;

@@ -1,1 +1,1 @@
-export default(i) =>(y)=>(x)=>x.startsWith(y,i);
+export default(i)=>(y)=>(x)=>x.startsWith(y,i);

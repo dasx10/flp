@@ -1,7 +1,10 @@
 /**
-  * Subtract two numbers
+  * @function
+  * @name sub
+  * @description Subtract two numbers
+  * @alias subtract
   * @param {number} next
-  * @return {function}
+  * @returns {(x: number) => number}
   * @example
   * ```javascript
   * sub(1)(2) // 1

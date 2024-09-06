@@ -16,4 +16,6 @@
   * concat("test")(test()) // Iterable<1 | 2 | 3 | "t" | "e" | "s" | "t">
   * ```
   */
-export default function concat<Y>(y: Iterable<Y>): <X>(x: Iterable<X>) => Generator<X | Y, void, void>;
+export default function concat<Y>(y: Iterable<Y>): <X>(x: Iterable<X>) => ({
+  [Sumbol.iterator](): Generator<Y | X, void, void>
+});

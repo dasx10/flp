@@ -1,23 +1,11 @@
-import pipe from "./pipe";
+import some from "./some";
+import every from "./Iterable/every.js";
+import filter from "./Iterable/filter.js";
+import end from "./Iterable/end.js";
 
-const add = (x:number) => (y:number) => x + y
+const arr = [1, 2, 3, 4, 5, 6] as const;
+const isThree = (x: number) => x === 3;
 
-const str = (x: number) => String(x);
-const num = (x: string) => Number(x);
 
-import('./pipe').then((pipe) => pipe)
+const res = end(isThree)(arr);
 
-const add6 = pipe<number, number, string, number, number>([
-  add(3),
-  str,
-  num,
-  add(3),
-]);
-
-const a = pipe([
-  add(1),
-  add(1),
-  String,
-])
-
-const b = add6(33)

@@ -1,4 +1,3 @@
-import type Lambda from "../Types/Lambda";
 /**
   * @function
   * @name map
@@ -12,4 +11,6 @@ import type Lambda from "../Types/Lambda";
   * incs([1, 2, 3]) // Iterable<2 | 3 | 4>
   * ```
   */
-export default function map<Return, Value>(call: Lambda<Return, Value>): Lambda<Generator<Return, void, undefined>, Iterable<Value>>;
+export default function map<Return, X>(call: (x: X) => Return): (values: Iterable<X>) => ({
+  [Symbol.iterator](): Generator<Return, void, void>
+});

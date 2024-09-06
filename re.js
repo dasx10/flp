@@ -1,0 +1,1 @@
+var keys=Object.keys;var re=(y)=>new Function("x","return"+"{"+keys(y).map((i)=>i+":"+"this"+"["+'"'+i+'"'+"]"+"("+"x"+")").join(",")+"}").bind(y);export default re;export var then=(resolve)=>resolve(re);

@@ -58,7 +58,14 @@ export type LeftValue<Value> = Value extends Left<infer Next>
       : Value
 ;
 
-type LeftConstructor = <Value>(value: Value) => ToLeft<Value>;
+type LeftConstructor = <Value>(value: Value) => Value extends Left<infer Next>
+  ? LeftValue<Next>
+  : Value extends Right<any>
+    ? never
+    : Value extends PromiseLike<infer Next>
+      ? LeftValue<Next> | unknown
+      : Value
+;
 
 declare const either: {
   <Return, Value>(call: (value: Value) => Return) : {

@@ -1,0 +1,1 @@
+var test=(x,y)=>{var i,o=Array();for(i in x){if(structEq(y[i])(x[i])){o.push(i);continue;}return false;}for(i in y){if(y[i]==null||o.includes(i))continue;return false;}return true;}, structEq=(y)=>{return(y)!==Object(y)?(x)=>x===y:(x)=>x===y||((x)!==Object(x)?false:test(x,y));};export default structEq;export var then=(resolve)=>resolve(structEq);

@@ -20,4 +20,5 @@
   * ```
   */
 export default function is<Y>(y : Y): (x:unknown) => x is Y;
+export default function is(y: any): (x: any) => boolean;
 declare export var then: (resolve: (value: typeof is) => any) => any;
