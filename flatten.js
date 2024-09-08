@@ -1,0 +1,1 @@
+var flatten=(x)=>({[Symbol.iterator]:function*(){var i;if(x[Symbol.iterator])for(i of x)yield*flatten(i);else yield x;}})[Symbol.iterator]();export default flatten;export var then=(resolve)=>resolve(flatten);

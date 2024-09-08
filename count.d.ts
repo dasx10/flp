@@ -15,3 +15,5 @@
   * ```
   */
 export default function count<Value>(call: (value: Value) => any): (values: Iterable<Value>) => number;
+
+export var then: (resolve: (module: typeof count) => any) => any;

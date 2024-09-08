@@ -1,1 +1,1 @@
-var keys=(x)=>({[Symbol.iterator]:function*(){var i;for(i in x)yield i}});export default keys;export var then=(resolve)=>resolve(keys);
+var keys=(x)=>(x&&x.keys)?x.keys():({[Symbol.iterator]:function*(){var i;for(i in x)yield i}});export default keys;export var then=(resolve)=>resolve(keys);

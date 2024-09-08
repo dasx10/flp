@@ -15,3 +15,5 @@
   */
 export default function find<Y, X>(call: (x: X) => x is Y): (x: Iterable<X>) => (X & Y) | undefined;
 export default function find<X>(call: (x: X) => any): (x: Iterable<X>) => X | undefined;
+
+export var then:(resolve: (module: typeof find) => any) => any

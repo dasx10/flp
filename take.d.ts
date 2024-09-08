@@ -14,4 +14,8 @@
   * take(4)(test()) // Iterable<1 | 2 | 3>
   * ```
   */
-export default function take(index: number): <Value>(value: Iterable<Value>) => Generator<Value, void, Generator<Value, void, undefined>>;
+export default function take(index: number): <X>(values: Iterable<X>) => ({
+  [Symbol.iterator](): Generator<X, void, X | void>;
+});
+
+export var then: (resolve: (module: typeof take) => any) => any;

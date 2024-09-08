@@ -1,11 +1,5 @@
-import some from "./some";
-import every from "./Iterable/every.js";
-import filter from "./Iterable/filter.js";
-import end from "./Iterable/end.js";
+import {CreateDeep} from "./createDeep";
+import path from "./Record/path";
 
-const arr = [1, 2, 3, 4, 5, 6] as const;
-const isThree = (x: number) => x === 3;
-
-
-const res = end(isThree)(arr);
-
+const ab = path(["a", "b"] as const)
+const c = ab({ a: { b: 1 }})

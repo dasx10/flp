@@ -1,0 +1,1 @@
+var flat=(y)=>(y>0)?(x)=>x[Symbol.iterator]?({[Symbol.iterator]:function*(){var i;for(i of x)yield*flat(y-1)(i)}}):({[Symbol.iterator]:function*(){yield x}}):(x)=>x[Symbol.iterator]?x:({[Symbol.iterator]:function*(){yield x}});export default flat;export var then=(resolve)=>resolve(flat);

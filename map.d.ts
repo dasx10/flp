@@ -14,3 +14,6 @@
 export default function map<Return, X>(call: (x: X) => Return): (values: Iterable<X>) => ({
   [Symbol.iterator](): Generator<Return, void, void>
 });
+
+type MapFunction = typeof map;
+export var then: (resolve: (map: MapFunction) => any) => any;
