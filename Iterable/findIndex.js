@@ -1,1 +1,1 @@
-export default(y)=>(x)=>{var o,i=0;for(o of x){if(y(o))return i;i++}return -1}
+var iteratorFindIndex=(y,x)=>{var o,i=0;for(o of x){if(y(o))return i;i++}return -1};var findIndex=(y)=>(x)=>(x.findIndex&&x.findIndex.constructor===Function?x.findIndex(y):iteratorFindIndex(y,x));export var then=(resolve)=>resolve(findIndex);

@@ -1,4 +1,4 @@
-import type { Dec } from "../dec";
+import type { Dec } from "./dec";
 
 export type FlatIterable<Depth extends number, Values extends Iterable<any>> = Depth extends 0
   ? Values

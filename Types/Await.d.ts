@@ -1,6 +1,6 @@
 type Await<MaybePromise> = MaybePromise extends PromiseLike<infer Value>
   ? Await<Value>
-  : Promise<MaybePromise>
+  : MaybePromise
 ;
 
 export default Await;

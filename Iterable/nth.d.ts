@@ -1,4 +1,18 @@
-import type ArgumentUInt from "../Types/ArgumentUInt";
+import type ArgumentUInt from "./Types/ArgumentUInt";
+
+type Nth<Index extends number, Values extends Iterable<any>> = number extends Index
+  ? Values extends Iterable<infer Value>
+    ? Value | undefined
+    : unknown
+  : `${Index}` extends `-${number}`
+    ? undefined
+    : Values extends readonly any[]
+      ? number extends Values["length"] ? Values[Index] | undefined : Values[Index]
+      : Values extends Iterable<infer Value>
+        ? Value | undefined
+        : unknown
+  ;
+
 
 /**
   * @function
@@ -14,4 +28,4 @@ import type ArgumentUInt from "../Types/ArgumentUInt";
   * nth(1)(new Set([1, 2, 3])) // 2
   * ```
   */
-export default function nth<Index extends number>(index: ArgumentUInt<Index>): <Value>(values: Iterable<Value>) => Value | undefined;
+export default function nth<Index extends number>(index: ArgumentUInt<Index>): <Values extends Iterable<Value>>(values: Values) => Nth<Index, Values>;

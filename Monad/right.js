@@ -1,6 +1,6 @@
 var thenObject=(x)=>(x.then=x);
 
-var resolver = (resolve) => resolve != null
+var resolver=(resolve)=>resolve!=null
   ? resolve.then
     ? (value) => resolve.then((resolve) => resolve != null
       ? resolve.constructor === Function
@@ -14,39 +14,21 @@ var resolver = (resolve) => resolve != null
   : (value) => value
 ;
 
-var rejecter = (reject) => reject != null
-  ? reject.then
-    ? (error) => reject.then((reject) => reject != null
-      ? reject.constructor === Function
-        ? reject(error)
-        : error(reject)
-      : error
-    )
-    : reject.constructor === Function
-      ? (error) => reject(error)
-      : (error) => error(reject)
-  : (error) => Promise.reject(error)
+var rejecter=(reject) =>reject!=null
+  ?reject.constructor===Function
+    ?(error)=>reject(error)
+    :"then" in reject
+      ?(error)=>reject.then((reject)=>reject(error))
+      :(error)=>error(reject)
+  :(error)=>Promise.reject(error)
 ;
 
 var asyncRight = (x) => thenObject((resolve, reject) => asyncRight(x.then(resolver(resolve), rejecter(reject))));
 
-var right = (x) => (x != null && x.then)
-  ? (x.then === x)
-    ? x
-    : asyncRight(x)
-  : thenObject((resolve) => right(
-    (resolve != null)
-      ? (resolve.then)
-        ? resolve.then((resolve) => (resolve && resolve.constructor === Function)
-            ? resolve(x)
-            : x(resolve)
-          )
-        : ((resolve.constructor === Function)
-          ? resolve(x)
-          : x(resolve)
-        )
-      : x(resolve)
-  ))
-;
+var right=(x)=>(("then" in Object(x))
+  ?x.then===x?x
+    :thenObject((y,e)=>right(y.constructor===Function?x.then(y,e):("then" in y)?y.then((y)=>x.then(y),rejecter(e)):x.then((x)=>x(y),rejecter(e))))
+  :thenObject((y,e)=>right(y.constructor===Function?y(x):("then" in y)?y.then((y)=>y(x),rejecter(e)):x(y)))
+);
 
 export default right;

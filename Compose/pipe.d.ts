@@ -39,6 +39,7 @@ type PipeFunctions<Values extends readonly any[]> = Values extends readonly [inf
   *
   * ```
   */
+
 export default function pipe<B, A>
 (values: [(x: A) => B])
 : (x: A) => B;

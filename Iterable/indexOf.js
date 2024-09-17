@@ -1,0 +1,1 @@
+var iterableIndexOf=(x,y)=>{var i=0,o;for(o of x)if(o===y)return i;else(i++);return -1};var indexOf=(y)=>(x)=>x.indexOf&&x.indexOf.constructor===Function?x.indexOf(y):iterableIndexOf(y,x);export default indexOf;export var then=(resolve)=>resolve(indexOf);

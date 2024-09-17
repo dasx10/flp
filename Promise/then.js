@@ -1,1 +1,1 @@
-export default(y)=>(x)=>x.then(y);
+export default(y)=>(x)=>Promise.resolve(x).then(y);

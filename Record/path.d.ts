@@ -9,10 +9,10 @@ export type Path<Keys extends readonly PropertyKey[], Value> = Keys extends read
   ? Path<Tail, Value[Key]>
   : Keys extends readonly []
     ? Value
-    : Keys extends readonly (infer Key)[]
+    : Keys extends Iterable<infer Key>
       ? PathMaybe<Key, Value>
       : never
 ;
 
-export default function path<Keys extends readonly PropertyKey[]>(keys: Keys): <Value>(value: Deep<Value, Keys>) => Value;
+export default function path<Keys extends Iterable<PropertyKey>>(keys: Keys): <Value>(value: Deep<Value, Keys>) => Value;
 export var then: (resolve: (resolve: (module: typeof path) => any) => any) => any;

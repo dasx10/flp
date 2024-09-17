@@ -3,42 +3,38 @@ import type { Right } from "./right";
 type nil = null | undefined | void;
 type none = nil | PromiseLike<nil> | Nothing;
 
-export type Nothing = {
+export interface Nothing {
   (...values?: any) : Nothing;
-  length     : 0;
-  then(call? : ((x?: nil) => any) | (() => any), next?: (x?: nil) => any): Nothing;
+  length     : 0 | 1 | 2;
+  name       : '';
   toString   : () => "";
   valueOf    : () => void;
-  toJSON     : () => null,
-}
+  toJSON     : () => void,
+  then       : {
+    <X>(resolve: (x?: never) => never, reject: (x?: any) => any): Nothing | Maybe<X>,
+    (resolve: (x?: never) => any): Nothing,
+  }
+};
 
 export declare const nothing: Nothing;
-type JustConstructor = <Value>(value: Exclude<Value, nil | Nothing | PromiseLike<nil>>) => Maybe<Value>;
+type JustConstructor = <Value>(value: Exclude<Value, nil | Nothing | PromiseLike<nil>>) => Just<Value>;
 export declare const just: JustConstructor;
 
-type Maybe<Value> = Value extends nil | Nothing
-  ? Nothing
-  : Value extends Right<infer Next>
-    ? Maybe<Next>
-    : Value extends PromiseLike<infer Next>
-      ? Maybe<Next> | Nothing
-      : Just<Value>
-;
+export type Maybe<X> = (Awaited<X> extends nil ? Nothing : Just<X>;
 
-export type Just<Value> = {
-  <Return>(call?: (value: Value) => Exclude<Return, none>): Just<Return>;
-  <Return>(call?: (value: Value) => Return): Maybe<Return>;
-  then   : Just<Value>;
-  length : 1;
-  name   : '';
+export type Just<X> = Awaited<X> extends nil ? never : {
+  <Y>(call : (x: Awaited<X>) => Y, reject?: (x: unknown) => any): Maybe<Awaited<Y>>;
+  then     : (resolve: (x: Awaited<X>) => any, reject?: (x: unknown) => any) => Maybe<Awaited<X>>;
+  length   : 1 | 2;
+  name     : '';
+  toString : () => "";
 };
 
 declare const maybe: {
-  (value: none): Nothing;
-  <Value>(value: Exclude<Value, none>): Just<Value>;
-  <Value>(value: Value): Maybe<Value>;
-  just    : JustConstructor;
-  nothing : Nothing;
+     (x : none) : Nothing;
+  <X>(x : X)    : Maybe<X>;
+  just          : JustConstructor;
+  nothing       : Nothing;
 };
 
 export default maybe;

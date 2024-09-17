@@ -1,4 +1,4 @@
-import type Lambda from "../Types/Lambda";
+import type { FlatIterable } from "./flat";
 /**
   * @function
   * @name flatMap
@@ -15,4 +15,6 @@ import type Lambda from "../Types/Lambda";
   * flatMap(x => x)([1, 2, [3, 4], new Set([5, 5, 6])]) // Iterable<1 | 2 | 3 | 4 | 5 | 6>
   * ```
   */
-export default function flatMap<Return, Value>(call: Lambda<Iterable<Return>, Value>): Lambda<Generator<Return, void, undefined>, Iterable<Value>>;
+export default function flatMap<Return, X>(call: (x: X) => Return): (x: Iterable<X>) => ({
+  [Symbol.iterator]: () => Generator<FlatIterable<1, Return>, void, void>
+});

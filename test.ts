@@ -1,5 +1,5 @@
-import {CreateDeep} from "./createDeep";
-import path from "./Record/path";
+import $ from './$.js'
 
-const ab = path(["a", "b"] as const)
-const c = ab({ a: { b: 1 }})
+console.log(
+  $(Date).getDay()(new Date),
+)

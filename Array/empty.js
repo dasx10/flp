@@ -1,2 +1,1 @@
-import always from "../Decorator/always.js";
-export default always([]);
+var array=Object.freeze([]);var empty=()=>array;export default empty;export var then=(resolve)=>resolve(empty);

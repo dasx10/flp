@@ -9,4 +9,4 @@
   * ```
   */
 export default function asc<Value>(call: (x: Value) => number): (y: Value) => (x: Value) => number;
-declare export var then : (resolve: (module: typeof asc) => any) => any;
+declare export var then : (resolve: (module: typeof asc) => *) => *;

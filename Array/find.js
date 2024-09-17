@@ -1,1 +1,1 @@
-export default(x)=>(y)=>y.find(x);
+var find=(x)=>(y)=>y.find(x);export default find;export var then=(resolve)=>resolve(find);
