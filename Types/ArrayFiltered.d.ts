@@ -1,5 +1,9 @@
 import type ArrayMaybePrepend from "./ArrayMaybePrepend";
-import type TupleFiltered    from "./TupleFiltered";
+
+type TupleFiltered<Values extends readonly any[]> = Values extends readonly [infer First, ...infer Tail]
+  ? readonly [First] | ArrayMaybePrepend<TupleFiltered<Tail>, First>
+  : readonly []
+;
 
 type ArrayFiltered<Values extends readonly any[]> = Values extends readonly [infer First, ...infer Tail]
   ? readonly [First] | ArrayMaybePrepend<TupleFiltered<Tail>, First>

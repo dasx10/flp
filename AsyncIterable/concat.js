@@ -9,6 +9,10 @@ var concat = (y) => (
           yield*x;
           yield*y;
         },
+        [Symbol.asyncIterator]: async function* () {
+          yield*x;
+          yield*y;
+        },
         then: toArray,
       })
       : (Symbol.asyncIterator in x)

@@ -1,7 +1,24 @@
-import type ArrayFind  from "../Types/ArrayFind";
-import type ArrayFound from "../Types/ArrayFound";
-import type Lambda     from "../Types/Lambda";
-import type Predicate  from "../Types/Predicate";
+import type { Filter } from "./filter";
 
-export default function find<Is, Value>(call: Predicate<Is, Value>): <Values extends readonly Value[]>(values: Values) => ArrayFind<Values, Is>;
-export default function find<Value>(call: Lambda<any, Value>): <Values extends readonly Value[]>(values: Values) => ArrayFound<Values>;
+export type Find<Values extends readonly any[], Is = Values[number]> = Values extends readonly []
+  ? undefined
+  : (Filter<Values, Is>[number] & Is) | undefined
+;
+
+/**
+  * @example
+  * ```javascript
+  * var is5 = (value) => value === 5;
+  * find(is5)([1, 2, 3, 4, 5]); // 5;
+  * find(is5)([1, 2, 5, 4, 5, 6]); // 5;
+  * find(is5)([1, 2, 3, 4, 6]); // undefined;
+  * find(is5)([]); // undefined;
+  * ```
+  * @description Returns the first value that satisfies the condition.
+  * @function
+  * @name find
+  * @param {Function} call
+  * @returns {Function}
+  */
+export default function find<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Find<Values, Is>;
+export default function find<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Find<Values>;

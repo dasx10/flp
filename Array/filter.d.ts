@@ -3,6 +3,17 @@ import type ArrayFiltered from "../../Types/ArrayFiltered";
 import type Lambda        from "../../Types/Lambda";
 import type Predicate     from "../../Types/Predicate";
 
+export type Filter<Values extends readonly any[], Is> = Values extends readonly[infer First, ...infer Tail]
+  ? First extends Is
+    ? ArrayMaybePrepend<TupleFilter<Tail, Is>, First>
+    : Is extends First
+      ? ArrayMaybePrepend<TupleFilter<Tail, Is>, First>
+      : TupleFilter<Tail, Is>
+  : Values extends readonly[]
+    ? readonly[]
+    : Values
+;
+
 /**
   * @description Creates an array of values that satisfy the condition.
   * @function
@@ -23,5 +34,5 @@ import type Predicate     from "../../Types/Predicate";
   * ```
   * @see {@link Array.prototype.filter}
   */
-export default function filter<Is, Value>(call: Predicate<Is, Value>): <Values extends readonly Value[]>(values: Values) => ArrayFilter<Values, Is>;
-export default function filter<Value>(call: Lambda<any, Value>): <Values extends readonly Value[]>(values: Values) => ArrayFiltered<Values>;
+export default function filter<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => ArrayFilter<Values, Is>;
+export default function filter<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => ArrayFiltered<Values>;

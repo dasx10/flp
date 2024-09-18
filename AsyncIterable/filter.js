@@ -1,5 +1,5 @@
 import toArray from "./.toArray.js";
-import right from "../Monad/right.js";
+import right   from "../Monad/right.js";
 
 var filter=(y)=>(
   ("then" in y)

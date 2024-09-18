@@ -1,5 +1,3 @@
-import $ from './$.js'
+import concat from "./AsyncIterable/concat";
 
-console.log(
-  $(Date).getDay()(new Date),
-)
+concat([1, 2])("dsa").then((x) => console.log(x));

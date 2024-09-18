@@ -1,17 +1,24 @@
-import _ from "./index.js";
-import filter from "./AsyncIterable/filter.js";
-import concat from "./AsyncIterable/concat.js";
+import find from "./Array/find.js";
+const a = find(async (x)=> x > 2)([1, 2, 3, 4]);
+a.then(console.log)
+// const a = async () => a;
+// const b = async function () {
 
+  // }
 
-async function*range (n) {
-  for (var i = 0; i < n; i++) yield Promise.resolve(i)
-}
+// const c = function* () {
 
-(async function () {
-  Promise.all([
-    import("./Array/filter.js"),
-    import("./Array/filter.js")
-  ]).then(([filter, filter2]) => {
-    console.log(filter === filter2)
-  })
-})()
+  // }
+
+// const d = async function* () {
+
+  // }
+
+// const aa = a.constructor;
+// const bb = b.constructor;
+// const cc = c.constructor;
+// const dd = d.constructor;
+// const ff = f.constructor;
+
+// console.log(aa instanceof Function, bb instanceof Function, cc instanceof Function, dd instanceof Function);
+// console.log(aa , bb , cc , dd, ff );
