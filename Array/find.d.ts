@@ -22,3 +22,5 @@ export type Find<Values extends readonly any[], Is = Values[number]> = Values ex
   */
 export default function find<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Find<Values, Is>;
 export default function find<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Find<Values>;
+
+export var then: (resolve: (value: typeof find) => any) => any;

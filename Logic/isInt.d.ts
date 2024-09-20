@@ -1,4 +1,4 @@
-import type ArgumentInt from "../Types/ArgumentInt";
+import type MustInt from "../Types/MustInt";
 
 /**
   * @function
@@ -13,5 +13,5 @@ import type ArgumentInt from "../Types/ArgumentInt";
   * isInt(-1); // true
   * ```
   */
-export default function isInt<X extends number>(x: X): x is ArgumentInt<X>;
+export default function isInt<X extends number>(x: X): x is MustInt<X>;
 export var then: (resolve: (module: typeof isInt) => any) => any;

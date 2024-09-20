@@ -1,4 +1,4 @@
-import type ArgumentUInt from "../Types/ArgumentUInt";
+import type MustUInt from "../Types/MustUInt";
 
 /**
   * @description Check if a number is an unsigned integer
@@ -20,5 +20,5 @@ import type ArgumentUInt from "../Types/ArgumentUInt";
   * isUint(-Infinity); // false
   * ```
   */
-export default function isUint<X>(x: X): x is ArgumentUInt<X>;
+export default function isUint<X>(x: X): x is MustUInt<X>;
 export var then: (resolve: (module: typeof isUint) => any) => any;

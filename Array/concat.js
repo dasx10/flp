@@ -1,1 +1,3 @@
-var concat=(y)=>(x)=>x.concat(y);export default concat;export var then=(x)=>x(concat);
+var concat=(tail)=>(head)=>head.concat(tail);
+export default concat;
+export var then=(x)=>x(concat);

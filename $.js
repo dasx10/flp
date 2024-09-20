@@ -1,10 +1,16 @@
 import memoize from "./Decorator/memoize.js";
-var $ = memoize((constructor) => new Proxy(constructor, {
+
+var prototype = memoize((target) => memoize((property) => (typeof target.prototype[property] === "function")
+  ? (...args) => (instance) => (target.prototype[property]||instance[property]).apply(instance, args)
+  : property in target.prototype
+    ? (instance) => instance[property]
+    : target[property]
+));
+
+var $ = memoize(function (constructor) { return new Proxy(constructor, {
   get (target, property) {
-    return target.prototype[property].constructor !== Function
-      ? (instance) => instance[property]
-      : (...args) => (instance) => target.prototype[property].call(instance, ...args)
+    return prototype(target)(property)
   },
-}));
+})});
 
 export default $;

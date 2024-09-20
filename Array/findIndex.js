@@ -1,1 +1,3 @@
-var findIndex=(y)=>(x)=>x.findIndex(y);export default findIndex;var then=(resolve)=>resolve(findIndex);
+var findIndex=(call)=>(values)=>values.findIndex(call);
+export default findIndex;
+export var then=(resolve)=>resolve(findIndex);

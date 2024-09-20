@@ -15,3 +15,5 @@ import type ArrayIndexOf from "../Types/ArrayIndexOf";
   */
 export default function findIndex<Predicate, X>(call: (x: X) => x is Predicate): <Values extends readonly X[]>(values: Values) => ArrayIndexOf<Values, Predicate>;
 export default function findIndex<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => ArrayIndex<Values> | -1;
+
+export var then: (resolve: (value: typeof findIndex) => any) => any;

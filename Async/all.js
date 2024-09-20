@@ -1,1 +1,18 @@
-import p from"../Monad/promise.js";import r from "../Monad/right.js";var e=r([]);var l=(x,o,i,y,e)=>x[i].then((x)=>(o[i]=x,--y.i||y(o)),(x)=>(e.i&&(e.i=0,e(x))));export default(x)=>x.length?p((y,e)=>{var i=x.length,o=Array(i);e.i=y.i=i;while(i&&e.i)l(x,o,--i,y,e);o=null;}):e;
+import append from "../Array/append.js";
+import right from "../Monad/right.js";
+var _append=right(append);
+var allIterable=(x)=>{
+  var value,resolved=right([]);
+  for(value of x)resolved=_append(right(value))(resolved);
+  return resolved;
+}
+var allAsyncIterable=Array.fromAsync||(async(x)=>{
+  var value,values=[];
+  for await(value of x)values.push(value);
+  return values;
+});
+var all=right((x)=>(Symbol.iterator in x)
+  ?allIterable(x)
+  :right(allAsyncIterable(x))
+);
+export default all;

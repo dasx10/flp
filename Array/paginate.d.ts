@@ -1,2 +1,2 @@
-import type ArgumentUInt from "../Types/ArgumentUInt";
-export default function paginate<Limit extends number>(limit: ArgumentUInt<Limit>): <Page extends number>(page: ArgumentUInt<Page>) => <Values extends readonly any[]>(values: Values) => readonly Values[number][];
+import type MustUInt from "../Types/MustUInt";
+export default function paginate<Limit extends number>(limit: MustUInt<Limit>): <Page extends number>(page: MustUInt<Page>) => <Values extends readonly any[]>(values: Values) => readonly Values[number][];

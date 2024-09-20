@@ -1,9 +1,4 @@
-import type ArrayFilter   from "../../Types/ArrayFilter";
-import type ArrayFiltered from "../../Types/ArrayFiltered";
-import type Lambda        from "../../Types/Lambda";
-import type Predicate     from "../../Types/Predicate";
-
-export type Filter<Values extends readonly any[], Is> = Values extends readonly[infer First, ...infer Tail]
+export type Filter<Values extends readonly any[], Is = Values[number]> = Values extends readonly[infer First, ...infer Tail]
   ? First extends Is
     ? ArrayMaybePrepend<TupleFilter<Tail, Is>, First>
     : Is extends First
@@ -11,15 +6,10 @@ export type Filter<Values extends readonly any[], Is> = Values extends readonly[
       : TupleFilter<Tail, Is>
   : Values extends readonly[]
     ? readonly[]
-    : Values
+    : Values | readonly []
 ;
 
 /**
-  * @description Creates an array of values that satisfy the condition.
-  * @function
-  * @name filter
-  * @param {Function} call
-  * @returns {Function}
   * @example
   * ```
   * var is5 = (value) => value === 5;
@@ -32,7 +22,14 @@ export type Filter<Values extends readonly any[], Is> = Values extends readonly[
   * filter(gt2)([]); // [];
   * filter(gt2)([1, 2]); // [];
   * ```
+  * @description Creates an array of values that satisfy the condition.
+  * @function
+  * @name filter
+  * @param {Function} call
+  * @returns {Function}
   * @see {@link Array.prototype.filter}
   */
-export default function filter<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => ArrayFilter<Values, Is>;
-export default function filter<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => ArrayFiltered<Values>;
+export default function filter<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Filter<Values, Is>;
+export default function filter<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Filter<Values>;
+
+export var then: (resolve: (value: typeof filter) => any) => any;

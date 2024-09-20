@@ -1,24 +1,24 @@
-import find from "./Array/find.js";
-const a = find(async (x)=> x > 2)([1, 2, 3, 4]);
-a.then(console.log)
-// const a = async () => a;
-// const b = async function () {
+// import $ from "./$.js";
+import all from "./Async/all.js";
+import race from "./Async/race.js";
+// import pipe from "./Compose/pipe.js";
+// import right from "./Monad/right.js";
 
-  // }
+async function*test(n) {
+  for (let i = 0; i < n; i++) {
+    yield i;
+  }
+}
 
-// const c = function* () {
+var delay = (y) => (x) => new Promise((resolve) => setTimeout(resolve, y, x));
 
-  // }
-
-// const d = async function* () {
-
-  // }
-
-// const aa = a.constructor;
-// const bb = b.constructor;
-// const cc = c.constructor;
-// const dd = d.constructor;
-// const ff = f.constructor;
-
-// console.log(aa instanceof Function, bb instanceof Function, cc instanceof Function, dd instanceof Function);
-// console.log(aa , bb , cc , dd, ff );
+console.time("all");
+all([
+  delay(1000)(1),
+  delay(2000)(2),
+  delay(3000)(3),
+  delay(4000)(4),
+  delay(5000)(5),
+  delay(100)(6)
+]).then(() => console.timeEnd("all"));
+// all(Promise.resolve(test(5)))(Promise.resolve(console.log));

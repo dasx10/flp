@@ -1,5 +1,4 @@
-import type Await  from "../Types/Await";
-import type Lambda from "../Types/Lambda";
+import type MayPromiseLike from "../Types/MayPromiseLike";
 
 /**
   * @description Promise.then method
@@ -15,4 +14,4 @@ import type Lambda from "../Types/Lambda";
   * var resP = then(_(2))(incP) // Promise<3>;
   * ```
   */
-export default function then<Return, Value>(call: Lambda<Return, Value>): <Value>(value: PromiseLike<Value>) => Await<Return>;
+export default function then<Return, X>(call: (x: X) => Return): (value: MayPromiseLike<X>) => Promise<Await<Return>>;

@@ -27,8 +27,8 @@ var asyncRight = (x) => thenObject((resolve, reject) => asyncRight(x.then(resolv
 
 var right=(x)=>(("then" in Object(x))
   ?x.then===x?x
-    :thenObject((y,e)=>right(typeof y==="function"?x.then(y,e):("then" in y)?y.then((y)=>x.then(y),rejecter(e)):x.then((x)=>x(y),rejecter(e))))
-  :thenObject((y,e)=>right(typeof y==="function"?y(x):("then" in y)?y.then((y)=>y(x),rejecter(e)):x(y)))
+    :thenObject((y,e)=>right(typeof y==="function"?x.then(y,e):("then" in Object(y))?y.then((y)=>x.then(y),rejecter(e)):x.then((x)=>x(y),rejecter(e))))
+  :thenObject((y,e)=>right(typeof y==="function"?y(x):("then" in Object(y))?y.then((y)=>typeof y==="function"?y(x):x(y),rejecter(e)):x(y)))
 );
 
 export default right;

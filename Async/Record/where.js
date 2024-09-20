@@ -1,1 +1,17 @@
-import p from"../Monad/promise.js";export default(y)=>(x)=>p((o,e)=>{var k,z,n=0,i=0;for(k in y){(y[k])(x[k])((x)=>n||(x?(--i===0&&((n=1,z?e(z):o(true)))):(n=1,o(false))),(x)=>n||(--i===0?(n=1,e(x)):(z=x)));if(n)return;i++;}k||(n||(i===0&&(z?e(z):o(true))));});
+import promise from"../../Monad/promise.js";
+import right   from"../../Monad/right.js";
+
+var where=((test)=>(record)=>promise((resolve,reject)=>{
+  var key,done=0,i=0;
+  for(key in test){
+    right(test[key])(right(record[key]))(
+      (value) =>done||(value?(--i===0&&((done=1,resolve(true)))):(done=1,resolve(false))),
+      (reason)=>(done=1,reject(reason))
+    );
+    if(done)return;
+    i++;
+  }
+  done||(i===0&&(resolve(Boolean(key))));
+}));
+
+export default where;

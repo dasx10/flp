@@ -1,1 +1,3 @@
-var at=(i)=>(x)=>x.at(i);export default at;export var then=(x)=>x(at);
+var at=(index)=>(values)=>values.at(index);
+export default at;
+export var then=(resolve)=>resolve(at);

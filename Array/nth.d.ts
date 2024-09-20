@@ -1,5 +1,12 @@
-import type ArrayNth     from "../Types/ArrayNth";
-import type ArgumentUInt from "../Types/ArgumentUInt";
+import type ArrayIndex from "../Types/ArrayIndex";
+import type MustUInt   from "../Types/MustUInt";
+
+export type Nth<Values extends readonly any[], Index extends ArrayIndex<Values>> = number extends Index
+  ? Values[Index] | undefined
+  : number extends ArrayIndex<Values>
+    ? Values[number] | undefined
+    : Values[Index]
+;
 
 /**
   * @function
@@ -17,4 +24,4 @@ import type ArgumentUInt from "../Types/ArgumentUInt";
   * nth(-2)([1, 2, 3]) // undefined
   * ```
   */
-export default function nth<Index extends number>(index: ArgumentUInt<Index>): <Values extends readonly any[]>(values: Values) => ArrayNth<Values, Index>;
+export default function nth<Index extends number>(index: MustUInt<Index>): <Values extends readonly any[]>(values: Values) => Nth<Values, Index>;

@@ -1,4 +1,3 @@
-import type PromiseValue from "../Types/PromiseValue";
 import type { Either, Left } from "./either";
 
 export type ToRight<Value> = Value extends Either<any, any>
@@ -50,7 +49,7 @@ export type RightValue<MaybeRight> = MaybeRight extends Right<infer Value>
   ? Value
   : MaybeRight extends Left<any>
     ? never
-    : PromiseValue<MaybeRight> | MaybeRight
+    : Awaited<MaybeRight> | MaybeRight
 ;
 
 declare const right: RightConstructor;
