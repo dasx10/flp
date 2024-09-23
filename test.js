@@ -24,7 +24,6 @@ const incs = map(x => x + 1)
 const strs = map(String);
 some(x => x === 7)(test)(console.log);
 
-var ten = right(10)
 var log = right(console.log);
 
 var arr = fromAsync(right([1, 2, 3]));
