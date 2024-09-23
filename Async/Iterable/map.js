@@ -1,21 +1,14 @@
-import toArray from "./.toArray.js";
-
+var {iterator,asyncIterator}=Symbol;
 var map=(y)=>(x)=>(
-  (Symbol.iterator in x)?({
-    [Symbol.iterator]:function*(){var i;for(i of x)yield ("then" in Object(i))?i.then(y):y(i)},
-    [Symbol.asyncIterator]:async function*(){var i;for await(i of x)yield y(i)},
-    then: toArray,
-  })
+  (iterator in x)
+    ?({
+     [iterator]:function*(){var i;for(i of x)yield ("then" in Object(i))?i.then(y):y(i)},
+     [asyncIterator]:async function*(){var i;for await(i of x)yield y(i)},
+    })
   :
-  (Symbol.asyncIterator in x)?({
-    [Symbol.asyncIterator]:async function*(){for await(var i of x)yield y(i)},
-    then: toArray,
-  })
-  :
-  ({
-    [Symbol.asyncIterator]:async function*(){for await(var i of await x)yield y(i)},
-    then: toArray,
-  })
+  (asyncIterator in x)
+   ? ({ [asyncIterator]:async function*(){for await(var i of x)yield y(i)} })
+   : ({ [asyncIterator]:async function*(){for await(var i of await x)yield y(i)} })
 )
 ;
 

@@ -1,68 +1,60 @@
-import toArray from "./.toArray.js";
-
+var {iterator, asyncIterator} = Symbol;
 var concat = (y) => (
-  (Symbol.iterator in y)
+  (iterator in y)
   ? (x) => (
-    (Symbol.iterator in x)
+    (iterator in x)
       ? ({
-        [Symbol.iterator]: function* () {
+        [iterator]: function* () {
           yield*x;
           yield*y;
         },
-        [Symbol.asyncIterator]: async function* () {
+        [asyncIterator]: async function* () {
           yield*x;
           yield*y;
         },
-        then: toArray,
       })
-      : (Symbol.asyncIterator in x)
+      : (asyncIterator in x)
         ? ({
-          [Symbol.asyncIterator]: async function* () {
+          [asyncIterator]: async function* () {
             yield*x;
             yield*y;
           },
-          then: toArray,
         })
         : ({
-          [Symbol.asyncIterator]: async function* () {
+          [asyncIterator]: async function* () {
             yield*await x;
             yield*y;
           },
-          then: toArray,
         })
   )
 
-  : (Symbol.asyncIterator in y)
+  : (asyncIterator in y)
     ? (x) => (
-      ((Symbol.iterator in x) || (Symbol.asyncIterator in x)) ? ({
-        [Symbol.asyncIterator]: async function* () {
+      ((iterator in x) || (asyncIterator in x)) ? ({
+        [asyncIterator]: async function* () {
           yield*x;
           yield*y;
         },
-        then: toArray,
       })
       : ({
-        [Symbol.asyncIterator]: async function* () {
+        [asyncIterator]: async function* () {
           yield*await x;
           yield*y;
         },
-        then: toArray,
       })
     )
     : (x) => (
-      ((Symbol.iterator in x) || (Symbol.asyncIterator in x)) ? ({
-        [Symbol.asyncIterator]: async function* () {
+      ((iterator in x) || (asyncIterator in x)) ? ({
+        [asyncIterator]: async function* () {
           yield*x;
           yield*await y;
         },
-        then: toArray,
       })
       : ({
-        [Symbol.asyncIterator]: async function* () {
+        [asyncIterator]: async function* () {
           yield*await x;
           yield*await y;
         },
-        then: toArray,
       })
     )
 );

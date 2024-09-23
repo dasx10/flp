@@ -1,62 +1,54 @@
-import toArray from "./.toArray.js";
-import right   from "../Monad/right.js";
-
-var filter=(y)=>(
-  ("then" in y)
-    ? (x) => (
-      (Symbol.iterator in x)?({
-        [Symbol.asyncIterator]:async function*(){
-          var i,e=right(y);
-          for(i of x)(await e(i))&&(yield i);
+import right from "../../Monad/right.js";
+var {iterator,asyncIterator}=Symbol;
+var filter=(call)=>(
+  ("then" in call)
+    ? (values) => (
+      (iterator in values)?({
+        [asyncIterator]:async function*(){
+          var value,exec=right(call);
+          for(value of values)(await exec(value))&&(yield value);
         },
-        then: toArray,
       })
       :
-      (Symbol.asyncIterator in x)?({
-        [Symbol.asyncIterator]:async function*(){
-          var i,e=right(y);
-          for await(i of x)(await e(i))&&(yield i);
+      (asyncIterator in values)?({
+        [asyncIterator]:async function*(){
+          var value,exec=right(call);
+          for await(value of values)(await exec(value))&&(yield value);
         },
-        then: toArray,
       })
       :
       ({
-        [Symbol.asyncIterator]:async function*(){
-          var i,e=right(y),o=await x;
-          if (Symbol.iterator in o) for(i of o)(await e(i))&&(yield i);
-          else for await(i of o)(await e(i))&&(yield i);
+        [asyncIterator]:async function*(){
+          var value,exec=right(call),create=await values;
+          if (iterator in create) for(value of create)(await exec(value))&&(yield value);
+          else for await(value of create)(await exec(value))&&(yield value);
         },
-        then: toArray,
       })
 
     )
-    : (x) => (
-      (Symbol.iterator in x)?({
-        [Symbol.asyncIterator]:async function*(){
-          var i,r;
-          for(i of x)("then" in Object(r="then" in Object(i)?i.then(y):y(i)))?(await r):(r)&&(yield i);
+    : (values) => (
+      (iterator in values)?({
+        [asyncIterator]:async function*(){
+          var value,is;
+          for(value of values)(("then" in Object(is=("then" in Object(value))?value.then(call):call(value)))?(await is):(is))&&(yield value);
         },
-        then: toArray,
       })
       :
-      (Symbol.asyncIterator in x)?({
-        [Symbol.asyncIterator]:async function*(){
-          var i,r;
-          for await(i of x)("then" in Object(r=y(i))?(await r):r)&&(yield i)
+      (asyncIterator in values)?({
+        [asyncIterator]:async function*(){
+          var value,is;
+          for await(value of values)("then" in Object(is=call(value))?(await is):is)&&(yield value)
         },
-        then: toArray,
       })
       :
       ({
-        [Symbol.asyncIterator]:async function*(){
-          var i,r,o=await x;
-          if (Symbol.iterator in o) for(i of o)("then" in Object(r="then" in Object(i)?i.then(y):y(i)))?(await r):(r)&&(yield i);
-          else for await(i of o(Symbol.asyncIterator))("then" in Object(r=y(i))?(await r):r)&&(yield i);
+        [asyncIterator]:async function*(){
+          var value,is,iterable=await values;
+          if (iterator in iterable) for(value of iterable)(("then" in Object(is=("then" in Object(value))?value.then(call):call(value)))?(await is):(is))&&(yield value);
+          else for await(value of iterable)("then" in Object(is=call(value))?(await is):is)&&(yield value);
         },
-        then: toArray,
       })
    )
 );
-
 export default filter;
 export var then=(resolve)=>resolve(filter);

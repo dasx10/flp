@@ -1,39 +1,38 @@
-import maybe from "../Monad/maybe.js";
+import maybe from "../../Monad/maybe.js";
 
-var findIterable=(x,y)=>{
-  var r,o;
-  for(const i of x){
-    r=("then" in Object(i))?i.then(y):y(i);
-    if(r){
-      if("then" in Object(r))(o=(o?o.then((n)=>n||r.then((r)=>r&&({is:i}))):o=r.then((r)=>r&&({is:i}))));
-      return o?o.then((o)=>o?o.is:i):i;
+var findIterable=(values,call)=>{
+  var resolve;
+  for(const value of values){
+    const is=("then" in Object(value))?value.then(call):call(value);
+    if(is){
+      if("then" in Object(is))(resolve=(resolve?resolve.then((next)=>next||is.then((next)=>next&&({value}))):resolve=is.then((next)=>next&&({value}))));
+      else return resolve?resolve.then((next)=>next?next.done:value):value;
     }
   }
-  return o?o.then((o)=>o&&o.is):void 0;
+  return resolve?resolve.then((next)=>next?next.value:void 0):void 0;
 }
 
-var findAsyncIterable=async(x,y)=>{
-  var r,o;
-  for await(const i of x){
-    r=y(i);
-    if(r){
-      if("then" in Object(r))(o=(o?o.then((n)=>n||r.then((r)=>r&&({is:i}))):o=r.then((r)=>r&&({is:i}))));
-      return o?o.then((o)=>o?o.is:i):i;
+var findAsyncIterable=async(values,call)=>{
+  var resolve;
+  for await(const value of values){
+    const is=call(value);
+    if(is){
+      if("then" in Object(is))(resolve=(resolve?resolve.then((n)=>n||is.then((r)=>r&&({is:value}))):resolve=is.then((r)=>r&&({is:value}))));
+      else return resolve?resolve.then((value)=>value?value.is:value):value;
     }
   }
-  return o?o.then((o)=>o&&o.is):void 0;
+  return resolve?resolve.then((value)=>value&&value.is):void 0;
 };
 
-var find=(y)=>y.then
-  ?(x)=>maybe(y.then((y)=>(x[Symbol.iterator]
-    ?findIterable(x,y):x[Symbol.asyncIterator]?findAsyncIterable(x,y)
-    :(x).then((x)=>x[Symbol.iterator]?findIterable(x,y):findAsyncIterable(x,y))
+var find=(call)=>("then" in call)
+  ?(values)=>maybe(call.then((exec)=>(values[Symbol.iterator]
+    ?findIterable(values,exec):values[Symbol.asyncIterator]?findAsyncIterable(values,exec)
+    :(values).then((values)=>values[Symbol.iterator]?findIterable(values,exec):findAsyncIterable(values,exec))
   )))
-  :(x)=>maybe((x[Symbol.iterator]
-    ?findIterable(x,y):x[Symbol.asyncIterator]?findAsyncIterable(x,y)
-    :(x).then((x)=>x[Symbol.iterator]?findIterable(x,y):findAsyncIterable(x,y))
-  ))
-;
+  :(values)=>maybe((values[Symbol.iterator]
+    ?findIterable(values,call):values[Symbol.asyncIterator]?findAsyncIterable(values,call)
+    :(values).then((iterable)=>iterable[Symbol.iterator]?findIterable(iterable,call):findAsyncIterable(iterable,call))
+  ));
 
 export default find;
 export var then=(resolve)=>resolve(find);
