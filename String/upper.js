@@ -1,1 +1,1 @@
-export default(x)=>x.toUpperCase();
+export default(string)=>string?string.toUpperCase():"";

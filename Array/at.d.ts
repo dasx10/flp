@@ -9,6 +9,8 @@ export type At<Values extends readonly any[], Index extends number> = number ext
     : Values[Index]
 ;
 
+type Ating<Index extends number> = <Values extends readonly any[]>(values: Values) => At<Values, Index>;
+
 /**
   * @example
   * ```
@@ -29,5 +31,14 @@ export type At<Values extends readonly any[], Index extends number> = number ext
   * @see {@link Array.prototype.at}
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.at}
   */
-export default function at<Index extends number>(index: MustInt<Index>): <Values extends readonly any[]>(values: Values) => At<Index, Values>;
+export default function at<Index extends number>(index: MustInt<Index>): Ating<Index>;
 declare export var then: (resolve: (value: typeof at) => any) => any;
+
+import { Ap, Either } from "../Monad/either";
+
+export interface EitherAt extends Either<typeof at> {
+  <Index extends number>(index: At<MustInt<Index>, Error>) : (
+    (<Values extends readonly any[]>(values: Ap<Values>) => Either<At<Values, Index>, Error>) &
+    (Either<Ating<Index>, Error>)
+  );
+};

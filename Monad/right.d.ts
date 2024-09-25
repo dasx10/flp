@@ -1,56 +1,49 @@
 import type { Either, Left } from "./either";
 
-export type ToRight<Value> = Value extends Either<any, any>
-  ? Value
-  : Value extends Left<any>
+type primitive = number | string | boolean | null | undefined | symbol | bigint;
+
+export type RightOf<Value> = Value extends Either<any, any>
     ? Value
     : Value extends Right<any>
       ? Value
       : Value extends PromiseLike<infer Next>
-        ? Either<Next, unknown>
+        ? Either<Awaited<Next>, unknown>
         : Right<Value>
 ;
 
-export type _Right<Value> = {
-  <Resolve>(onresolve: _RightExec<Value, Resolve>,               onreject?: any) : Right<Resolve>;
-  <Resolve>(onresolve: (value: Right<Value> | Value) => Resolve, onreject?: any) : Right<Resolve>;
-  <Resolve>(onresolve: (value: PromiseLike<Value>)   => Resolve, onreject?: any) : Either<Resolve, unknown>;
+export type Ap<Value> = <Return>(resolve: (value: Value) => Return) => any;
+export type MayAp<Value> = Ap<Value> | Value;
 
-  (): _Right<Value>;
+type AwatedRight<Value> = Value extends (resolve: (x: infer X) => infer Y) => any
+  ? Value
+  : Awaited<Value>
+;
 
-  constructor : _Right<Value>;
-  length      : 1;
-  name        : '';
-  then        : <Resolve>(onresolve: (value: Value) => Resolve, onreject?: () => any) => Right<Resolve>;
+type ThenRight<Value> = {
+  <Return>(resolve: (value: Awaited<Value>) => Return, reject?: (value: never) => never): RightOf<Return>;
+  then: ThenRight<Value>;
 };
 
-export type _RightExec<Parameter, Result> = {
-  (onresolve: _RightExec<Parameter, Result>, onreject?: any): Right<Result>;
-  (onresolve: Parameter | Right<Parameter>,  onreject?: any): Right<Result>;
-  (onresolve: PromiseLike<Parameter>,        onreject?: any): Either<Result, unknown>;
-  <Return extends Result, Value extends Parameter = Parameter>(onresolve: _RightExec<Return, Value>, onreject?: any): Right<Return>;
-  <Return extends Result, Value extends Parameter = Parameter>(onresolve: Value | Right<Value>,      onreject?: any): Right<Return>;
-  <Return extends Result, Value extends Parameter = Parameter>(onresolve: PromiseLike<Value>,        onreject?: any): Either<Return, unknown>;
+type RightContainer<Value> = {
+  <Return>(resolve: (value: Awaited<Value>) => Return, reject?: (value: never) => never): RightOf<Return>;
+  then: ThenRight<Value>;
 }
-;
 
-export type Right<Value> = Value extends _Right<any> | (_RightExec<any, any> & _Right<any>)
-  ? Value
-  : Value extends PromiseLike<infer Next>
-    ? Either<Next, unknown>
-    : Value extends (value: infer Parameter) => infer Result
-      ? _RightExec<Parameter, Result> & _Right<Value>
-      : _Right<Value>
-;
+type RightFunction<Value> = Value extends Awaited<(value: infer Parameter) => infer Result> ? {
+  <Rejected>(value: Either<Parameter, Rejected>): Either<Result, Rejected>;
+  <Rejected>(value: Left<Rejected>): Left<Rejected>;
+  (value: Ap<Parameter>): RightOf<Result>;
+  (value: Right<Parameter>): RightOf<Result>;
+  (value: PromiseLike<Parameter>): Either<Result, unknown>;
+  (value: Awaited<Parameter>): RightOf<Result>;
+} : RightContainer<Value>;
 
-export type RightConstructor = <Value>(value: Value) => ToRight<Value>;
+export type Right<Value> = RightFunction<Value> & RightContainer<Value>;
 
-export type RightValue<MaybeRight> = MaybeRight extends Right<infer Value>
-  ? Value
-  : MaybeRight extends Left<any>
-    ? never
-    : Awaited<MaybeRight> | MaybeRight
-;
+export type RightConstructor = {
+  <Value extends primitive>(value: Value): Right<Value>;
+  <Value>(value: Value): RightOf<Value>;
+};
 
 declare const right: RightConstructor;
 export default right;

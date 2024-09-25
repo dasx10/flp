@@ -1,1 +1,1 @@
-export default(y)=>y.toLowerCase();
+export default(string)=>string?string.toLowerCase():"";

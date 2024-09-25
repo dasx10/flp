@@ -1,1 +1,4 @@
-var o=Math.pow;export default(y)=>(x)=>x<0?o(-x,1/y)*(y&1?-1:1):o(x,1/y);
+var pow=Math.pow;
+var root=(y)=>(x)=>x<0?pow(-x,1/y)*(y&1?-1:1):pow(x,1/y);
+export default root;
+export var then=(resolve)=>resolve(root);

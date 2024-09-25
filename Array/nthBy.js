@@ -1,1 +1,4 @@
-export default(o)=>(y)=>((y=o(y)),(x)=>{var i=y(x);return i<0?void 0:x[i]})
+export default (call) => (array) => {
+  var index = call(array);
+  return index >= 0 ? array[index] : void 0;
+}

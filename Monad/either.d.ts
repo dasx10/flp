@@ -1,78 +1,81 @@
 import type { Just, Nothing } from "./maybe";
-import type { _Right, Right, RightConstructor, RightValue, ToRight } from "./right";
-export type { Right } from "./right";
+import type { MayAp, Ap, Right, RightConstructor, RightOf } from "./right";
 
-type ToLeft<Value> = Value extends Right<infer Next>
-  ? ToLeft<Next>
-  : Value extends Left<any>
-    ? Value
-    : Value extends PromiseLike<any>
-      ? Left<unknown>
-      : Left<Value>
+export {
+  Right,
+  Ap,
+  MayAp,
+}
+
+export type LeftOf<Value> = Left<Awaited<Value>>;
+
+export type LeftMaybe<Value> = Value extends Left<infer Reason>
+  ? Reason
+  : Value extends EitherContainer<any, infer Reason>
+    ? Reason
+    : Value extends Right<any>
+      ? never
+      : Value extends PromiseLike<infer Result>
+        ? unknown
+        : never
 ;
 
-type Resolve<Value> = Value extends Either<any, any> ? Value : ToRight<Value>;
+type LeftValue<Value> = Value extends Left<infer Reason>
+  ? Reason
+  : Value extends EitherContainer<any, infer Reason>
+    ? Reason
+    : unknown
+;
 
-export type Left <Value> = {
-  (onresolve?: (value: any) => any): Left<LeftValue<Value>>
-  <Reject>(onresolve: (value: any) => any, onreject?: (value: Value) => Reject): Right<Reject>;
-  constructor : Left<Value>;
-  length      : 2;
-  name        : '';
-  then        : {
-    <Reject>(onresolve: (() => any) | null | undefined, onreject: (value: Value) => Reject): Resolve<LeftValue<Value>>
-    (onresolve?: (() => any) | null | undefined): Left<LeftValue<Value>>
-  }
+export type Left<Value> = {
+  (resolve: (value: never) => never): Left<Value>;
+  <Return>(resolve: (value: never) => any, reject: (value: Awaited<Value>) => Return): RightOf<Return>;
+  then: Left<Awaited<Value>>;
 };
 
+export type EitherContainer<
+  Value,
+  Reason
+> = ({
+  <Resolve, Reject>(
+    resolve: (value: Awaited<Value>)  => Resolve,
+    reject : (value: Awaited<Reason>) => Reject
+  ): EitherContainer<Awaited<Resolve>, Awaited<Reject> | LeftMaybe<Resolve>>;
+
+  <Resolve>(
+    resolve: (value: Awaited<Value>) => Resolve
+  ): EitherContainer<Awaited<Resolve>, Reason | LeftMaybe<Resolve>>;
+
+  then: EitherContainer<Value, Reason>;
+});
+
+type EitherFunction<
+  Value,
+  Reason,
+> = Value extends Awaited<(value: infer Parameter) => infer Result> ? {
+  <Rejected>(value: Either<Parameter, Rejected>): Either<Result, Rejected | Reason>;
+  <Rejected>(value: Left<Rejected>): Left<Rejected | Reason>;
+  (value: Right<Parameter>): Either<Result, Reason>;
+  // (value: Awaited<Parameter>): Either<Result, Reason>;
+} : EitherContainer<Value, Reason>;
+
 export type Either<
-  Resolved = unknown,
-  Rejected = unknown,
-> = Left<Rejected> | Right<Resolved>;
-
-type RollRight<Value> = Value extends _Right<infer Next>
-  ? Next
-  : Value extends _Either<infer Next, any>
-    ? Next
-    : Value extends PromiseLike<infer Next>
-      ? Next
-      : Value
+  Value,
+  Reason
+> = Value extends Left<infer Rejected>
+  ? Left<Rejected | LeftMaybe<Value> | Reason>
+  : EitherFunction<Value, Reason | LeftMaybe<Value>> & EitherContainer<Awaited<Value>, Reason | LeftMaybe<Value>>
 ;
 
-type RollLeft<Value> = Value extends Left<infer Next>
-  ? Next
-  : Value extends _Either<any, infer Next>
-    ? Next
-    : Value extends PromiseLike<any>
-      ? unknown
-      : Value
-;
-
-export type LeftValue<Value> = Value extends Left<infer Next>
-  ? LeftValue<Next>
-  : Value extends Right<any>
-    ? never
-    : Value extends PromiseLike<infer Next>
-      ? LeftValue<Next> | unknown
-      : Value
-;
-
-type LeftConstructor = <Value>(value: Value) => Value extends Left<infer Next>
-  ? LeftValue<Next>
-  : Value extends Right<any>
-    ? never
-    : Value extends PromiseLike<infer Next>
-      ? LeftValue<Next> | unknown
-      : Value
-;
+type LeftConstructor = <Value>(value: Value) => LeftOf<Value>;
 
 declare const either: {
   <Return, Value>(call: (value: Value) => Return) : {
-    (functor: Left<Value>): ToRight<Return>;
-    (functor: Nothing): ToRight<Return>;
+    (functor: Left<Value>): RightOf<Return>;
+    (functor: Nothing): RightOf<Return>;
     <X extends Right<any> | Just<any>>(functor: X): X;
     (functor: { then: (call?: any, next?: (value: Value) => any) => ToRight<Return>})
-    <X extends PromiseLike<any>>(functor: X): Either<Awaited<Return> | Awaited<X>, unknown>;
+    <X extends PromiseLike<any>>(functor: X): EitherContainer<Awaited<Return> | Awaited<X>, unknown>;
   }
   right : RightConstructor;
   left  : LeftConstructor;

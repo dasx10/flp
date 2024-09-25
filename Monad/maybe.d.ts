@@ -1,17 +1,16 @@
+import {Either, Left} from "./either";
 import type { Right } from "./right";
 
-type nil = null | undefined | void;
-type none = nil | PromiseLike<nil> | Nothing;
+type nil  = null | undefined | void;
+type none = nil  | PromiseLike<nil> | Nothing;
 
 export interface Nothing {
   (...values?: any) : Nothing;
-  length     : 0 | 1 | 2;
-  name       : '';
   toString   : () => "";
   valueOf    : () => void;
   toJSON     : () => void,
   then       : {
-    <X>(resolve: (x?: never) => never, reject: (x?: any) => any): Nothing | Maybe<X>,
+    <Return>(resolve: (value?: void) => Return, reject: (x?: never) => never): Nothing | Maybe<Return>,
     (resolve: (x?: never) => any): Nothing,
   }
 };
@@ -20,14 +19,23 @@ export declare const nothing: Nothing;
 type JustConstructor = <Value>(value: Exclude<Value, nil | Nothing | PromiseLike<nil>>) => Just<Value>;
 export declare const just: JustConstructor;
 
-export type Maybe<X> = (Awaited<X> extends nil ? Nothing : Just<X>;
+export type Maybe<Value> = Value extends Left<any>
+  ? Value
+  : Value extends nil
+    ? Nothing
+    : Value extends Either<infer Resolved, infer Rejected>
+      ? Maybe<Resolved> | Left<Rejected>
+      : Value extends PromiseLike<infer Next>
+        ? Maybe<Next> | Left<unknown>
+        : Just<Value>
+;
 
-export type Just<X> = Awaited<X> extends nil ? never : {
-  <Y>(call : (x: Awaited<X>) => Y, reject?: (x: unknown) => any): Maybe<Awaited<Y>>;
-  then     : (resolve: (x: Awaited<X>) => any, reject?: (x: unknown) => any) => Maybe<Awaited<X>>;
-  length   : 1 | 2;
-  name     : '';
-  toString : () => "";
+const a: Maybe<Either<10, 20>>
+a.then(x => x)
+
+export type Just<X> = X extends none ? never : {
+  <Return>(resolve: (value: Awaited<X>) => Return, reject?: (value: unknown) => never) : Maybe<Awaited<Return>>;
+  then : Just<X>;
 };
 
 declare const maybe: {
