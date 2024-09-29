@@ -10,5 +10,3 @@ _res(x => x.length)
 
 const next = _.array.prepend(_value)(_res);
 next(x => x[0])(x => x)
-
-

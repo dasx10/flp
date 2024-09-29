@@ -24,6 +24,7 @@ type Maping<Return, Value> = <Values extends readonly Value[]>(values: Values) =
   * @name map
   */
 export default function map<Return, Value>(call: (value: Value) => Return): Maping<Return, Value>;
+export var then : (resolve: (module: typeof map) => any) => any;
 
 import { Ap, Either } from "../Monad/either";
 

@@ -19,5 +19,5 @@ export type Contains<Values extends readonly any[], Value> = Values extends read
   * @see {@link Array.prototype.includes}
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.includes}
   */
-export default function contains<Value>(value: Value): <Values extends readonly any[]>(values: Values) => values is Values & readonly(Value)[];
+export default function contains<Value>(value: Value): <Values extends readonly any[]>(values: Values) => values is Values & readonly [...Values[number], Value ,...Values[number]][];
 export var then : (resolve: (value: typeof contains) => any) => any;

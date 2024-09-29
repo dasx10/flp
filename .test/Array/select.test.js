@@ -2,6 +2,7 @@ import test from "node:test";
 import { deepStrictEqual } from "node:assert";
 
 import select from "../../Array/select.js";
+
 const array = Array.from({length:100},(_,i)=>i);
 
 test("Array/select", () => {

@@ -13,6 +13,8 @@ type Appending<Y> = <Values extends readonly any[]>(values: Values) => Append<Va
   * @description Append a value to an array
   * @param {*} y
   * @returns {function}
+  * @name append
+  * @alias push
   */
 export default function append<Y>(y: Y): Appending<Y>;
 export var then: (resolve: (value: typeof append) => any) => any;

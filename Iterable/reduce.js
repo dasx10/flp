@@ -1,6 +1,7 @@
-var reduce=(exec)=>(initial)=>(iterbale)=>{
-  var accumulator=initial;
-  for(var value of iterbale)accumulator=exec(value)(accumulator);
-  return accumulator
+var reduce=(call)=>(create)=>(values)=>{
+  var value, next = create;
+  for(value of values)next=call(value)(next);
+  return next;
 }
 export default reduce;
+export var then=(resolve)=>resolve(reduce);
