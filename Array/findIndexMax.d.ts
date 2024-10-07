@@ -15,5 +15,5 @@ import type ArrayIndex from "../Types/ArrayIndex";
   * @function
   * @name findIndexMax
   */
-export default function findIndexMax<Value>(call: (value: Value) => any): <Values extends readonly Value[]>(values: Values) => ArrayIndex<Values> | -1;
+export default function findIndexMax<Value>(call: (value: Value) => number): <Values extends readonly Value[]>(values: Values) => ArrayIndex<Values> | -1;
 export var then: (resolve: (value: typeof findIndexMax) => any) => any;

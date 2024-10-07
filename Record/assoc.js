@@ -1,1 +1,8 @@
-var assoc=(k)=>(y)=>(x)=>({...x,[k]:y});export default assoc;export var then=(resolve)=>resolve(assoc);
+import create from "./create.js";
+var assoc=(key)=>(value)=>(object)=>{
+  var copy=create(object);
+  copy[key]=value;
+  return copy;
+}
+export default assoc;
+export var then=(resolve)=>resolve(assoc);

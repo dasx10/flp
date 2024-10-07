@@ -1,4 +1,7 @@
-var findIndexMax=(toFloat)=>(array)=>{
+import paramSyncFunction from "../.validator/paramSyncFunction.js";
+import paramArrayLike from "../.validator/paramArrayLike.js";
+
+var findIndexMax = paramSyncFunction((toFloat) => paramArrayLike((array) => {
   var length=array.length;
   if (length > 1) {
     var value = toFloat(array[0]), next = toFloat(array[1]), max = value > next ? 0 : (value = next, 1), index = 2;
@@ -10,7 +13,7 @@ var findIndexMax=(toFloat)=>(array)=>{
     return max;
   }
   return length - 1;
-};
+}));
 
 export default findIndexMax;
 export var then=(resolve)=>resolve(findIndexMax);

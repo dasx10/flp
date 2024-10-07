@@ -12,5 +12,5 @@
   * @param {number[]} values
   * @returns {number}
   */
-export default function avgs<Values extends readonly number[]>(values: Values): number;
+export default function avgs<Values extends ArrayLike<number>>(values: Values): number;
 export var then: (resolve: (value: typeof avgs) => any) => any;

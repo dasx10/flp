@@ -1,1 +1,3 @@
-var ___=(x)=>(r)=>(z)=>(y)=>r(z)(y)(x);export default ___;export var then=(r)=>r(___);
+var ___=(a)=>(call)=>(c)=>(b)=>call(c)(b)(a);
+export default ___;
+export var then=(resolve)=>resolve(___);

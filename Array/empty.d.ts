@@ -10,3 +10,4 @@
   * @returns {readonly[]}
   */
 export default function empty(): readonly[];
+export const then: (resolve: (value: typeof empty) => any) => any;

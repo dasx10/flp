@@ -1,15 +1,13 @@
-import type ArrayFillAll from "../Types/ArrayFillAll";
-
-type Map<Values extends readonly any[], Value> = Values extends readonly []
+export type FillAll<Values extends readonly any[], Value> = Values extends readonly []
   ? readonly []
   : Values extends readonly [any, ...infer Tail]
-    ? readonly [Value, ...Map<Tail, Value>]
+    ? readonly [Value, ...FillAll<Tail, Value>]
     : Values extends readonly any[]
       ? readonly Value[] | readonly []
       : unknown
 ;
 
-type Maping<Return, Value> = <Values extends readonly Value[]>(values: Values) => Map<Values, Return>;
+type Maping<Return, Value> = <Values extends readonly Value[]>(values: Values) => FillAll<Values, Return>;
 
 /**
   * @example
@@ -30,7 +28,7 @@ import { Ap, Either } from "../Monad/either";
 
 export interface EitherMap {
   <Return, Value>(call: (Ap<(value: Value) => Return> | ((value: Value) => Return))) : (
-    (<Values extends readonly Value[]>(values: Ap<Values> | Values) => Either<Map<Values, Return>, Error>) &
+    (<Values extends readonly Value[]>(values: Ap<Values> | Values) => Either<FillAll<Values, Return>, Error>) &
     (Either<Maping<Return, Value>, Error>)
   );
 };
