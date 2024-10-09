@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import { strictEqual } from "node:assert";
 
-import("../../Array/contains.js").then((contains) => describe("Array/contains", () => {
+import("./Array/contains").then((contains) => describe("Array/contains", () => {
   it("contains", () => {
     strictEqual(contains(1)([1, 2, 3]), true);
   });

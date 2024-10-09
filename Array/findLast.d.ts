@@ -17,3 +17,5 @@ import type { Find } from "./find";
   */
 export default function findLast<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Find<Values, Is>;
 export default function findLast<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Find<Values>;
+
+export const then: (resolve: (module: typeof findLast) => any) => any;

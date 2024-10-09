@@ -1,10 +1,13 @@
-var indexMax=(array)=>{
+import paramArrayLikeNumbers from "../.validator/paramArrayLikeNumbers.js";
+
+var indexMax = paramArrayLikeNumbers((array)=>{
   var max=(array.length-1),index;
-  if(max>0){
+  if(max > 0){
     index=max-1;
-    while(index--)(array[max]<array[index])&&(max=index);
+    while(index--)(array[index]>array[max])&&(max=index);
   }
   return max
-};
+});
+
 export default indexMax;
 export var then=(resolve)=>resolve(indexMax);

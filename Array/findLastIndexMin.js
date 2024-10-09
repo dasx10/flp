@@ -1,7 +1,7 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
 import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramMathFunction from "../.validator/paramMathFunction.js";
 
-var findLastIndexMin = paramSyncFunction((toFloat) => paramArrayLike((array) => {
+var findLastIndexMin = paramMathFunction((toFloat) => paramArrayLike((array) => {
   var length=array.length;
   if (length > 1) {
     var value = toFloat(array[0]), next = toFloat(array[1]), min = value < next ? 0 : (value = next, 1), index = 2;

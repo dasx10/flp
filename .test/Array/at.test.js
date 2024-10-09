@@ -1,16 +1,45 @@
-import test from "node:test";
+import { describe, it } from "node:test";
 import { strictEqual } from "node:assert";
 
-import("../../Array/at.js").then((at) => test("Array/at", () => {
-  strictEqual(at(0)([1, 2, 3]), 1);
-  strictEqual(at(1)([1, 2, 3]), 2);
-  strictEqual(at(2)([1, 2, 3]), 3);
-  strictEqual(at(3)([1, 2, 3]), undefined);
-  strictEqual(at(4)([1, 2, 3]), undefined);
-  strictEqual(at(5)([1, 2, 3]), undefined);
-  strictEqual(at(-1)([1, 2, 3]), 3);
-  strictEqual(at(-2)([1, 2, 3]), 2);
-  strictEqual(at(-3)([1, 2, 3]), 1);
-  strictEqual(at(-4)([1, 2, 3]), undefined);
-  strictEqual(at(-5)([1, 2, 3]), undefined);
+import("./Array/at.js").then((at) => describe("Array/at", () => {
+  const values = [1, 2, 3]
+  it("must first", () => {
+    strictEqual(at(0)(values), values[0]);
+  });
+
+  it("must next", () => {
+    strictEqual(at(1)(values), values[1]);
+  });
+
+  it("must last", () => {
+    strictEqual(at(2)(values), values[2]);
+  });
+
+  it("must be undefined", () => {
+    strictEqual(at(3)(values), void 0);
+  });
+
+  it("must be last by negative", () => {
+    strictEqual(at(-1)(values), values[values.length - 1]);
+  });
+
+  it("must be next by negative", () => {
+    strictEqual(at(-2)(values), values[values.length - 2]);
+  });
+
+  it("must be first by negative", () => {
+    strictEqual(at(-3)(values), values[values.length - 3]);
+  });
+
+  it("must be undefined by negative", () => {
+    strictEqual(at(-4)(values), void 0);
+  });
+
+  it("must be undefined empty array", () => {
+    strictEqual(at(0)([]), void 0);
+  });
+
+  it("must be undefined by negative empty array", () => {
+    strictEqual(at(-1)([]), void 0);
+  });
 }));

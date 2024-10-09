@@ -1,15 +1,15 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
 import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramMathFunction from "../.validator/paramMathFunction.js";
 
-var avgsBy = paramSyncFunction((call) => paramArrayLike((values)=> {
+var avgsBy = paramMathFunction((toFloat) => paramArrayLike((values)=> {
   var length = values.length;
-  if (length > 0) {
-    var value = 0;
-    var index = 0;
-    while (index < length) value += call(values[index++]);
+  if (length > 1) {
+    var value = toFloat(values[0]),
+        index = 1;
+    while (index < length) value += toFloat(values[index++]);
     return value / length;
   }
-  return NaN;
+  return length > 0 ? toFloat(values[0]) : NaN;
 }));
 
 export default avgsBy;

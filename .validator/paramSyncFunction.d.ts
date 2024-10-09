@@ -1,1 +1,1 @@
-export default function paramSyncFunction<Exec extends (call: (value: *) => *) => *>(exec: Exec): Exec;
+export default function paramSyncFunction<Exec extends (call: (value: any) => any) => any>(exec: Exec): Exec;

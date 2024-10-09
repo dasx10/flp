@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import { deepStrictEqual, strictEqual } from "node:assert";
 
-import("../../Array/append.js").then((append) => describe("Array/append", () => {
+import("./Array/append.js").then((append) => describe("Array/append", () => {
   const value   = 4;
   const values  = [1, 2, 3];
   const created = append(value)(values);

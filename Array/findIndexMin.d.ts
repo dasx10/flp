@@ -15,3 +15,4 @@ import type ArrayIndex from "../Types/ArrayIndex";
   * @name findIndexMin
   */
 export default function findIndexMin<Value>(call: (value: Value) => number): <Values extends readonly Value[]>(values: Values) => ArrayIndex<Values> | -1;
+export const then: (result: (value: typeof findIndexMin) => any) => any;

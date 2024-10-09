@@ -1,11 +1,13 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramArrayLike from "../.validator/paramArrayLike.js";
+import paramPredicat  from "../.validator/paramPredicat.js";
 
-var count = paramSyncFunction((call) => paramArrayLike((values) => {
-  var length = values.length;
+var count = paramPredicat((test) => paramArrayLike((array) => {
+  var length = array.length;
   if (length > 0) {
-    var index = 0, value = 0;
-    while (index < length) call(values[index++]) && value++;
+    var index = 0,
+        value = 0
+    ;
+    while (index < length) test(array[index++]) && value++;
     return value;
   }
   return 0;

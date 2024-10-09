@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import { deepStrictEqual } from "node:assert";
 
-import("../../Array/concat.js").then((concat) => describe("Array/concat", () => {
+import("./Array/concat").then((concat) => describe("Array/concat", () => {
   it("not empty", () => {
     deepStrictEqual(concat([1, 2, 3])([4, 5, 6]), [4, 5, 6, 1, 2, 3]);
   });

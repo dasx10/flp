@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import { strictEqual } from "node:assert";
 
-import("../../Array/count.js").then((count) => describe("Array/count", () => {
+import("./Array/count.js").then((count) => describe("Array/count", () => {
   it("not empty", () => {
     strictEqual(count(Number)([1, 2, 3]), 3);
   });

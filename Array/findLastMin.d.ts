@@ -5,3 +5,5 @@ export default function findLastMin<Value>(call: Lambda<number, Value>): {
   (values: readonly []): undefined;
   <Values extends readonly Value[]>(values: Values): ArrayValue<Values>;
 }
+
+export const then: (resolve: (module: typeof findLastMin) => any) => any;

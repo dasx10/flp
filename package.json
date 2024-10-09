@@ -4,11 +4,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "node --test --watch ./.test/**/*.test.js",
-    "test.array": "node --test --watch ./.test/Array/*.test.js",
-    "test.array.find": "node --test --watch ./.test/Array/find.test.js",
-    "test.array.findIndex": "node --test --watch ./.test/Array/findIndex.test.js",
-    "test.array.countBy": "node --test --watch ./.test/Array/countBy.test.js"
+    "test"                 : "node --test ./.test/**/*.test.js",
+    "test.array"           : "node --test ./.test/Array/*.test.js",
+    "test.array.find"      : "node --test ./.test/Array/find.test.js",
+    "test.array.findIndex" : "node --test ./.test/Array/findIndex.test.js",
+    "test.array.countBy"   : "node --test ./.test/Array/countBy.test.js"
   },
   "keywords": [
     "Function",
