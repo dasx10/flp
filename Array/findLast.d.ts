@@ -1,4 +1,6 @@
-import type { Find } from "./find";
+import ArrayFindLast from "../types/Array/FindLast";
+
+export type FindingLast<Value, Is = Value> = <Values extends readonly Value[]>(values: Values) => ArrayFindLast<Values, Is>;
 
 /**
   * @example
@@ -15,7 +17,7 @@ import type { Find } from "./find";
   * @param {Function} call
   * @returns {Function}
   */
-export default function findLast<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Find<Values, Is>;
-export default function findLast<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Find<Values>;
+export default function findLast<Is, X>(call: (x: X) => x is Is): FindingLast<X, Is>;
+export default function findLast<X>(call: (x: X) => boolean): FindingLast<X, X>;
 
 export const then: (resolve: (module: typeof findLast) => any) => any;

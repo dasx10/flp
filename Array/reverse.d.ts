@@ -1,9 +1,13 @@
-export type Reverse<Values extends readonly any[]> = Values extends readonly [infer Value, ...infer Tail]
-  ? readonly [...Reverse<Tail>, Value]
-  : Values extends readonly []
-    ? readonly []
-    : Values extends readonly(infer Value)[]
-      ? readonly Value[] | []
-      : never[];
+import type ArrayReverse from "../types/Array/Reverse";
 
-export function reverse<Values extends readonly any[]>(values: Values): Reverse<Values>;
+/**
+  * @example
+  * ```javascript
+  * reverse([1, 2, 3]) // [3, 2, 1]
+  * reverse([2, 1]) // [1, 2]
+  * reverse([1]) // [1]
+  * reverse([]) // []
+  * ```
+  * @name reverse
+  */
+export function reverse<Values extends readonly any[]>(values: Values): ArrayReverse<Values>;

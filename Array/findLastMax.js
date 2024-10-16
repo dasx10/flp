@@ -4,8 +4,8 @@ import paramArrayLike    from "../.validator/paramArrayLike.js";
 var findLastMax = paramMathFunction((toFloat) => paramArrayLike((array) => {
   var length=array.length;
   if (length > 1) {
-    var value = toFloat(array[length--]),
-        next  = toFloat(array[length--]),
+    var value = toFloat(array[--length]),
+        next  = toFloat(array[--length]),
         max   = next > value ? (value = next, length) : length + 1
     ;
 

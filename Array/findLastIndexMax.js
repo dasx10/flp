@@ -4,11 +4,16 @@ import paramArrayLike    from "../.validator/paramArrayLike.js";
 var findLastIndexMax = paramMathFunction((toFloat) => paramArrayLike((array) => {
   var length = array.length;
   if (length > 1) {
-    var value = toFloat(array[0]), next = toFloat(array[1]), max = value > next ? 0 : (value = next, 1), index = 2;
+    var value = toFloat(array[--length]),
+        next  = toFloat(array[--length]),
+        max   = next > value ? (value = next, length) : length + 1
+    ;
+
     while (length--) (
-      (next = toFloat(array[index])),
-      (next > value && (max = index, value = next))
+      (next = toFloat(array[length])),
+      (next > value && (max = length, value = next))
     );
+
     return max;
   }
   return length - 1;

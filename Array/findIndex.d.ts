@@ -1,5 +1,5 @@
-import type ArrayIndex from "../Types/ArrayIndex";
-import type ArrayIndexOf from "../Types/ArrayIndexOf";
+import type ArrayIndexOf from "../types/Array/IndexOf.d.ts";
+import type ArrayIndex   from "../types/Array/Index.d.ts";
 
 /**
   * @example
@@ -13,7 +13,7 @@ import type ArrayIndexOf from "../Types/ArrayIndexOf";
   * @param {function}
   * @returns {function}
   */
-export default function findIndex<Predicate, X>(call: (x: X) => x is Predicate): <Values extends readonly X[]>(values: Values) => ArrayIndexOf<Values, Predicate>;
-export default function findIndex<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => ArrayIndex<Values> | -1;
+export default function findIndex<Is, Value>(call: (value: Value) => value is Is): <Values extends readonly Value[]>(values: Values) => ArrayIndexOf<Values, Is>;
+export default function findIndex<Value>(call: (value: Value) => boolean): <Values extends readonly Value[]>(values: Values) => ArrayIndex<Values> | -1;
 
 export var then: (resolve: (value: typeof findIndex) => any) => any;

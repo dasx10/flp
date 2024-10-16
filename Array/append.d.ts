@@ -1,7 +1,6 @@
-export type Append<Values extends readonly any[], X> = readonly [...Values, X];
+import type ArrayAppend from "../types/Array/Append";
 
-type Appending<Y> = <Values extends readonly any[]>(values: Values) => Append<Values, Y>;
-
+type ArrayAppending<AppendValue> = <Values extends readonly any[]>(values: Values) => ArrayAppend<Values, AppendValue>;
 
 /**
   * @example
@@ -16,14 +15,5 @@ type Appending<Y> = <Values extends readonly any[]>(values: Values) => Append<Va
   * @name append
   * @alias push
   */
-export default function append<Y>(y: Y): Appending<Y>;
-export var then: (resolve: (value: typeof append) => any) => any;
-
-import type { Ap, Either } from "../Monad/either";
-
-export interface EitherAppend extends Either<typeof append> {
-  <Y>(y: Ap<Y>): (<Values extends readonly any[]>(x: Ap<Values>) => (
-    (Either<Append<Values, Y>, Error>)) &
-    (Either<Appending<Y>, Error>)
- );
-};
+export default function append<Value>(value: Value): ArrayAppending<Value>;
+export var then: (resolve: (arrayAppend: typeof append) => any) => any;

@@ -1,9 +1,6 @@
-import type { Filter } from "./filter";
+import ArrayFind from "../types/Array/Find";
 
-export type Find<Values extends readonly any[], Is = Values[number]> = Values extends readonly []
-  ? undefined
-  : (Filter<Values, Is>[number] & Is) | undefined
-;
+export type Finding<X, Is = X> = <Values extends readonly X[]>(value: Values) => ArrayFind<Values, Is>;
 
 /**
   * @example
@@ -20,7 +17,7 @@ export type Find<Values extends readonly any[], Is = Values[number]> = Values ex
   * @param {Function} call
   * @returns {Function}
   */
-export default function find<Is, X>(call: (x: X) => x is Is): <Values extends readonly X[]>(values: Values) => Find<Values, Is>;
-export default function find<X>(call: (x: X) => any): <Values extends readonly X[]>(values: Values) => Find<Values>;
+export default function find<Is, X>(call: (x: X) => x is Is): Finding<X, Is>;
+export default function find<X>(call: (x: X) => boolean): Finding<X, X>;
 
 export var then: (resolve: (value: typeof find) => any) => any;

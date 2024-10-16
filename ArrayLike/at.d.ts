@@ -1,7 +1,8 @@
-import type ArrayAt from "../types/Array/At";
-import type Int from "../types/Number/Int";
+import type ArrayLike   from "../types/ArrayLike";
+import type ArrayLikeAt from "../types/ArrayLike/At";
+import type Int         from "../types/Number/Int";
 
-type Ating<Index extends number> = <Values extends readonly any[]>(values: Values) => ArrayAt<Values, Index>;
+type ArrayLikeAtingLikeAting<Index extends number> = <Values extends ArrayLike<any>>(values: Values) => ArrayLikeAt<Values, Index>;
 
 /**
   * @example
@@ -23,5 +24,5 @@ type Ating<Index extends number> = <Values extends readonly any[]>(values: Value
   * @see {@link Array.prototype.at}
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.at}
   */
-export default function at<Index extends number>(index: Int<Index>): Ating<Index>;
+export default function at<Index extends number>(index: Int<Index>): ArrayLikeAtingLikeAting<Index>;
 declare export var then: (resolve: (value: typeof at) => any) => any;
