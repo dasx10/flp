@@ -1,9 +1,9 @@
-import len from "./len.js";
+import paramArray from "../.validator/paramArray.js";
 
-var last = (values) => {
-  var length = len(values);
-  return length > 0 ? values[length - 1] : void 0;
-}
+var last = paramArray((values) => {
+  var length = values.length;
+  return length >= 1 ? values[length - 1] : void 0;
+});
 
 export default last;
 export var then = (resolve) => resolve(last);

@@ -1,5 +1,12 @@
-import type Int      from "./Int";
-import type Unsigned from "./Unsigned";
+type Uint<Value extends number> = number extends Value
+  ? number
+  : `${Value}` extends `${number}.${number}`
+    ? never
+    : `${Value}` extends `-${number}`
+      ? never
+      : Value extends number
+        ? Value
+        : never
+;
 
-type Uint<Value extends number> = Unsigned<Int<Value>>;
 export default Uint;

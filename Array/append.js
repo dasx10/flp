@@ -1,7 +1,7 @@
-import paramArrayAllowArrayLike from "../.validator/paramArrayAllowArrayLike.js";
+import paramArray from "../.validator/paramArray.js";
 import Array from "./Array.js";
 
-var append = (value) => paramArrayAllowArrayLike((array) => {
+var append = (value) => paramArray((array) => {
   var length = array.length;
   if (length > 0) {
     var create = Array(length + 1);

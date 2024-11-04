@@ -1,5 +1,6 @@
+import Array from "./Array.js";
 import right from "../Monad/right.js";
-var {iterator}=Symbol;
+var { iterator }=Symbol;
 
 var fromAsyncIterator = Array.fromAsync || async function (asyncItearble) {
   var values = [], value;

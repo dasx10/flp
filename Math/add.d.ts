@@ -1,3 +1,5 @@
+import type { RightContainer }  from "../Monad/either";
+
 export type Add<X extends number, Y extends number> = number extends X
   ? number
   : number extends Y
@@ -9,7 +11,9 @@ export type Add<X extends number, Y extends number> = number extends X
         : number
 ;
 
-export type Adding<Y extends number> = <X extends number>(x: X) => Add<X, Y>;
+type Adding<Y extends number> = <X extends number>(x: X) => Add<X, Y>;
+
+type AddFunction              = <Y extends number>(y: Y) => Adding<number>;
 
 /**
   * @function
@@ -29,5 +33,9 @@ export type Adding<Y extends number> = <X extends number>(x: X) => Add<X, Y>;
   * add(0)(-0) // 0
   * ```
   */
-export default function add<Y extends number>(y: Y): Adding<Y>;
+declare const add: AddFunction & {
+  readonly toAsync: RightContainer<AddFunction>
+};
+
+export default add;
 export var then: (x: (module: typeof add) => any) => any;

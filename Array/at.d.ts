@@ -1,7 +1,10 @@
+import type { RightFunction } from "../Monad/right";
 import type ArrayAt from "../types/Array/At";
 import type Int from "../types/Number/Int";
 
 type Ating<Index extends number> = <Values extends readonly any[]>(values: Values) => ArrayAt<Values, Index>;
+type AtFunction = <Index extends number>(index: Int<Index>) => Ating<Index>;
+
 
 /**
   * @example
@@ -23,5 +26,10 @@ type Ating<Index extends number> = <Values extends readonly any[]>(values: Value
   * @see {@link Array.prototype.at}
   * @see {@link https://tc39.es/ecma262/#sec-array.prototype.at}
   */
-export default function at<Index extends number>(index: Int<Index>): Ating<Index>;
-declare export var then: (resolve: (value: typeof at) => any) => any;
+declare const at: AtFunction & {
+  readonly toAsync: RightFunction<AtFunction>;
+};
+
+declare export const then: (resolve: (value: typeof at) => any) => any;
+
+export default at;

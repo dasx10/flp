@@ -1,4 +1,9 @@
 import type ArrayIndex from "../Types/ArrayIndex";
+import type Parameter from "../types/Parameter";
+
+type ArrayCount<Values extends readonly any[]> = ArrayIndex<Values> | Values["length"];
+type Counting<Value> = <Values extends readonly Value[]>(values: Values) => ArrayCount<Values>;
+type CountFunction = <Call extends (value: any) => boolean>(call: Call) => Counting<Parameter<Call>>
 
 /**
   * @example
@@ -15,9 +20,12 @@ import type ArrayIndex from "../Types/ArrayIndex";
   * count(x => x === 1)([1, 2, 3, 1]); // 2
   * count(x => x === 1)([1, 2, 3, 1, 1]); // 3
   * ```
+  * @description Count the number of elements in an array
+  * @function
   * @param {function} call
   * @returns {function}
   * @name count
   */
-export default function count<Value>(call: (value: Value) => any): <Values extends readonly Value[]>(values: Values) => ArrayIndex<Values> | Values['length'];
-export const then: (resolve: (module: typeof count) => any) => any;
+declare const count: CountFunction;
+export default count;
+export const then: (resolve: (count: CountFunction) => any) => any;

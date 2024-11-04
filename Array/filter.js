@@ -1,8 +1,8 @@
-import Array from "./Array.js";
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import Array         from "./Array.js";
+import paramPredicat from "../.validator/paramPredicat.js";
+import paramArray    from "../.validator/paramArray.js";
 
-var filter = paramSyncFunction((test) => paramArrayLike((array) => {
+var filter = paramPredicat((test) => paramArray((array) => {
   var length = array.length;
   if (length > 0) {
     var lastIndex = length;

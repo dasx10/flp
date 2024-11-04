@@ -1,4 +1,3 @@
-import array  from "./Array/index.js";
 import string from "./String/index.js";
 import logic  from "./Logic/index.js";
 import math   from "./Math/index.js";
@@ -13,7 +12,6 @@ var _ = new Proxy(right, {
   get(_, key) {
     switch (key) {
       case "import" : return require;
-      case "array"  : return array;
       case "string" : return string;
       case "logic"  : return logic;
       case "math"   : return math;

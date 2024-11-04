@@ -1,12 +1,12 @@
-import paramArrayLikeNumbers from "../.validator/paramArrayLikeNumbers.js";
+import paramArrayNumbers from "../.validator/paramArrayNumbers.js";
 
-var sum = paramArrayLikeNumbers((values) => {
+var sum = paramArrayNumbers((values) => {
   var index = 0,
       length = values.length,
       value = 0
   ;
 
-  while (index < length) value += values[index++];
+  while (index < length) value += (values[index++]);
   return value;
 });
 

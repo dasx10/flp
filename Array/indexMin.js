@@ -1,10 +1,10 @@
-import paramArrayLikeNumbers from "../.validator/paramArrayLikeNumbers.js";
+import paramArrayNumbers from "../.validator/paramArrayNumbers.js";
 
-var indexMin = paramArrayLikeNumbers((array)=>{
+var indexMin = paramArrayNumbers((array)=>{
   var min=(array.length-1),index;
   if(min > 0){
     index=min-1;
-    while(index--)(array[index]<array[min])&&(min=index);
+    while(index--)(array[index] < array[min]) && (min = index);
   }
   return min
 });

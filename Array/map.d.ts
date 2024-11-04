@@ -9,6 +9,16 @@ export type FillAll<Values extends readonly any[], Value> = Values extends reado
 
 type Maping<Return, Value> = <Values extends readonly Value[]>(values: Values) => FillAll<Values, Return>;
 
+type Parameter<Call> = Call extends (value: infer Value) => any
+  ? Value
+  : never
+;
+
+type Returns<Call> = Call extends (...values: readonly any[]) => infer Return
+  ? Return
+  : never
+;
+
 /**
   * @example
   * ```javascript
@@ -21,14 +31,6 @@ type Maping<Return, Value> = <Values extends readonly Value[]>(values: Values) =
   * @returns {function}
   * @name map
   */
-export default function map<Return, Value>(call: (value: Value) => Return): Maping<Return, Value>;
+// export default function map<Return, Value>(call: (value: Value) => Return): Maping<Return, Value>;
+export default function map<Call extends (value: any) => unknown>(call: Call): Maping<Returns<Call>, Parameter<Call>>;
 export var then : (resolve: (module: typeof map) => any) => any;
-
-import { Ap, Either } from "../Monad/either";
-
-export interface EitherMap {
-  <Return, Value>(call: (Ap<(value: Value) => Return> | ((value: Value) => Return))) : (
-    (<Values extends readonly Value[]>(values: Ap<Values> | Values) => Either<FillAll<Values, Return>, Error>) &
-    (Either<Maping<Return, Value>, Error>)
-  );
-};

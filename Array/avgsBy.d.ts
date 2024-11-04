@@ -1,4 +1,8 @@
+import type Parameter from "../types/Parameter.d.ts";
+
 type AvgsingBy<Value> = <Values extends readonly Value[]>(values: Values) => number;
+type AvgsFunction     = <Call extends (value: any) => number>(call: Call) => AvgsingBy<Parameter<Call>>;
+
 
 /**
   * @example
@@ -14,14 +18,6 @@ type AvgsingBy<Value> = <Values extends readonly Value[]>(values: Values) => num
   * @param {function} call
   * @returns {function}
   */
-export default function avgsBy<Value>(call: (value: Value) => number): AvgsingBy<Value>;
-export var then: (resolve: (value: typeof avgsBy) => any) => any;
-
-import type { Ap, Either } from "../Monad/either";
-
-export interface EitherAvgsBy extends Either<typeof avgsBy> {
-  <Value>(call: Ap<(value: Value) => number>) : (
-    (<Values extends readonly Value[]>(values: Ap<Values>) => Either<number>) &
-    (Either<AvgsingBy<Value>>)
-  );
-};
+declare const avgsBy: AvgsFunction;
+export default avgsBy;
+export var then: (resolve: (avgsBy: AvgsFunction) => any) => any;

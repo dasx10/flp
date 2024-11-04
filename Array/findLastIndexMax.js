@@ -1,7 +1,7 @@
 import paramMathFunction from "../.validator/paramMathFunction.js";
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramArray        from "../.validator/paramArray.js";
 
-var findLastIndexMax = paramMathFunction((toFloat) => paramArrayLike((array) => {
+var findLastIndexMax = paramMathFunction((toFloat) => paramArray((array) => {
   var length = array.length;
   if (length > 1) {
     var value = toFloat(array[--length]),

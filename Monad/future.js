@@ -1,1 +1,13 @@
-import promise from"./promise.js";var o=(x)=>(x.then=x);export default(x)=>{var i;return o((y,e)=>i?i(y,e):(i=promise(x),i(y,e)));}
+import redux from "./.redux.js";
+import promise from"./promise.js";
+
+var future = (exec) => {
+  var fullfiled;
+  return redux((resolve, reject) => fullfiled
+    ? fullfiled(resolve, reject)
+    : (fullfiled = promise(exec))(resolve, reject)
+  );
+};
+
+export default future;
+export var then = future;

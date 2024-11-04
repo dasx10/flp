@@ -1,7 +1,7 @@
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramArray from "../.validator/paramArray.js";
 import paramMathFunction from "../.validator/paramMathFunction.js";
 
-var avgsBy = paramMathFunction((toFloat) => paramArrayLike((values)=> {
+var avgsBy = paramMathFunction((toFloat) => paramArray((values)=> {
   var length = values.length;
   if (length > 1) {
     var value = toFloat(values[0]),

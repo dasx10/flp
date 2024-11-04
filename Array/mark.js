@@ -1,6 +1,22 @@
+import Array from "./Array.js";
+
 var mark = (value) => (values) => {
-  var index = values.indexOf(value);
-  return index < 0 ? values.concat([value]) : values.slice(0, index).concat(values.slice(index + 1));
+  var index = 0;
+  var length = values.length;
+  while (index < length) {
+    if (values[index] === value) {
+      var create = Array(length - 1);
+      while (index < length--) create[length - 1] = values[length];
+      while (index--) create[index] = values[index];
+      return create;
+    }
+    index++;
+  }
+
+  var create = Array(length + 1);
+  create[length] = value;
+  while (length--) create[length] = values[length];
+  return create;
 };
 
 export default mark;

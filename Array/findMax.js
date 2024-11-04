@@ -1,7 +1,7 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramArray        from "../.validator/paramArray.js";
+import paramMathFunction from "../.validator/paramMathFunction.js";
 
-var findMax = paramSyncFunction((toFloat) => paramArrayLike((array) => {
+var findMax = paramMathFunction((toFloat) => paramArray((array) => {
   var length = array.length;
   if (length > 1) {
     var value = toFloat(array[0]),
@@ -16,9 +16,12 @@ var findMax = paramSyncFunction((toFloat) => paramArrayLike((array) => {
       (index++)
     );
 
-    return array[max];
+    return (array[max]);
   }
-  return length ? array[0] : void 0;
+  return length
+    ? (array[0])
+    : void 0
+  ;
 }));
 
 export default findMax;

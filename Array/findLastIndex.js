@@ -1,7 +1,7 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
-import paramArrayLike from "../.validator/paramArrayLike.js";
+import paramPredicat  from "../.validator/paramPredicat.js";
+import paramArray     from "../.validator/paramArray.js";
 
-var findLastIndex = paramSyncFunction((test) => paramArrayLike((array) => {
+var findLastIndex = paramPredicat((test) => paramArray((array) => {
   var length = array.length;
   while (length--) if (test(array[length])) return length;
   return -1;

@@ -1,7 +1,7 @@
-import paramSyncFunction from "../.validator/paramSyncFunction.js";
-import paramArray        from "../.validator/paramArray.js";
+import paramPredicat from "../.validator/paramPredicat.js";
+import paramArray    from "../.validator/paramArray.js";
 
-var findIndex = paramSyncFunction((call) => paramArray((values) => {
+var findIndex = paramPredicat((call) => paramArray((values) => {
   var length = values.length;
   if (length > 0) {
     var index = 0;

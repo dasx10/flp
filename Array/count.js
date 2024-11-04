@@ -1,7 +1,7 @@
-import paramArrayLike from "../.validator/paramArrayLike.js";
-import paramPredicat  from "../.validator/paramPredicat.js";
+import paramArray    from "../.validator/paramArrayAllowArrayLike.js";
+import paramPredicat from "../.validator/paramPredicat.js";
 
-var count = paramPredicat((test) => paramArrayLike((array) => {
+var count = paramPredicat((test) => paramArray((array) => {
   var length = array.length;
   if (length > 0) {
     var index = 0,

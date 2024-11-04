@@ -1,5 +1,5 @@
 import paramMathFunction from "../.validator/paramMathFunction.js";
-import paramArrayLike    from "../.validator/paramArrayLike.js";
+import paramArrayLike    from "../.validator/paramArray.js";
 
 var findLastMax = paramMathFunction((toFloat) => paramArrayLike((array) => {
   var length=array.length;

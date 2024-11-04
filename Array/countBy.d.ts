@@ -1,11 +1,14 @@
 import type ArrayIndex from "../Types/ArrayIndex";
+import Parameter from "../types/Parameter";
 
-export type CountBy<Values extends readonly any[], Key extends PropertyKey> = Values extends readonly []
+type CountBy<Values extends readonly any[], Key extends PropertyKey> = Values extends readonly []
   ? {}
-  : {
-    readonly [key in Key]: ArrayIndex<Values>
-  }
+  : { readonly [key in Key]: ArrayIndex<Values> }
 ;
+
+type CountingBy<Value, Key = PropertyKey> = <Values extends readonly Value[]>(values: Values) => CountBy<Values, Key>;
+type CountByFunction = <Call extends (value: any) => PropertyKey>(call: Call) => CountingBy<Parameter<Call>, ReturnType<Call>>;
+
 
 /**
   * @example
@@ -18,5 +21,7 @@ export type CountBy<Values extends readonly any[], Key extends PropertyKey> = Va
   * @param {function} call
   * @returns {function}
   */
-export default function countBy<Return extends PropertyKey, Value>(call: (value: Value) => Return): <Values extends readonly any[]>(values: Values) => CountBy<Values, Return>;
-export var then: (resolve: (value: typeof countBy) => any) => any;
+declare const countBy: CountByFunction;
+export const then: (resolve: (countBy: CountByFunction) => any) => any;
+export default countBy;
+

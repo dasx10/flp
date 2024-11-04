@@ -1,6 +1,6 @@
-import paramArrayLike from "../.validator/paramArrayLike.js";
+import paramArray from "../.validator/paramArray.js";
 
-var avgs = paramArrayLike((values)=>{
+var avgs = paramArray((values)=>{
   var length = values.length;
   if (length > 0) {
     var value = 0;

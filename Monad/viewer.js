@@ -1,4 +1,10 @@
-import{left,right}from"./either.js";
-import promise from"./promise.js";
-var o=(x)=>(x.then=x);
-export default(x)=>{var i;return o((y,e)=>((i||(i=(promise(x)((x)=>(i=null,right(x)),(x)=>(i=null,left(x))))))(y,e)));};
+import { left, right } from "./either.js";
+import promise         from "./promise.js";
+import redux           from "./.redux.js";
+
+var viewer = (exec) => {
+  var process;
+  return redux((resolve,reject)=>((process||(process=(promise(exec)((x)=>(process=null,right(x)),(x)=>(process=null,left(x))))))(resolve,reject)));
+};
+
+export default viewer;

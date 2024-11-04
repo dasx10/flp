@@ -1,6 +1,3 @@
 import isArray from "../Array/isArray.js";
-
-export default (call) => (values) => {
-  if (isArray(values)) return call(values);
-  throw new TypeError(String(values) + " is not an array");
-};
+import paramMustBe from "./paramMustBe.js";
+export default paramMustBe(isArray, (values) => String(values) + " is not an array");

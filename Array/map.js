@@ -1,9 +1,12 @@
-import Array from "./Array.js";
+import Array         from "./Array.js";
 import paramFunction from "../.validator/paramFunction.js";
-import paramArrayLike from "../.validator/paramArrayLike.js";
+import paramArray    from "../.validator/paramArray.js";
 
-var map = paramFunction((call) => paramArrayLike((values) => {
-  var index = 0, length = values.length, create = Array(length);
+var map = paramFunction((call) => paramArray((values) => {
+  var index  = 0,
+      length = values.length,
+      create = Array(length)
+  ;
   while (index < length) create[index] = call(values[index++]);
   return create;
 }));
